@@ -1,18 +1,22 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+  <section>
+    <b-button @click="clickMe">Click Me</b-button>
+    <h1>{{ msg }}</h1>
+  </section>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
-
 export default {
   name: "Home",
-  components: {
-    HelloWorld
+  data() {
+    return {
+      msg: "Home"
+    };
+  },
+  methods: {
+    clickMe() {
+      this.$buefy.notification.open("Clicked!!");
+    }
   }
 };
 </script>

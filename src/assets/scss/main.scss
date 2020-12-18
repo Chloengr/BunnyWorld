@@ -1,0 +1,9 @@
+// Import Bulma's core
+@import "~bulma/sass/utilities/_all";
+
+//Custom here
+$primary: #8c67ef;
+
+// Import Bulma and Buefy styles
+@import "~bulma";
+@import "~buefy/src/scss/buefy";
