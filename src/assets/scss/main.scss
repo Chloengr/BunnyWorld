@@ -1,8 +1,144 @@
 // Import Bulma's core
 @import "~bulma/sass/utilities/_all";
-
-//Custom here
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap');
+// Set your colors
 $primary: #8c67ef;
+$primary-light: findLightColor($primary);
+$primary-dark: findDarkColor($primary);
+$primary-invert: findColorInvert($primary);
+$secondary: #79F2B6;
+$secondary-light: findLightColor($secondary);
+$secondary-dark: findDarkColor($secondary);
+$secondary-invert: findColorInvert($secondary);
+$black: #1F2041;
+$white: #FFFF;
+$avatar-orange: #EFC890;
+$avatar-orange-invert: findColorInvert($avatar-orange);
+$avatar-purple: #E4CAFF;
+$avatar-purple-invert: findColorInvert($avatar-purple);
+$avatar-green: #6FCF97;
+$avatar-green-invert: findColorInvert($avatar-green);
+$avatar-blue: #56CCF2;
+$avatar-blue-invert: findColorInvert($avatar-blue);
+$avatar-yellow: #F2C94C;
+$avatar-yellow-invert: findColorInvert($avatar-yellow);
+$background: #D3D0FF;
+$background-invert: findColorInvert($background);
+$info: $background;
+// Lists and maps
+$custom-colors: null !default;
+$custom-shades: null !default;
+// Setup $colors to use as bulma classes (e.g. 'is-twitter')
+$colors: mergeColorMaps( ( "white": ( $white, $black, ),
+"black": ( $black, $white, ),
+"light": ( $light, $light-invert, ),
+"background": ( $background, $background-invert, ),
+"avatar-orange": ( $avatar-orange, $avatar-orange-invert, ),
+"avatar-purple": ( $avatar-purple, $avatar-purple-invert, ),
+"avatar-green": ( $avatar-green, $avatar-green-invert, ),
+"avatar-blue": ( $avatar-blue, $avatar-blue-invert, ),
+"avatar-yellow": ( $avatar-yellow, $avatar-yellow-invert, ),
+"dark": ( $dark, $dark-invert, ),
+"primary": ( $primary, $primary-invert, $primary-light, $primary-dark, ),
+"secondary": ( $secondary, $secondary-invert, $secondary-light, $secondary-dark, ),
+"link": ( $link, $link-invert, $link-light, $link-dark, ),
+"info": ( $info, $info-invert, $info-light, $info-dark, ),
+"success": ( $success, $success-invert, $success-light, $success-dark, ),
+"warning": ( $warning, $warning-invert, $warning-light, $warning-dark, ),
+"danger": ( $danger, $danger-invert, $danger-light, $danger-dark, ),
+),
+$custom-colors);
+// Links
+$link: $primary;
+$link-invert: $primary-invert;
+$link-focus-border: $primary;
+$radius: rem(10);
+$link-hover: $primary;
+$family-primary: 'Quicksand',
+sans-serif;
+$family-secondary: 'Bungee Shade',
+cursive;
+$text: $black-bis;
+$body-weight: bold;
+$body-font-size: 20px;
+$footer-padding: 20px;
+$box-radius: 10px;
+$box-shadow: 0px 4px 50px rgba(108,
+99,
+255,
+0.1);
+$button-color: $black-bis;
+$button-border-width: 0;
+$control-radius: 5px;
+$input-hover-border-color: $primary;
+$input-focus-border-color: $primary;
+$input-focus-box-shadow-color: rgba(108,
+99,
+255,
+0.2);
+$input-color: $black-bis;
+$card-color: $black-bis;
+$card-radius: 10px;
+$card-shadow: $box-shadow;
+$card-header-color: $black-bis;
+$checkbox-border-radius: 50%;
+$rate-color: rgba(255,
+207,
+207,
+0.5);
+$rate-color-active: #FFCFCF;
+#app {
+    h1 {
+        font-weight: bold;
+        font-size: 40px !important;
+    }
+    p {
+        margin: 0;
+    }
+    small {
+        font-size: 12px;
+        color: lightgrey
+    }
+    // Shadow btn
+    button {
+        font-weight: bold;
+        &.is-primary {
+            box-shadow: 0px 4px 20px rgba(108, 99, 255, 0.8);
+        }
+        &.is-white {
+            color: $primary;
+            border-color: $primary;
+            box-shadow: 0px 4px 20px rgba(108, 99, 255, 0.8);
+        }
+    }
+    .title {
+        color: $black-bis;
+    }
+    nav {
+        margin-bottom: 3%;
+        margin-top: 3%;
+    }
+    .navbar-item img {
+        max-height: 2.75rem;
+    }
+    .small-icon {
+        width: 25px;
+        height: auto;
+    }
+    .icon {
+        width: 40px;
+        height: auto;
+    }
+    .big-icon {
+        width: 70px;
+        height: auto;
+    }
+    .card-content {
+        width: 100%;
+        padding: 0;
+    }
+}
 
 // Import Bulma and Buefy styles
 @import "~bulma";

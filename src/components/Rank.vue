@@ -9,7 +9,7 @@ export default {
   name: "Rank",
   data() {
     return {
-      msg: "Classement des joueurs de la partie"
+      msg: "Résultat des Scores de la partie "
     };
   }
 };
