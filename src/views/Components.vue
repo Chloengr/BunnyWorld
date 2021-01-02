@@ -129,7 +129,7 @@
         </b-rate>
       </section>
     </div>
-        <figure class="image small-icon">
+    <figure class="image small-icon">
       <img src="/img/king.png" alt="Image" />
     </figure>
     <span>Classe .small-icon</span>
@@ -163,8 +163,8 @@ export default {
       isRtl: false,
       isSpaced: true,
       isDisabled: true,
-      locale: undefined, // Browser locale
+      locale: undefined // Browser locale
     };
-  },
+  }
 };
 </script>

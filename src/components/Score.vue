@@ -41,17 +41,17 @@ export default {
   props: ["nextPlayer"],
   data() {
     return {
-      msg: "Classement des joueurs de la partie",
+      msg: "Résultats des joueurs de la partie",
       isCardModalActive: true,
       players: {
         player_1: { id: 1, color: "orange", name: "Marie", score: 250 },
         player_2: { id: 2, color: "blue", name: "Chloé", score: 200 },
         player_3: { id: 3, color: "green", name: "Thomas", score: 150 },
-        player_4: { id: 4, color: "yellow", name: "Maxime", score: 100 },
+        player_4: { id: 4, color: "yellow", name: "Maxime", score: 100 }
       },
-      timeToPlay: true,
+      timeToPlay: true
     };
-  },
+  }
 };
 </script>
 

@@ -1,53 +1,58 @@
 // Import Bulma's core
 @import "~bulma/sass/utilities/_all";
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap");
 // Set your colors
 $primary: #8c67ef;
 $primary-light: findLightColor($primary);
 $primary-dark: findDarkColor($primary);
 $primary-invert: findColorInvert($primary);
-$secondary: #79F2B6;
+$secondary: #79f2b6;
 $secondary-light: findLightColor($secondary);
 $secondary-dark: findDarkColor($secondary);
 $secondary-invert: findColorInvert($secondary);
-$black: #1F2041;
-$white: #FFFF;
-$avatar-orange: #EFC890;
+$black: #1f2041;
+$white: #ffff;
+$avatar-orange: #efc890;
 $avatar-orange-invert: findColorInvert($avatar-orange);
-$avatar-purple: #E4CAFF;
+$avatar-purple: #e4caff;
 $avatar-purple-invert: findColorInvert($avatar-purple);
-$avatar-green: #6FCF97;
+$avatar-green: #6fcf97;
 $avatar-green-invert: findColorInvert($avatar-green);
-$avatar-blue: #56CCF2;
+$avatar-blue: #56ccf2;
 $avatar-blue-invert: findColorInvert($avatar-blue);
-$avatar-yellow: #F2C94C;
+$avatar-yellow: #f2c94c;
 $avatar-yellow-invert: findColorInvert($avatar-yellow);
-$background: #D3D0FF;
+$gray: rgba(31,
+32,
+65,
+0.5);
+$gray-invert: findColorInvert($gray);
+$background: #d3d0ff;
 $background-invert: findColorInvert($background);
 $info: $background;
 // Lists and maps
 $custom-colors: null !default;
 $custom-shades: null !default;
 // Setup $colors to use as bulma classes (e.g. 'is-twitter')
-$colors: mergeColorMaps( ( "white": ( $white, $black, ),
-"black": ( $black, $white, ),
-"light": ( $light, $light-invert, ),
-"background": ( $background, $background-invert, ),
-"avatar-orange": ( $avatar-orange, $avatar-orange-invert, ),
-"avatar-purple": ( $avatar-purple, $avatar-purple-invert, ),
-"avatar-green": ( $avatar-green, $avatar-green-invert, ),
-"avatar-blue": ( $avatar-blue, $avatar-blue-invert, ),
-"avatar-yellow": ( $avatar-yellow, $avatar-yellow-invert, ),
-"dark": ( $dark, $dark-invert, ),
-"primary": ( $primary, $primary-invert, $primary-light, $primary-dark, ),
-"secondary": ( $secondary, $secondary-invert, $secondary-light, $secondary-dark, ),
-"link": ( $link, $link-invert, $link-light, $link-dark, ),
-"info": ( $info, $info-invert, $info-light, $info-dark, ),
-"success": ( $success, $success-invert, $success-light, $success-dark, ),
-"warning": ( $warning, $warning-invert, $warning-light, $warning-dark, ),
-"danger": ( $danger, $danger-invert, $danger-light, $danger-dark, ),
-),
+$colors: mergeColorMaps( ( "white": ( $white, $black),
+"black": ( $black, $white),
+"light": ( $light, $light-invert),
+"background": ( $background, $background-invert),
+"avatar-orange": ( $avatar-orange, $avatar-orange-invert),
+"avatar-purple": ( $avatar-purple, $avatar-purple-invert),
+"avatar-green": ( $avatar-green, $avatar-green-invert),
+"avatar-blue": ( $avatar-blue, $avatar-blue-invert),
+"avatar-yellow": ( $avatar-yellow, $avatar-yellow-invert),
+"dark": ( $dark, $dark-invert),
+"gray": ( $gray, $gray-invert),
+"primary": ( $primary, $primary-invert, $primary-light, $primary-dark),
+"secondary": ( $secondary, $secondary-invert, $secondary-light, $secondary-dark),
+"link": ( $link, $link-invert, $link-light, $link-dark),
+"info": ( $info, $info-invert, $info-light, $info-dark),
+"success": ( $success, $success-invert, $success-light, $success-dark),
+"warning": ( $warning, $warning-invert, $warning-light, $warning-dark),
+"danger": ( $danger, $danger-invert, $danger-light, $danger-dark)),
 $custom-colors);
 // Links
 $link: $primary;
@@ -55,9 +60,9 @@ $link-invert: $primary-invert;
 $link-focus-border: $primary;
 $radius: rem(10);
 $link-hover: $primary;
-$family-primary: 'Quicksand',
+$family-primary: "Quicksand",
 sans-serif;
-$family-secondary: 'Bungee Shade',
+$family-secondary: "Bungee Shade",
 cursive;
 $text: $black-bis;
 $body-weight: bold;
@@ -87,7 +92,7 @@ $rate-color: rgba(255,
 207,
 207,
 0.5);
-$rate-color-active: #FFCFCF;
+$rate-color-active: #ffcfcf;
 #app {
     h1 {
         font-weight: bold;
@@ -98,7 +103,7 @@ $rate-color-active: #FFCFCF;
     }
     small {
         font-size: 12px;
-        color: lightgrey
+        color: lightgrey;
     }
     // Shadow btn
     button {

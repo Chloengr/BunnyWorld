@@ -13,7 +13,7 @@ export default {
   name: "Home",
   data() {
     return {
-      msg: "Home",
+      msg: "Home"
     };
   },
   methods: {
@@ -48,9 +48,9 @@ export default {
         </div>
       </div>
     </div>`,
-        confirmText: "Modifier",
+        confirmText: "Modifier"
       });
-    },
-  },
+    }
+  }
 };
 </script>
