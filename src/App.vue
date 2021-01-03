@@ -24,7 +24,14 @@
             Game
           </b-navbar-item>
           <b-navbar-item tag="router-link" :to="{ path: '/profile/1' }">
-            Profile
+            <div class="is-flex is-align-items-center">
+              <div class="is-flex is-align-items-center">
+                <div class="small-icon mr-2">
+                  <img :src="`/img/bunny-${player.color}.png`" alt="Image" />
+                </div>
+                <p class="has-text-secondary">{{ player.name }}</p>
+              </div>
+            </div>
           </b-navbar-item>
           <b-navbar-item tag="router-link" :to="{ path: '/components' }">
             Components
@@ -41,6 +48,16 @@
     </footer>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      player: { id: 1, color: "orange", name: "Marie", score: 250 },
+    };
+  },
+};
+</script>
 
 <style lang="scss">
 @import "@/assets/scss/main.scss";
