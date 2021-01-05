@@ -83,7 +83,6 @@ export default {
       });
     },
     incerement() {
-      console.log(this.players);
       return (this.i = this.i + 1);
     },
   },

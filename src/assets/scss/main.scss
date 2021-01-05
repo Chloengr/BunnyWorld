@@ -23,6 +23,8 @@ $avatar-blue: #56ccf2;
 $avatar-blue-invert: findColorInvert($avatar-blue);
 $avatar-yellow: #f2c94c;
 $avatar-yellow-invert: findColorInvert($avatar-yellow);
+$error: #ff3644;
+$error-invert: findColorInvert($error);
 $gray: rgba(31,
 32,
 65,
@@ -38,6 +40,7 @@ $custom-shades: null !default;
 $colors: mergeColorMaps( ( "white": ( $white, $black),
 "black": ( $black, $white),
 "light": ( $light, $light-invert),
+"error": ( $error, $error-invert),
 "background": ( $background, $background-invert),
 "avatar-orange": ( $avatar-orange, $avatar-orange-invert),
 "avatar-purple": ( $avatar-purple, $avatar-purple-invert),
@@ -94,6 +97,7 @@ $rate-color: rgba(255,
 0.5);
 $rate-color-active: #ffcfcf;
 #app {
+    height: 100%;
     h1 {
         font-weight: bold;
         font-size: 40px !important;
