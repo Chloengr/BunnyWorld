@@ -38,94 +38,94 @@ $colors: mergeColorMaps(
   (
     "white": (
       $white,
-      $black,
+      $black
     ),
     "black": (
       $black,
-      $white,
+      $white
     ),
     "light": (
       $light,
-      $light-invert,
+      $light-invert
     ),
     "error": (
       $error,
-      $error-invert,
+      $error-invert
     ),
     "background": (
       $background,
-      $background-invert,
+      $background-invert
     ),
     "avatar-orange": (
       $avatar-orange,
-      $avatar-orange-invert,
+      $avatar-orange-invert
     ),
     "avatar-purple": (
       $avatar-purple,
-      $avatar-purple-invert,
+      $avatar-purple-invert
     ),
     "avatar-green": (
       $avatar-green,
-      $avatar-green-invert,
+      $avatar-green-invert
     ),
     "avatar-blue": (
       $avatar-blue,
-      $avatar-blue-invert,
+      $avatar-blue-invert
     ),
     "avatar-yellow": (
       $avatar-yellow,
-      $avatar-yellow-invert,
+      $avatar-yellow-invert
     ),
     "dark": (
       $dark,
-      $dark-invert,
+      $dark-invert
     ),
     "gray": (
       $gray,
-      $gray-invert,
+      $gray-invert
     ),
     "primary": (
       $primary,
       $primary-invert,
       $primary-light,
-      $primary-dark,
+      $primary-dark
     ),
     "secondary": (
       $secondary,
       $secondary-invert,
       $secondary-light,
-      $secondary-dark,
+      $secondary-dark
     ),
     "link": (
       $link,
       $link-invert,
       $link-light,
-      $link-dark,
+      $link-dark
     ),
     "info": (
       $info,
       $info-invert,
       $info-light,
-      $info-dark,
+      $info-dark
     ),
     "success": (
       $success,
       $success-invert,
       $success-light,
-      $success-dark,
+      $success-dark
     ),
     "warning": (
       $warning,
       $warning-invert,
       $warning-light,
-      $warning-dark,
+      $warning-dark
     ),
     "danger": (
       $danger,
       $danger-invert,
       $danger-light,
-      $danger-dark,
-    ),
+      $danger-dark
+    )
   ),
   $custom-colors
 );
@@ -157,7 +157,6 @@ $card-header-color: $black-bis;
 $checkbox-border-radius: 50%;
 $rate-color: rgba(255, 207, 207, 0.5);
 $rate-color-active: #ffcfcf;
-
 #app {
   height: 100%;
   h1 {
@@ -171,14 +170,25 @@ $rate-color-active: #ffcfcf;
     font-size: 12px;
     color: lightgrey;
   }
-  nav {
-    margin-bottom: 3%;
-    margin-top: 3%;
+  // Shadow btn
+  button {
+    font-weight: bold;
+    &.is-primary {
+      box-shadow: 0px 4px 20px rgba(108, 99, 255, 0.8);
+    }
+    &.is-white {
+      color: $primary;
+      border-color: $primary;
+      box-shadow: 0px 4px 20px rgba(108, 99, 255, 0.8);
+    }
   }
   .title {
     color: $black-bis;
   }
-
+  nav {
+    margin-bottom: 2%;
+    margin-top: 2%;
+  }
   .navbar-item img {
     max-height: 2.75rem;
   }
@@ -197,18 +207,6 @@ $rate-color-active: #ffcfcf;
   .card-content {
     width: 100%;
     padding: 0;
-  }
-}
-// Shadow btn
-button {
-  font-weight: bold;
-  &.is-primary {
-    box-shadow: 0px 4px 20px rgba(108, 99, 255, 0.8);
-  }
-  &.is-white {
-    color: $primary;
-    border-color: $primary;
-    box-shadow: 0px 4px 20px rgba(108, 99, 255, 0.8);
   }
 }
 

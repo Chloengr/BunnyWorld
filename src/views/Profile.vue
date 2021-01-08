@@ -23,11 +23,12 @@
       class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center"
     >
       <p class="has-text-primary mb-5">Change ton nom ou ton avatar</p>
-      <b-field label="Name">
+      <b-field>
         <b-input
           v-bind:value="this.player.name"
           v-model="name"
           maxlength="30"
+          placeholder="Entrez votre nom"
         ></b-input>
       </b-field>
       <p class="has-text-primary mb-3" v-if="name">
