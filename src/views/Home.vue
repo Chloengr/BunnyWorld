@@ -1,8 +1,8 @@
 <template>
   <container
-    class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-background-background"
+    class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-background-background mb-4"
   >
-    <figure class="image is-32x32 mt-6 mb-2">
+    <figure class="big-icon mt-6 mb-2">
       <img src="/img/carrot.png" />
     </figure>
     <p class="is-family-secondary is-size-1 has-text-black mb-5">
@@ -11,9 +11,9 @@
     </p>
 
     <div
-      class="form is-flex is-flex-direction-column is-justify-content-center is-align-items-center max-width has-background-white"
+      class="form is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-background-white p-5"
     >
-      <p class="is-size-6 has-text-black mt-5 mb-5">Choisir ton nom et ton avatar</p>
+      <p class="mt-5 mb-5">Choisir ton nom et ton avatar</p>
 
       <form
         id="app"
@@ -28,11 +28,7 @@
             :src="`/img/bunny-${colorAvatar}.png`"
             alt="Image"
           />
-          <img
-            v-if="!colorAvatar"
-            :src="`/img/bunny-${player.color}.png`"
-            alt="Image"
-          />
+          <img v-if="!colorAvatar" :src="`/img/bunny-orange.png`" alt="Image" />
         </div>
 
         <div class="block is-flex is-justify-content-center is-flex-wrap-wrap">
@@ -85,7 +81,6 @@
 
         <b-field>
           <b-input
-            v-bind:value="this.player.name"
             v-model="name"
             maxlength="30"
             placeholder="Entrez votre nom"
@@ -114,7 +109,6 @@ export default {
       errors: [],
       name: null,
       colorAvatar: null,
-      player: { id: 1, color: "orange", name: "Marie", score: 250 },
     };
   },
   methods: {
@@ -136,5 +130,6 @@ export default {
 .form {
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
+  width: 100%;
 }
 </style>
