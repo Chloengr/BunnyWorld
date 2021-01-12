@@ -13,7 +13,18 @@
     <div
       class="form is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-background-white p-5"
     >
-      <p class="mt-5 mb-5">Choisir ton nom et ton avatar</p>
+      <p v-if="player === null" class="mt-5 mb-5">
+        Choisir ton nom et ton avatar
+      </p>
+
+      <div class="content">
+        <card-score
+          v-for="player in players"
+          v-bind:key="player.id"
+          :player="player"
+          class="mb-3"
+        ></card-score>
+      </div>
 
       <form
         id="app"
@@ -22,7 +33,7 @@
         method="post"
         class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center"
       >
-        <div class="icon mb-4">
+        <div v-if="player === null" class="icon mb-4">
           <img
             v-if="colorAvatar"
             :src="`/img/bunny-${colorAvatar}.png`"
@@ -31,7 +42,10 @@
           <img v-if="!colorAvatar" :src="`/img/bunny-orange.png`" alt="Image" />
         </div>
 
-        <div class="block is-flex is-justify-content-center is-flex-wrap-wrap">
+        <div
+          v-if="player === null"
+          class="block is-flex is-justify-content-center is-flex-wrap-wrap"
+        >
           <b-radio
             v-model="colorAvatar"
             name="blue"
@@ -81,12 +95,26 @@
 
         <b-field>
           <b-input
+            v-if="player === null"
             v-model="name"
             maxlength="30"
             placeholder="Entrez votre nom"
           ></b-input>
         </b-field>
 
+        <div
+          v-if="player !== null"
+          class="block is-flex is-justify-content-center is-flex-wrap-wrap"
+        ></div>
+
+        <b-row v-if="player !== null">
+          <button
+            class="button has-text-secondary is-outlined is-rounded mb-4"
+            type="submit"
+          >
+            Modifier le profil
+          </button>
+        </b-row>
         <b-row>
           <button class="button is-primary is-rounded mb-4 mr-4" type="submit">
             Créer
@@ -101,6 +129,8 @@
 </template>
 
 <script>
+import CardScore from "./CardScore.vue";
+
 export default {
   name: "Profile",
 
