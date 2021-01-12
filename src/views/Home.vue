@@ -3,11 +3,7 @@
     class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-background-background mb-4"
   >
     <figure class="big-icon mt-6 mb-2">
-<<<<<<< HEAD
       <img src="/img/Carrot.png" />
-=======
-      <img src="/img/carrot.png" />
->>>>>>> marie
     </figure>
     <p class="is-family-secondary is-size-1 has-text-black mb-5">
       BUNNY<br />
@@ -17,7 +13,6 @@
     <div
       class="form is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-background-white p-5"
     >
-<<<<<<< HEAD
       <div v-if="currentPlayer" class="mb-5 cards">
         <div v-for="game in games" v-bind:key="game.id">
           <div v-for="player in game.players" v-bind:key="player.id">
@@ -31,8 +26,6 @@
         </div>
       </div>
 
-=======
->>>>>>> marie
       <p class="mt-5 mb-5">Choisir ton nom et ton avatar</p>
 
       <form
@@ -113,10 +106,7 @@ export default {
       errors: [],
       name: null,
       colorAvatar: null,
-<<<<<<< HEAD
       colors: json.colors,
-=======
->>>>>>> marie
     };
   },
   methods: {
@@ -134,11 +124,8 @@ export default {
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
   width: 100%;
-<<<<<<< HEAD
 }
 .cards {
   width: 90%;
-=======
->>>>>>> marie
 }
 </style>
