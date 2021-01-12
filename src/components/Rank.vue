@@ -54,21 +54,16 @@
 </template>
 
 <script>
+import json from "../data/data.json";
 export default {
   name: "Rank",
   props: ["partieName"],
   data() {
     return {
-      msg: "Classement des joueurs de la partie",
       isCardModalActive: true,
-      players: [
-        { id: 1, color: "orange", name: "Marie", score: 250 },
-        { id: 2, color: "blue", name: "Chloé", score: 300 },
-        { id: 3, color: "green", name: "Thomas", score: 50 },
-        { id: 4, color: "yellow", name: "Maxime", score: 100 },
-      ],
+      players: json.players,
       i: 0,
-      isWinner: false,
+      isWinner: json.currentPlayer.id === this.rank(json.players)[0].id,
     };
   },
   methods: {

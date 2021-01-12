@@ -50,10 +50,11 @@
 </template>
 
 <script>
+import json from "../src/data/data.json";
 export default {
   data() {
     return {
-      player: { id: 1, color: "orange", name: "Marie", score: 250 },
+      player: json.currentPlayer,
     };
   },
 };

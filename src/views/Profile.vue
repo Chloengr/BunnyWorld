@@ -119,15 +119,17 @@
 </template>
 
 <script>
+import json from "../data/data.json";
 export default {
   name: "Profile",
 
   data() {
     return {
+      player: json.currentPlayer,
+      //form
       errors: [],
       name: null,
       colorAvatar: null,
-      player: { id: 1, color: "orange", name: "Marie", score: 250 },
     };
   },
   methods: {

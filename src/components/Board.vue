@@ -25,12 +25,13 @@
 
 <script>
 import Square from "./Square.vue";
+import json from "../data/data.json";
 export default {
   name: "Board",
   components: { Square },
   data() {
     return {
-      player: { id: 1, color: "orange", name: "Marie", score: 250 },
+      player: json.currentPlayer,
     };
   },
 };

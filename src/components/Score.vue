@@ -10,7 +10,7 @@
       </div>
       <div class="card-content">
         <h1 class="has-text-centered mb-4">
-          C'est à {{ nextPlayer }} de jouer !
+          C'est à {{ timeToPlay ? "toi" : nextPlayer.name }} de jouer !
         </h1>
         <div class="content">
           <card-score
@@ -35,23 +35,18 @@
 
 <script>
 import CardScore from "./CardScore.vue";
+import json from "../data/data.json";
 export default {
   components: { CardScore },
   name: "Score",
   props: ["nextPlayer"],
   data() {
     return {
-      msg: "Résultats des joueurs de la partie",
       isCardModalActive: true,
-      players: {
-        player_1: { id: 1, color: "orange", name: "Marie", score: 250 },
-        player_2: { id: 2, color: "blue", name: "Chloé", score: 200 },
-        player_3: { id: 3, color: "green", name: "Thomas", score: 150 },
-        player_4: { id: 4, color: "yellow", name: "Maxime", score: 100 }
-      },
-      timeToPlay: true
+      players: json.players,
+      timeToPlay: json.currentPlayer.id === json.nextPlayer.id,
     };
-  }
+  },
 };
 </script>
 
