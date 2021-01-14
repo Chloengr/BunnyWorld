@@ -48,48 +48,14 @@
       <div class="block is-flex is-justify-content-center is-flex-wrap-wrap">
         <b-radio
           v-model="colorAvatar"
-          name="blue"
-          native-value="blue"
-          type="is-avatar-blue"
+          v-for="color in colors"
+          v-bind:key="color"
+          :name="color"
+          :native-value="color"
+          :type="`is-avatar-${color}`"
           class="mb-2"
         >
-          Blue
-        </b-radio>
-        <b-radio
-          v-model="colorAvatar"
-          name="green"
-          native-value="green"
-          type="is-avatar-green"
-          class="mb-2"
-        >
-          Green
-        </b-radio>
-        <b-radio
-          v-model="colorAvatar"
-          name="orange"
-          native-value="orange"
-          type="is-avatar-orange"
-          class="mb-2"
-        >
-          Orange
-        </b-radio>
-        <b-radio
-          v-model="colorAvatar"
-          name="purple"
-          native-value="purple"
-          type="is-avatar-purple"
-          class="mb-2"
-        >
-          Purple
-        </b-radio>
-        <b-radio
-          v-model="colorAvatar"
-          name="yellow"
-          native-value="yellow"
-          type="is-avatar-yellow"
-          class="mb-2"
-        >
-          Yellow
+          {{ color }}
         </b-radio>
       </div>
 
@@ -119,6 +85,7 @@ export default {
   data() {
     return {
       player: json.currentPlayer,
+      colors: json.colors,
       //form
       errors: [],
       name: null,

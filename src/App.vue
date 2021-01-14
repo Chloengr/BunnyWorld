@@ -40,9 +40,6 @@
               </div>
             </div>
           </b-navbar-item>
-          <b-navbar-item tag="router-link" :to="{ path: '/components' }">
-            Components
-          </b-navbar-item>
         </template>
       </b-navbar>
       <router-view></router-view>

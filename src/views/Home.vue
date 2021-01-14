@@ -3,7 +3,7 @@
     class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-background-background mb-4"
   >
     <figure class="big-icon mt-6 mb-2">
-      <img src="/img/carrot.png" />
+      <img src="/img/Carrot.png" />
     </figure>
     <p class="is-family-secondary is-size-1 has-text-black mb-5">
       BUNNY<br />
@@ -17,14 +17,7 @@
         Choisir ton nom et ton avatar
       </p>
 
-      <div class="content">
-        <card-score
-          v-for="player in players"
-          v-bind:key="player.id"
-          :player="player"
-          class="mb-3"
-        ></card-score>
-
+      <div v-if="currentPlayer" class="mb-5 cards">
         <div v-for="game in games" v-bind:key="game.id">
           <div v-for="player in game.players" v-bind:key="player.id">
             <card-score
@@ -44,9 +37,10 @@
         @submit="checkForm"
         action="/"
         method="post"
-        class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center"
+        v-if="!currentPlayer"
+        class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center mb-5"
       >
-        <div v-if="player === null" class="icon mb-4">
+        <div class="icon mb-4">
           <img
             v-if="colorAvatar"
             :src="`/img/bunny-${colorAvatar}.png`"
@@ -55,115 +49,75 @@
           <img v-if="!colorAvatar" :src="`/img/bunny-orange.png`" alt="Image" />
         </div>
 
-        <div
-          v-if="player === null"
-          class="block is-flex is-justify-content-center is-flex-wrap-wrap"
-        >
+        <div class="block is-flex is-justify-content-center is-flex-wrap-wrap">
           <b-radio
             v-model="colorAvatar"
-            name="blue"
-            native-value="blue"
-            type="is-avatar-blue"
+            v-for="color in colors"
+            v-bind:key="color"
+            :name="color"
+            :native-value="color"
+            :type="`is-avatar-${color}`"
             class="mb-2"
           >
-            Blue
-          </b-radio>
-          <b-radio
-            v-model="colorAvatar"
-            name="green"
-            native-value="green"
-            type="is-avatar-green"
-            class="mb-2"
-          >
-            Green
-          </b-radio>
-          <b-radio
-            v-model="colorAvatar"
-            name="orange"
-            native-value="orange"
-            type="is-avatar-orange"
-            class="mb-2"
-          >
-            Orange
-          </b-radio>
-          <b-radio
-            v-model="colorAvatar"
-            name="purple"
-            native-value="purple"
-            type="is-avatar-purple"
-            class="mb-2"
-          >
-            Purple
-          </b-radio>
-          <b-radio
-            v-model="colorAvatar"
-            name="yellow"
-            native-value="yellow"
-            type="is-avatar-yellow"
-            class="mb-2"
-          >
-            Yellow
+            {{ color }}
           </b-radio>
         </div>
 
         <b-field>
           <b-input
-            v-if="player === null"
             v-model="name"
             maxlength="30"
             placeholder="Entrez votre nom"
           ></b-input>
         </b-field>
-
-        <div
-          v-if="player !== null"
-          class="block is-flex is-justify-content-center is-flex-wrap-wrap"
-        ></div>
-
-        <b-row v-if="player !== null">
-          <button
-            class="button has-text-secondary is-outlined is-rounded mb-4"
-            type="submit"
-          >
-            Modifier le profil
-          </button>
-        </b-row>
-        <b-row>
-          <button class="button is-primary is-rounded mb-4 mr-4" type="submit">
-            Créer
-          </button>
-          <button class="button is-white is-rounded mb-4 ml-4" type="submit">
-            Rejoindre
-          </button>
-        </b-row>
       </form>
+
+      <div v-if="currentPlayer">
+        <button
+          class="button has-text-secondary is-outlined is-rounded mb-5"
+          @click="$router.push(`/profile/${currentPlayer.id}`)"
+        >
+          Modifier mon profil
+        </button>
+      </div>
+
+      <div>
+        <button
+          class="button is-primary is-rounded mb-4 mr-4"
+          @click="checkForm()"
+        >
+          Créer
+        </button>
+        <button
+          class="button is-white is-rounded mb-4 ml-4"
+          @click="checkForm()"
+        >
+          Rejoindre
+        </button>
+      </div>
     </div>
   </container>
 </template>
 
 <script>
-import CardScore from "./CardScore.vue";
-
+import CardScore from "../components/CardScore";
+import json from "../data/data.json";
 export default {
   name: "Profile",
-
+  components: { CardScore },
   data() {
     return {
       errors: [],
       name: null,
       colorAvatar: null,
+      colors: json.colors,
     };
   },
   methods: {
-    checkForm: function (e) {
+    checkForm: function () {
       this.$buefy.snackbar.open({
-        message: `POST in back-end`,
+        message: `TODO`,
       });
-      //if (this.name) return (this.player.name = this.name);
-      this.errors = [];
-      if (!this.name) this.errors.push("Nom requis.");
-      if (!this.colorAvatar) this.errors.push("Couleur requise.");
-      e.preventDefault();
     },
   },
 };
@@ -174,5 +128,8 @@ export default {
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
   width: 100%;
+}
+.cards {
+  width: 90%;
 }
 </style>

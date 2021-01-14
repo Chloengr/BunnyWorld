@@ -63,7 +63,6 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<<<<<<< HEAD
 <style scoped>
 h1 {
   font-weight: normal;
@@ -73,6 +72,3 @@ h1 {
   padding-right: 30px;
 }
 </style>
-=======
-<style></style>
->>>>>>> refacto new json
