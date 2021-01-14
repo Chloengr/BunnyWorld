@@ -28,18 +28,23 @@ export default {
   data() {
     return {
       nextPlayer: json.nextPlayer,
-      partieName: json.partieName,
-      finDePartie: json.finDePartie // false to see ranking - true to see score
+      partieName: this.getCurrentGame().partieName,
+      finDePartie: json.finDePartie, // false to see ranking - true to see score
+      msg: "Partie en cours avec le plateau/parcours choisi",
     };
   },
   methods: {
+    getCurrentGame() {
+      let currentGame = json.games.filter((g) => g.currentGame);
+      return currentGame[0];
+    },
     alert() {
       this.$buefy.modal.open({
         parent: this,
         props: { weapon: json.weapon },
         component: WeaponDetailsVue,
         hasModalCard: true,
-        trapFocus: true
+        trapFocus: true,
       });
     },
     displayPlayer() {
@@ -48,10 +53,10 @@ export default {
         props: { player: json.currentPlayer, weapon: json.weapon },
         component: PlayerDetailsVue,
         hasModalCard: true,
-        trapFocus: true
+        trapFocus: true,
       });
-    }
-  }
+    },
+  },
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

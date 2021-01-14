@@ -2,7 +2,7 @@
   <section id="board">
     <div v-for="layout in layoutData" :key="layout.id">
       <div v-if="layout.id === 1">
-        <div class="columns">
+        <div class="is-flex">
           <div class="row">
             <div v-for="column in layout.columnOne" :key="column.id">
               <Square
@@ -147,22 +147,19 @@
 <script>
 import Square from "./Square.vue";
 import layoutJSON from "../data/games-layout.json";
+import json from "../data/data.json";
 // div displayflex pour etre a la ligne
 export default {
   name: "BoardOne",
   components: { Square },
   data() {
     return {
-      player: { id: 1, color: "orange", name: "Marie", score: 250 },
-      layoutData: layoutJSON.game
+      player: json.currentPlayer,
+      layoutData: layoutJSON.game,
     };
-  }
+  },
 };
 </script>
 
 <style scoped>
-.columns {
-  display: flex;
-  flex-direction: row;
-}
 </style>

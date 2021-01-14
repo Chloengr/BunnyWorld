@@ -31,10 +31,6 @@
           placeholder="Entrez votre nom"
         ></b-input>
       </b-field>
-      <p class="has-text-primary mb-3" v-if="name">
-        Name : {{ this.name }}
-        <!-- Delete after back -->
-      </p>
 
       <div class="icon mb-4">
         <img
@@ -96,10 +92,6 @@
           Yellow
         </b-radio>
       </div>
-      <p class="has-text-primary mb-5" v-if="colorAvatar">
-        Color : {{ this.colorAvatar }}
-        <!-- Delete after back -->
-      </p>
 
       <div v-if="errors.length" class="mb-5">
         <small class="has-text-error">Corrige les erreurs suivantes : </small>
@@ -138,10 +130,13 @@ export default {
       this.$buefy.snackbar.open({
         message: `POST in back-end`
       });
-      //if (this.name) return (this.player.name = this.name);
       this.errors = [];
-      if (!this.name) this.errors.push("Nom requis.");
-      if (!this.colorAvatar) this.errors.push("Couleur requise.");
+      this.name
+        ? this.$set(this.player, "name", this.name)
+        : this.errors.push("Nom requis.");
+      this.colorAvatar
+        ? this.$set(this.player, "color", this.colorAvatar)
+        : this.errors.push("Couleur requise.");
       e.preventDefault();
     }
   }

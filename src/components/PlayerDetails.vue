@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="is-flex is-justify-content-center mt-3 mb-2">
-        <button class="button is-primary is-rounded ">ATTAQUER !!</button>
+        <button class="button is-primary is-rounded">ATTAQUER !!</button>
       </div>
     </div>
   </div>
@@ -56,13 +56,14 @@ export default {
       isRtl: false,
       isSpaced: true,
       isDisabled: true,
-      locale: undefined
+      locale: undefined,
     };
-  }
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
+<<<<<<< HEAD
 <style scoped>
 h1 {
   font-weight: normal;
@@ -72,3 +73,6 @@ h1 {
   padding-right: 30px;
 }
 </style>
+=======
+<style></style>
+>>>>>>> refacto new json
