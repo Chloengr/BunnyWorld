@@ -129,24 +129,23 @@ export default {
       //form
       errors: [],
       name: null,
-      colorAvatar: null,
+      colorAvatar: null
     };
   },
   methods: {
-    checkForm: function (e) {
+    checkForm: function(e) {
       this.$buefy.snackbar.open({
-        message: `POST in back-end`,
+        message: `POST in back-end`
       });
       //if (this.name) return (this.player.name = this.name);
       this.errors = [];
       if (!this.name) this.errors.push("Nom requis.");
       if (!this.colorAvatar) this.errors.push("Couleur requise.");
       e.preventDefault();
-    },
-  },
+    }
+  }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
-</style>
+<style></style>
