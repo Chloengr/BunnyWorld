@@ -9,7 +9,7 @@
       'square lava is-flex is-justify-content-center is-align-items-center': lava
     }"
   >
-    <div class="big-icon" v-if="player && !lava">
+    <div class="big-icon" v-if="player && !lava && !bush">
       <img :src="`/img/bunny-${player.color}.png`" alt="Image" />
     </div>
   </div>
@@ -37,8 +37,8 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .square {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
 }
 .dirt {
   background-image: url("/img/dirtTile.svg");

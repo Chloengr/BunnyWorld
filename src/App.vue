@@ -21,7 +21,10 @@
             Join
           </b-navbar-item>
           <b-navbar-item tag="router-link" :to="{ path: '/game/1' }">
-            Game
+            Game 1
+          </b-navbar-item>
+          <b-navbar-item tag="router-link" :to="{ path: '/game/2' }">
+            Game 2
           </b-navbar-item>
           <b-navbar-item tag="router-link" :to="{ path: '/profile/1' }">
             <div class="is-flex is-align-items-center">
@@ -54,9 +57,9 @@ import json from "../src/data/data.json";
 export default {
   data() {
     return {
-      player: json.currentPlayer,
+      player: json.currentPlayer
     };
-  },
+  }
 };
 </script>
 
