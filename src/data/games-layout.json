@@ -1,0 +1,104 @@
+{
+  "game": [
+    {
+      "id": 1,
+      "cell": {
+        "dimension": { "h": "80px", "w": "80px" },
+        "y": {
+          "1": { "lava": false, "dirt": false, "ground": true },
+          "2": { "lava": false, "dirt": false, "ground": true },
+          "3": { "lava": false, "dirt": false, "ground": true },
+          "4": { "lava": false, "dirt": false, "ground": true },
+          "5": { "lava": false, "dirt": false, "ground": true },
+          "6": { "lava": false, "dirt": false, "ground": true },
+          "7": { "lava": false, "dirt": false, "ground": true },
+          "8": { "lava": false, "dirt": false, "ground": true },
+          "9": { "lava": false, "dirt": false, "ground": true },
+          "10": { "lava": false, "dirt": false, "ground": true },
+          "11": { "lava": false, "dirt": false, "ground": true },
+          "12": { "lava": false, "dirt": false, "ground": true },
+          "13": { "lava": false, "dirt": false, "ground": true },
+          "14": { "lava": false, "dirt": false, "ground": true },
+          "15": { "lava": false, "dirt": false, "ground": true },
+          "16": { "lava": false, "dirt": false, "ground": true },
+          "17": { "lava": false, "dirt": false, "ground": true },
+          "18": { "lava": false, "dirt": false, "ground": true },
+          "19": { "lava": false, "dirt": false, "ground": true },
+          "20": { "lava": false, "dirt": false, "ground": true }
+        },
+        "x": {
+          "1": { "lava": false, "dirt": false, "ground": true },
+          "2": { "lava": false, "dirt": false, "ground": true },
+          "3": { "lava": false, "dirt": false, "ground": true },
+          "4": { "lava": false, "dirt": false, "ground": true },
+          "5": { "lava": false, "dirt": false, "ground": true },
+          "6": { "lava": false, "dirt": false, "ground": true },
+          "7": { "lava": false, "dirt": false, "ground": true },
+          "8": { "lava": false, "dirt": false, "ground": true },
+          "9": { "lava": false, "dirt": false, "ground": true },
+          "10": { "lava": false, "dirt": false, "ground": true },
+          "11": { "lava": false, "dirt": false, "ground": true },
+          "12": { "lava": false, "dirt": false, "ground": true },
+          "13": { "lava": false, "dirt": false, "ground": true },
+          "14": { "lava": false, "dirt": false, "ground": true },
+          "15": { "lava": false, "dirt": false, "ground": true },
+          "16": { "lava": false, "dirt": false, "ground": true },
+          "17": { "lava": false, "dirt": false, "ground": true },
+          "18": { "lava": false, "dirt": false, "ground": true },
+          "19": { "lava": false, "dirt": false, "ground": true },
+          "20": { "lava": false, "dirt": false, "ground": true }
+        }
+      }
+    },
+    {
+      "id": 2,
+      "cells": {
+        "dimension": { "h": "80px", "w": "80px" },
+        "y": {
+          "1": { "bush": false, "dirt": false, "textureTwo": true },
+          "2": { "bush": false, "dirt": false, "textureTwo": true },
+          "3": { "bush": false, "dirt": false, "textureTwo": true },
+          "4": { "bush": false, "dirt": false, "textureTwo": true },
+          "5": { "bush": false, "dirt": false, "textureTwo": true },
+          "6": { "bush": false, "dirt": false, "textureTwo": true },
+          "7": { "bush": false, "dirt": false, "textureTwo": true },
+          "8": { "bush": false, "dirt": false, "textureTwo": true },
+          "9": { "bush": false, "dirt": false, "textureTwo": true },
+          "10": { "bush": false, "dirt": false, "textureTwo": true },
+          "11": { "bush": false, "dirt": false, "textureTwo": true },
+          "12": { "bush": false, "dirt": false, "textureTwo": true },
+          "13": { "bush": false, "dirt": false, "textureTwo": true },
+          "14": { "bush": false, "dirt": false, "textureTwo": true },
+          "15": { "bush": false, "dirt": false, "textureTwo": true },
+          "16": { "bush": false, "dirt": false, "textureTwo": true },
+          "17": { "bush": false, "dirt": false, "textureTwo": true },
+          "18": { "bush": false, "dirt": false, "textureTwo": true },
+          "19": { "bush": false, "dirt": false, "textureTwo": true },
+          "20": { "bush": false, "dirt": false, "textureTwo": true }
+        },
+        "x": {
+          "1": { "bush": false, "dirt": false, "textureTwo": true },
+          "2": { "bush": false, "dirt": false, "textureTwo": true },
+          "3": { "bush": false, "dirt": false, "textureTwo": true },
+          "4": { "bush": false, "dirt": false, "textureTwo": true },
+          "5": { "bush": false, "dirt": false, "textureTwo": true },
+          "6": { "bush": false, "dirt": false, "textureTwo": true },
+          "7": { "bush": false, "dirt": false, "textureTwo": true },
+          "8": { "bush": false, "dirt": false, "textureTwo": true },
+          "9": { "bush": false, "dirt": false, "textureTwo": true },
+          "10": { "bush": false, "dirt": false, "textureTwo": true },
+          "11": { "bush": false, "dirt": false, "textureTwo": true },
+          "12": { "bush": false, "dirt": false, "textureTwo": true },
+          "13": { "bush": false, "dirt": false, "textureTwo": true },
+          "14": { "bush": false, "dirt": false, "textureTwo": true },
+          "15": { "bush": false, "dirt": false, "textureTwo": true },
+          "16": { "bush": false, "dirt": false, "textureTwo": true },
+          "17": { "bush": false, "dirt": false, "textureTwo": true },
+          "18": { "bush": false, "dirt": false, "textureTwo": true },
+          "19": { "bush": false, "dirt": false, "textureTwo": true },
+          "20": { "bush": false, "dirt": false, "textureTwo": true }
+        }
+      }
+    }
+  ]
+}
