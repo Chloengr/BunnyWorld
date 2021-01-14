@@ -7,6 +7,9 @@
     <button class="button is-rounded is-primary" @click="alert">
       Regardez, une arme !
     </button>
+    <button class="button is-rounded is-primary" @click="displayPlayer">
+      Regardez, un lapin !
+    </button>
   </div>
 </template>
 
@@ -16,7 +19,9 @@ import Rank from "../components/Rank.vue";
 import json from "../data/data.json";
 import BoardOne from "../components/BoardOne.vue";
 import BoardTwo from "../components/BoardTwo.vue";
-import WeaponDetailsVue from '../components/WeaponDetails.vue';
+import WeaponDetailsVue from "../components/WeaponDetails.vue";
+import PlayerDetailsVue from "../components/PlayerDetails.vue";
+
 export default {
   components: { Score, Rank, BoardOne, BoardTwo },
   name: "Game",
@@ -24,21 +29,29 @@ export default {
     return {
       nextPlayer: json.nextPlayer,
       partieName: json.partieName,
-      finDePartie: json.finDePartie, // false to see ranking - true to see score
-      msg: "Partie en cours avec le plateau/parcours choisi"
+      finDePartie: json.finDePartie // false to see ranking - true to see score
     };
   },
   methods: {
     alert() {
       this.$buefy.modal.open({
         parent: this,
-        props: {weapon: json.weapon},
+        props: { weapon: json.weapon },
         component: WeaponDetailsVue,
         hasModalCard: true,
-        trapFocus: true,
+        trapFocus: true
       });
     },
-  },
+    displayPlayer() {
+      this.$buefy.modal.open({
+        parent: this,
+        props: { player: json.currentPlayer, weapon: json.weapon },
+        component: PlayerDetailsVue,
+        hasModalCard: true,
+        trapFocus: true
+      });
+    }
+  }
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

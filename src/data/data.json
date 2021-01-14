@@ -1,18 +1,26 @@
 {
-    "currentPlayer": {
-        "id": 1,
-        "color": "orange",
-        "name": "Marie",
-        "score": 250
-    },
-    "nextPlayer": { "id": 1, "color": "orange", "name": "Marie", "score": 250 },
-    "partieName": "Partie de la mort",
-    "finDePartie": false,
-    "weapon":  { "id": 1, "sprite": "sword", "damage": 10, "range": 0, "name": "Epee de la mort qui tue"},
-    "players": [
-        { "id": 1, "color": "orange", "name": "Marie", "score": 250 },
-        { "id": 2, "color": "blue", "name": "Chloé", "score": 200 },
-        { "id": 3, "color": "green", "name": "Thomas", "score": 150 },
-        { "id": 4, "color": "yellow", "name": "Maxime", "score": 100 }
-    ]
+  "currentPlayer": {
+    "id": 1,
+    "color": "orange",
+    "name": "Marie",
+    "score": 250,
+    "life": 5,
+    "weaponId": 1
+  },
+  "nextPlayer": { "id": 1, "color": "orange", "name": "Marie", "score": 250 },
+  "partieName": "Partie de la mort",
+  "finDePartie": false,
+  "weapon": {
+    "id": 1,
+    "sprite": "sword",
+    "damage": 10,
+    "range": 0,
+    "name": "Epee de la mort qui tue"
+  },
+  "players": [
+    { "id": 1, "color": "orange", "name": "Marie", "score": 250 },
+    { "id": 2, "color": "blue", "name": "Chloé", "score": 200 },
+    { "id": 3, "color": "green", "name": "Thomas", "score": 150 },
+    { "id": 4, "color": "yellow", "name": "Maxime", "score": 100 }
+  ]
 }

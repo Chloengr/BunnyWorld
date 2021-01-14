@@ -150,7 +150,7 @@ export default {
   data() {
     return {
       msg: "Components",
-      rate: 4.6,
+      rate: 4,
       maxs: 5,
       sizes: "is-large",
       packs: "fas",
