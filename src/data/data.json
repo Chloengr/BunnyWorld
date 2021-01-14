@@ -3,15 +3,27 @@
     "id": 1,
     "color": "orange",
     "name": "Marie",
-    "score": 250
+    "score": 250,
+    "life": 5,
+    "weaponId": 1
   },
   "nextPlayer": {
     "id": 1,
     "color": "orange",
     "name": "Marie",
-    "score": 250
+    "score": 250,
+    "life": 5,
+    "weaponId": 1
+  },
+  "weapon": {
+    "id": 1,
+    "sprite": "sword",
+    "damage": 10,
+    "range": 0,
+    "name": "Epee de la mort qui tue"
   },
   "finDePartie": false,
+  "colors": ["blue", "green", "orange", "purple", "yellow"],
   "games": [
     {
       "id": 1,
