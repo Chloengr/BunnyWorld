@@ -6,7 +6,7 @@
     <boardTwo v-if="$route.params.id == 2"></boardTwo>
     <board></board>
     <button class="button is-rounded is-primary" @click="alert">
-      Regardez, une arme ! 
+      Regardez, une arme !
     </button>
   </div>
 </template>
@@ -29,18 +29,18 @@ export default {
       msg: "Partie en cours avec le plateau/parcours choisi"
     };
   },
-  methods : {
-  alert() {
-   this.$buefy.modal.open({ 
-                    parent: this,
-                    component: WeaponDetailsVue,
-                    hasModalCard: true,
-                    trapFocus: true
-                })
-  }
-}
+  methods: {
+    alert() {
+      this.$buefy.modal.open({
+        parent: this,
+        props: {weapon: json.weapon},
+        component: WeaponDetailsVue,
+        hasModalCard: true,
+        trapFocus: true,
+      });
+    },
+  },
 };
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style></style>
