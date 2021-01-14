@@ -37,7 +37,7 @@ export default {
   data() {
     return {
       player: json.currentPlayer,
-      layoutData: layoutJSON.game
+      layoutData: layoutJSON.game,
     };
   },
   methods: {
@@ -47,8 +47,8 @@ export default {
         cells.push(column[i]);
       }
       return cells;
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -56,11 +56,27 @@ export default {
       isRtl: false,
       isSpaced: true,
       isDisabled: true,
-      locale: undefined
+      locale: undefined,
     };
-  }
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
+<<<<<<< HEAD
 <style scoped></style>
+=======
+<<<<<<< HEAD
+<style scoped>
+h1 {
+  font-weight: normal;
+}
+.bunny-icon {
+  height: 95px;
+  padding-right: 30px;
+}
+</style>
+=======
+<style></style>
+>>>>>>> refacto new json
+>>>>>>> refacto new json
