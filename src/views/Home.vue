@@ -13,7 +13,6 @@
     <div
       class="form is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-background-white p-5"
     >
-
       <div v-if="currentPlayer" class="mb-5 cards">
         <div v-for="game in games" v-bind:key="game.id">
           <div v-for="player in game.players" v-bind:key="player.id">
@@ -25,16 +24,7 @@
             ></card-score>
           </div>
         </div>
-
-
-      <div class="content">
-        <card-score
-          v-for="player in players"
-          v-bind:key="player.id"
-          :player="player"
-          class="mb-3"
-        ></card-score>
-
+      </div>
 
       <p class="mt-5 mb-5">Choisir ton nom et ton avatar</p>
 
