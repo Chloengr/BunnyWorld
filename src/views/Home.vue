@@ -13,7 +13,6 @@
     <div
       class="form is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-background-white p-5"
     >
-<<<<<<< HEAD
       <p v-if="player === null" class="mt-5 mb-5">
         Choisir ton nom et ton avatar
       </p>
@@ -25,10 +24,20 @@
           :player="player"
           class="mb-3"
         ></card-score>
+
+        <div v-for="game in games" v-bind:key="game.id">
+          <div v-for="player in game.players" v-bind:key="player.id">
+            <card-score
+              v-if="player.id === currentPlayer.id"
+              :player="player"
+              :gameName="game.name"
+              class="mt-2"
+            ></card-score>
+          </div>
+        </div>
       </div>
-=======
+
       <p class="mt-5 mb-5">Choisir ton nom et ton avatar</p>
->>>>>>> 8e7486c (marie)
 
       <form
         id="app"
@@ -99,10 +108,7 @@
 
         <b-field>
           <b-input
-<<<<<<< HEAD
             v-if="player === null"
-=======
->>>>>>> 8e7486c (marie)
             v-model="name"
             maxlength="30"
             placeholder="Entrez votre nom"
