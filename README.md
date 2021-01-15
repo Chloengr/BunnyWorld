@@ -6,6 +6,10 @@ https://bunnyworld.arnaudblessing.fr/
 
 Prochain déploiement prévu avec Héroku
 
+## Prototype 
+
+https://www.figma.com/proto/40Re4G0rzTW18gNQOowLSF/BunnyWorld?node-id=82%3A701&scaling=scale-down
+
 ## Project setup
 
 ```
@@ -30,14 +34,10 @@ npm run build
 npm run lint
 ```
 
-
-### Mystère
-Incompréhension : Les commits de Marie Gautron sont annoncé sur GitHub comme commit de Landris18 (aucune idée de qui ça peut être)
-
-### Prototype 
-
-https://www.figma.com/proto/40Re4G0rzTW18gNQOowLSF/BunnyWorld?node-id=82%3A701&scaling=scale-down
-
-### Trello
+## Trello
 
 https://trello.com/b/rPL98bU1/bunnyworld
+
+## Mystère
+Incompréhension : Les commits de Marie Gautron sont annoncé sur GitHub comme commit de Landris18 (aucune idée de qui ça peut être)
+
