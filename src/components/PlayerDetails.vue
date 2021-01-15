@@ -4,7 +4,7 @@
       <div class="is-flex is-align-items-center">
         <div class="is-flex mr-1 card-media">
           <img
-            class="bunny-icon"
+            class="big-icon"
             :src="`/img/bunny-${player.color}.png`"
             alt="Image"
           />
@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="is-flex is-justify-content-center mt-3 mb-2">
-        <button class="button is-primary is-rounded ">ATTAQUER !!</button>
+        <button class="button is-primary is-rounded">ATTAQUER !!</button>
       </div>
     </div>
   </div>
@@ -56,9 +56,9 @@ export default {
       isRtl: false,
       isSpaced: true,
       isDisabled: true,
-      locale: undefined
+      locale: undefined,
     };
-  }
+  },
 };
 </script>
 
