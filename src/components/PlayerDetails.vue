@@ -4,7 +4,7 @@
       <div class="is-flex is-align-items-center">
         <div class="is-flex mr-1 card-media">
           <img
-            class="bunny-icon"
+            class="big-icon"
             :src="`/img/bunny-${player.color}.png`"
             alt="Image"
           />
@@ -26,14 +26,14 @@
               :disabled="isDisabled"
             >
             </b-rate>
-            <div class="weapons" v-if="player.weaponId == weapon.id">
+            <div class="small-icon" v-if="player.weaponId == weapon.id">
               <img :src="`/img/${weapon.sprite}.svg`" />
             </div>
           </div>
         </div>
       </div>
       <div class="is-flex is-justify-content-center mt-3 mb-2">
-        <button class="button is-primary is-rounded ">ATTAQUER !!</button>
+        <button class="button is-primary is-rounded">ATTAQUER !!</button>
       </div>
     </div>
   </div>
@@ -63,12 +63,4 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1 {
-  font-weight: normal;
-}
-.bunny-icon {
-  height: 95px;
-  padding-right: 30px;
-}
-</style>
+<style scoped></style>

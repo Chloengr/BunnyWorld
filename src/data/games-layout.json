@@ -1,490 +1,1303 @@
 {
-  "game": [
-    {
-      "id": 1,
-      "columnOne": {
-        "1": { "lava": true },
-        "2": { "lava": true },
-        "3": { "ground": true },
-        "4": { "ground": true },
-        "5": { "ground": true },
-        "6": { "ground": true },
-        "7": { "ground": true },
-        "8": { "ground": true },
-        "9": { "ground": true },
-        "10": { "ground": true },
-        "11": { "dirt": true },
-        "12": { "dirt": true },
-        "13": { "dirt": true },
-        "14": { "dirt": true }
-      },
-      "columnTwo": {
-        "1": { "ground": true },
-        "2": { "lava": true },
-        "3": { "lava": true },
-        "4": { "ground": true },
-        "5": { "ground": true },
-        "6": { "ground": true },
-        "7": { "ground": true },
-        "8": { "ground": true },
-        "9": { "dirt": true },
-        "10": { "dirt": true },
-        "11": { "dirt": true },
-        "12": { "dirt": true },
-        "13": { "dirt": true },
-        "14": { "dirt": true }
-      },
-      "columnThree": {
-        "1": { "ground": true },
-        "2": { "ground": true },
-        "3": { "lava": true },
-        "4": { "ground": true },
-        "5": { "ground": true },
-        "6": { "dirt": true },
-        "7": { "dirt": true },
-        "8": { "dirt": true },
-        "9": { "dirt": true },
-        "10": { "dirt": true },
-        "11": { "dirt": true },
-        "12": { "dirt": true },
-        "13": { "dirt": true },
-        "14": { "dirt": true }
-      },
-      "columnFour": {
-        "1": { "ground": true },
-        "2": { "ground": true },
-        "3": { "ground": true },
-        "4": { "ground": true },
-        "5": { "dirt": true },
-        "6": { "dirt": true },
-        "7": { "dirt": true },
-        "8": { "dirt": true },
-        "9": { "dirt": true },
-        "10": { "ground": true },
-        "11": { "ground": true },
-        "12": { "ground": true },
-        "13": { "ground": true },
-        "14": { "ground": true }
-      },
-      "columnFive": {
-        "1": { "ground": true },
-        "2": { "ground": true },
-        "3": { "ground": true },
-        "4": { "ground": true },
-        "5": { "dirt": true },
-        "6": { "dirt": true },
-        "7": { "dirt": true },
-        "8": { "dirt": true },
-        "9": { "dirt": true },
-        "10": { "dirt": true },
-        "11": { "ground": true },
-        "12": { "ground": true },
-        "13": { "ground": true },
-        "14": { "ground": true }
-      },
-      "columnSix": {
-        "1": { "ground": true },
-        "2": { "ground": true },
-        "3": { "ground": true },
-        "4": { "ground": true },
-        "5": { "dirt": true },
-        "6": { "dirt": true },
-        "7": { "dirt": true },
-        "8": { "dirt": true },
-        "9": { "dirt": true },
-        "10": { "dirt": true },
-        "11": { "dirt": true },
-        "12": { "ground": true },
-        "13": { "ground": true },
-        "14": { "ground": true }
-      },
-      "columnSeven": {
-        "1": { "ground": true },
-        "2": { "ground": true },
-        "3": { "ground": true },
-        "4": { "ground": true },
-        "5": { "ground": true },
-        "6": { "dirt": true },
-        "7": { "dirt": true },
-        "8": { "dirt": true },
-        "9": { "dirt": true },
-        "10": { "dirt": true },
-        "11": { "ground": true },
-        "12": { "ground": true },
-        "13": { "ground": true },
-        "14": { "ground": true }
-      },
-      "columnEight": {
-        "1": { "ground": true },
-        "2": { "ground": true },
-        "3": { "ground": true },
-        "4": { "ground": true },
-        "5": { "lava": true },
-        "6": { "lava": true },
-        "7": { "dirt": true },
-        "8": { "lava": true },
-        "9": { "lava": true },
-        "10": { "ground": true },
-        "11": { "ground": true },
-        "12": { "ground": true },
-        "13": { "ground": true },
-        "14": { "ground": true }
-      },
-      "columnNine": {
-        "1": { "ground": true },
-        "2": { "ground": true },
-        "3": { "ground": true },
-        "4": { "ground": true },
-        "5": { "ground": true },
-        "6": { "lava": true },
-        "7": { "lava": true },
-        "8": { "lava": true },
-        "9": { "ground": true },
-        "10": { "ground": true },
-        "11": { "ground": true },
-        "12": { "lava": true },
-        "13": { "ground": true },
-        "14": { "ground": true }
-      },
-      "columnTen": {
-        "1": { "ground": true },
-        "2": { "ground": true },
-        "3": { "ground": true },
-        "4": { "ground": true },
-        "5": { "dirt": true },
-        "6": { "lava": true },
-        "7": { "lava": true },
-        "8": { "lava": true },
-        "9": { "ground": true },
-        "10": { "ground": true },
-        "11": { "ground": true },
-        "12": { "lava": true },
-        "13": { "lava": true },
-        "14": { "ground": true }
-      },
-      "columnEleven": {
-        "1": { "ground": true },
-        "2": { "ground": true },
-        "3": { "ground": true },
-        "4": { "ground": true },
-        "5": { "dirt": true },
-        "6": { "dirt": true },
-        "7": { "dirt": true },
-        "8": { "dirt": true },
-        "9": { "dirt": true },
-        "10": { "ground": true },
-        "11": { "ground": true },
-        "12": { "ground": true },
-        "13": { "lava": true },
-        "14": { "ground": true }
-      },
-      "columnTwelve": {
-        "1": { "ground": true },
-        "2": { "ground": true },
-        "3": { "ground": true },
-        "4": { "ground": true },
-        "5": { "dirt": true },
-        "6": { "dirt": true },
-        "7": { "dirt": true },
-        "8": { "dirt": true },
-        "9": { "dirt": true },
-        "10": { "ground": true },
-        "11": { "ground": true },
-        "12": { "ground": true },
-        "13": { "ground": true },
-        "14": { "ground": true }
-      },
-      "columnThirteen": {
-        "1": { "ground": true },
-        "2": { "ground": true },
-        "3": { "ground": true },
-        "4": { "ground": true },
-        "5": { "dirt": true },
-        "6": { "dirt": true },
-        "7": { "dirt": true },
-        "8": { "dirt": true },
-        "9": { "ground": true },
-        "10": { "ground": true },
-        "11": { "ground": true },
-        "12": { "ground": true },
-        "13": { "ground": true },
-        "14": { "ground": true }
-      },
-      "columnFourteen": {
-        "1": { "ground": true },
-        "2": { "ground": true },
-        "3": { "ground": true },
-        "4": { "dirt": true },
-        "5": { "dirt": true },
-        "6": { "dirt": true },
-        "7": { "dirt": true },
-        "8": { "ground": true },
-        "9": { "ground": true },
-        "10": { "ground": true },
-        "11": { "ground": true },
-        "12": { "ground": true },
-        "13": { "ground": true },
-        "14": { "ground": true }
-      },
-      "columnFifteen": {
-        "1": { "ground": true },
-        "2": { "ground": true },
-        "3": { "dirt": true },
-        "4": { "dirt": true },
-        "5": { "dirt": true },
-        "6": { "dirt": true },
-        "7": { "ground": true },
-        "8": { "ground": true },
-        "9": { "ground": true },
-        "10": { "ground": true },
-        "11": { "ground": true },
-        "12": { "ground": true },
-        "13": { "ground": true },
-        "14": { "ground": true }
-      }
-    },
-    {
-      "id": 2,
-      "columnOne": {
-        "1": { "grass": true },
-        "2": { "grass": true },
-        "3": { "grass": true },
-        "4": { "grass": true },
-        "5": { "grass": true },
-        "6": { "grass": true },
-        "7": { "grass": true },
-        "8": { "grass": true },
-        "9": { "grass": true },
-        "10": { "grass": true },
-        "11": { "grass": true },
-        "12": { "grass": true },
-        "13": { "grass": true },
-        "14": { "grass": true }
-      },
-      "columnTwo": {
-        "1": { "grass": true },
-        "2": { "grass": true },
-        "3": { "grass": true },
-        "4": { "grass": true },
-        "5": { "grass": true },
-        "6": { "grass": true },
-        "7": { "grass": true },
-        "8": { "grass": true },
-        "9": { "grass": true },
-        "10": { "grass": true },
-        "11": { "grass": true },
-        "12": { "grass": true },
-        "13": { "grass": true },
-        "14": { "grass": true }
-      },
-      "columnThree": {
-        "1": { "grass": true },
-        "2": { "grass": true },
-        "3": { "bush": true },
-        "4": { "bush": true },
-        "5": { "dirt": true },
-        "6": { "dirt": true },
-        "7": { "grass": true },
-        "8": { "grass": true },
-        "9": { "grass": true },
-        "10": { "grass": true },
-        "11": { "bush": true },
-        "12": { "bush": true },
-        "13": { "grass": true },
-        "14": { "grass": true }
-      },
-      "columnFour": {
-        "1": { "grass": true },
-        "2": { "grass": true },
-        "3": { "bush": true },
-        "4": { "bush": true },
-        "5": { "dirt": true },
-        "6": { "grass": true },
-        "7": { "grass": true },
-        "8": { "grass": true },
-        "9": { "grass": true },
-        "10": { "bush": true },
-        "11": { "bush": true },
-        "12": { "bush": true },
-        "13": { "grass": true },
-        "14": { "grass": true }
-      },
-      "columnFive": {
-        "1": { "grass": true },
-        "2": { "grass": true },
-        "3": { "grass": true },
-        "4": { "grass": true },
-        "5": { "grass": true },
-        "6": { "grass": true },
-        "7": { "grass": true },
-        "8": { "grass": true },
-        "9": { "bush": true },
-        "10": { "bush": true },
-        "11": { "bush": true },
-        "12": { "grass": true },
-        "13": { "grass": true },
-        "14": { "grass": true }
-      },
-      "columnSix": {
-        "1": { "grass": true },
-        "2": { "grass": true },
-        "3": { "grass": true },
-        "4": { "grass": true },
-        "5": { "grass": true },
-        "6": { "grass": true },
-        "7": { "grass": true },
-        "8": { "grass": true },
-        "9": { "bush": true },
-        "10": { "bush": true },
-        "11": { "bush": true },
-        "12": { "grass": true },
-        "13": { "grass": true },
-        "14": { "grass": true }
-      },
-      "columnSeven": {
-        "1": { "grass": true },
-        "2": { "grass": true },
-        "3": { "grass": true },
-        "4": { "grass": true },
-        "5": { "grass": true },
-        "6": { "grass": true },
-        "7": { "grass": true },
-        "8": { "grass": true },
-        "9": { "grass": true },
-        "10": { "bush": true },
-        "11": { "bush": true },
-        "12": { "bush": true },
-        "13": { "bush": true },
-        "14": { "grass": true }
-      },
-      "columnEight": {
-        "1": { "grass": true },
-        "2": { "grass": true },
-        "3": { "grass": true },
-        "4": { "grass": true },
-        "5": { "grass": true },
-        "6": { "grass": true },
-        "7": { "grass": true },
-        "8": { "grass": true },
-        "9": { "dirt": true },
-        "10": { "dirt": true },
-        "11": { "dirt": true },
-        "12": { "dirt": true },
-        "13": { "bush": true },
-        "14": { "bush": true }
-      },
-      "columnNine": {
-        "1": { "grass": true },
-        "2": { "grass": true },
-        "3": { "grass": true },
-        "4": { "grass": true },
-        "5": { "grass": true },
-        "6": { "grass": true },
-        "7": { "grass": true },
-        "8": { "grass": true },
-        "9": { "grass": true },
-        "10": { "dirt": true },
-        "11": { "dirt": true },
-        "12": { "dirt": true },
-        "13": { "dirt": true },
-        "14": { "dirt": true }
-      },
-      "columnTen": {
-        "1": { "grass": true },
-        "2": { "grass": true },
-        "3": { "grass": true },
-        "4": { "grass": true },
-        "5": { "grass": true },
-        "6": { "grass": true },
-        "7": { "grass": true },
-        "8": { "grass": true },
-        "9": { "grass": true },
-        "10": { "grass": true },
-        "11": { "dirt": true },
-        "12": { "dirt": true },
-        "13": { "dirt": true },
-        "14": { "dirt": true }
-      },
-      "columnEleven": {
-        "1": { "grass": true },
-        "2": { "grass": true },
-        "3": { "grass": true },
-        "4": { "grass": true },
-        "5": { "grass": true },
-        "6": { "grass": true },
-        "7": { "grass": true },
-        "8": { "grass": true },
-        "9": { "grass": true },
-        "10": { "grass": true },
-        "11": { "grass": true },
-        "12": { "dirt": true },
-        "13": { "dirt": true },
-        "14": { "dirt": true }
-      },
-      "columnTwelve": {
-        "1": { "grass": true },
-        "2": { "grass": true },
-        "3": { "grass": true },
-        "4": { "grass": true },
-        "5": { "grass": true },
-        "6": { "grass": true },
-        "7": { "grass": true },
-        "8": { "grass": true },
-        "9": { "grass": true },
-        "10": { "grass": true },
-        "11": { "grass": true },
-        "12": { "dirt": true },
-        "13": { "dirt": true },
-        "14": { "dirt": true }
-      },
-      "columnThirteen": {
-        "1": { "grass": true },
-        "2": { "grass": true },
-        "3": { "bush": true },
-        "4": { "bush": true },
-        "5": { "bush": true },
-        "6": { "grass": true },
-        "7": { "grass": true },
-        "8": { "grass": true },
-        "9": { "grass": true },
-        "10": { "grass": true },
-        "11": { "grass": true },
-        "12": { "dirt": true },
-        "13": { "dirt": true },
-        "14": { "dirt": true }
-      },
-      "columnFourteen": {
-        "1": { "grass": true },
-        "2": { "grass": true },
-        "3": { "grass": true },
-        "4": { "bush": true },
-        "5": { "bush": true },
-        "6": { "grass": true },
-        "7": { "grass": true },
-        "8": { "grass": true },
-        "9": { "grass": true },
-        "10": { "grass": true },
-        "11": { "grass": true },
-        "12": { "grass": true },
-        "13": { "dirt": true },
-        "14": { "dirt": true }
-      },
-      "columnFifteen": {
-        "1": { "grass": true },
-        "2": { "grass": true },
-        "3": { "grass": true },
-        "4": { "grass": true },
-        "5": { "grass": true },
-        "6": { "grass": true },
-        "7": { "grass": true },
-        "8": { "grass": true },
-        "9": { "grass": true },
-        "10": { "grass": true },
-        "11": { "grass": true },
-        "12": { "grass": true },
-        "13": { "grass": true },
-        "14": { "grass": true }
-      }
-    }
-  ]
+    "game": [{
+            "id": 1,
+            "columns": [
+                [{
+                        "lava": true
+                    },
+                    {
+                        "lava": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    }
+                ],
+                [{
+                        "ground": true
+                    },
+                    {
+                        "lava": true
+                    },
+                    {
+                        "lava": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    }
+                ],
+                [{
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "lava": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    }
+                ],
+                [{
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    }
+                ],
+                [{
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    }
+                ],
+                [{
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    }
+                ],
+                [{
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    }
+                ],
+                [{
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "lava": true
+                    },
+                    {
+                        "lava": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "lava": true
+                    },
+                    {
+                        "lava": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    }
+                ],
+                [{
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "lava": true
+                    },
+                    {
+                        "lava": true
+                    },
+                    {
+                        "lava": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "lava": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    }
+                ],
+                [{
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "lava": true
+                    },
+                    {
+                        "lava": true
+                    },
+                    {
+                        "lava": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "lava": true
+                    },
+                    {
+                        "lava": true
+                    },
+                    {
+                        "ground": true
+                    }
+                ],
+                [{
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "lava": true
+                    },
+                    {
+                        "ground": true
+                    }
+                ],
+                [{
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    }
+                ],
+                [{
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    }
+                ],
+                [{
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    }
+                ],
+                [{
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    },
+                    {
+                        "ground": true
+                    }
+                ]
+            ]
+        },
+        {
+            "id": 2,
+            "columns": [
+                [{
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    }
+                ],
+                [{
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    }
+                ],
+                [{
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "bush": true
+                    },
+                    {
+                        "bush": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "bush": true
+                    },
+                    {
+                        "bush": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    }
+                ],
+                [{
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "bush": true
+                    },
+                    {
+                        "bush": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "bush": true
+                    },
+                    {
+                        "bush": true
+                    },
+                    {
+                        "bush": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    }
+                ],
+                [{
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "bush": true
+                    },
+                    {
+                        "bush": true
+                    },
+                    {
+                        "bush": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    }
+                ],
+                [{
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "bush": true
+                    },
+                    {
+                        "bush": true
+                    },
+                    {
+                        "bush": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    }
+                ],
+                [{
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "bush": true
+                    },
+                    {
+                        "bush": true
+                    },
+                    {
+                        "bush": true
+                    },
+                    {
+                        "bush": true
+                    },
+                    {
+                        "grass": true
+                    }
+                ],
+                [{
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "bush": true
+                    },
+                    {
+                        "bush": true
+                    }
+                ],
+                [{
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    }
+                ],
+                [{
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    }
+                ],
+                [{
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    }
+                ],
+                [{
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    }
+                ],
+                [{
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "bush": true
+                    },
+                    {
+                        "bush": true
+                    },
+                    {
+                        "bush": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    }
+                ],
+                [{
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "bush": true
+                    },
+                    {
+                        "bush": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "dirt": true
+                    },
+                    {
+                        "dirt": true
+                    }
+                ],
+                [{
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    },
+                    {
+                        "grass": true
+                    }
+                ]
+            ]
+        }
+    ]
 }

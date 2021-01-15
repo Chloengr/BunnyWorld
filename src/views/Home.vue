@@ -1,56 +1,131 @@
 <template>
-  <section>
-    <b-button @click="clickMe">Click Me</b-button>
-    <h1>{{ msg }}</h1>
-    <button class="button is-rounded is-primary" @click="alert">
-      Pop up avec une card dedans
-    </button>
-  </section>
+  <container
+    class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-background-background mb-4"
+  >
+    <figure class="big-icon mt-6 mb-2">
+      <img src="/img/Carrot.png" />
+    </figure>
+    <p class="is-family-secondary is-size-1 has-text-black mb-5">
+      BUNNY<br />
+      WOLRD
+    </p>
+
+    <div
+      class="form is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-background-white p-5"
+    >
+      <div v-if="currentPlayer" class="mb-5 cards">
+        <div v-for="game in games" v-bind:key="game.id">
+          <div v-for="player in game.players" v-bind:key="player.id">
+            <card-score
+              v-if="player.id === currentPlayer.id"
+              :player="player"
+              :gameName="game.name"
+              class="mt-2"
+            ></card-score>
+          </div>
+        </div>
+      </div>
+
+      <p class="mt-5 mb-5">Choisir ton nom et ton avatar</p>
+
+      <form
+        id="app"
+        @submit="checkForm"
+        action="/"
+        method="post"
+        v-if="!currentPlayer"
+        class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center mb-5"
+      >
+        <div class="icon mb-4">
+          <img
+            v-if="colorAvatar"
+            :src="`/img/bunny-${colorAvatar}.png`"
+            alt="Image"
+          />
+          <img v-if="!colorAvatar" :src="`/img/bunny-orange.png`" alt="Image" />
+        </div>
+
+        <div class="block is-flex is-justify-content-center is-flex-wrap-wrap">
+          <b-radio
+            v-model="colorAvatar"
+            v-for="color in colors"
+            v-bind:key="color"
+            :name="color"
+            :native-value="color"
+            :type="`is-avatar-${color}`"
+            class="mb-2"
+          >
+            {{ color }}
+          </b-radio>
+        </div>
+
+        <b-field>
+          <b-input
+            v-model="name"
+            maxlength="30"
+            placeholder="Entrez votre nom"
+          ></b-input>
+        </b-field>
+      </form>
+
+      <div v-if="currentPlayer">
+        <button
+          class="button has-text-secondary is-outlined is-rounded mb-5"
+          @click="$router.push(`/profile/${currentPlayer.id}`)"
+        >
+          Modifier mon profil
+        </button>
+      </div>
+
+      <div>
+        <button
+          class="button is-primary is-rounded mb-4 mr-4"
+          @click="checkForm()"
+        >
+          Créer
+        </button>
+        <button
+          class="button is-white is-rounded mb-4 ml-4"
+          @click="checkForm()"
+        >
+          Rejoindre
+        </button>
+      </div>
+    </div>
+  </container>
 </template>
 
 <script>
+import CardScore from "../components/CardScore";
+import json from "../data/data.json";
 export default {
-  name: "Home",
+  name: "Profile",
+  components: { CardScore },
   data() {
     return {
-      msg: "Home"
+      errors: [],
+      name: null,
+      colorAvatar: null,
+      colors: json.colors,
     };
   },
   methods: {
-    clickMe() {
-      this.$buefy.notification.open("Clicked!!");
-    },
-    alert() {
-      this.$buefy.dialog.alert({
-        message: `<div class="card">
-      <div class="card-content">
-        <div class="media">
-          <div class="media-left">
-            <figure class="image is-48x48">
-              <img
-                src="https://bulma.io/images/placeholders/96x96.png"
-                alt="Placeholder image"
-              />
-            </figure>
-          </div>
-          <div class="media-content">
-            <p class="title is-4">John Smith</p>
-            <p class="subtitle is-6">@johnsmith</p>
-          </div>
-        </div>
-
-        <div class="content">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec
-          iaculis mauris. <a>@bulmaio</a>. <a href="#">#css</a>
-          <a href="#">#responsive</a>
-          <br />
-          <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-        </div>
-      </div>
-    </div>`,
-        confirmText: "Modifier"
+    checkForm: function () {
+      this.$buefy.snackbar.open({
+        message: `TODO`,
       });
-    }
-  }
+    },
+  },
 };
 </script>
+
+<style>
+.form {
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  width: 100%;
+}
+.cards {
+  width: 90%;
+}
+</style>

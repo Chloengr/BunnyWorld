@@ -1,140 +1,21 @@
 <template>
   <section id="board">
     <div v-for="layout in layoutData" :key="layout.id">
-      <div v-if="layout.id === 1">
-        <div class="columns">
-          <div class="row">
-            <div v-for="column in layout.columnOne" :key="column.id">
+      <div v-if="layout.id === boardId">
+        <div class="is-flex">
+          <div v-for="column in layout.columns" :key="column.id">
+            <div v-for="cell in getCells(column)" :key="cell">
               <Square
-                :lava="column.lava"
-                :ground="column.ground"
-                :dirt="column.dirt"
+                v-if="layout.id === 1"
+                :lava="cell ? cell.lava : null"
+                :ground="cell ? cell.ground : null"
+                :dirt="cell ? cell.dirt : null"
               />
-            </div>
-          </div>
-          <div class="row">
-            <div v-for="column in layout.columnTwo" :key="column.id">
               <Square
-                :lava="column.lava"
-                :ground="column.ground"
-                :dirt="column.dirt"
-              />
-            </div>
-          </div>
-          <div class="row">
-            <div v-for="column in layout.columnThree" :key="column.id">
-              <Square
-                :lava="column.lava"
-                :ground="column.ground"
-                :dirt="column.dirt"
-              />
-            </div>
-          </div>
-          <div class="row">
-            <div v-for="column in layout.columnFour" :key="column.id">
-              <Square
-                :lava="column.lava"
-                :ground="column.ground"
-                :dirt="column.dirt"
-              />
-            </div>
-          </div>
-          <div class="row">
-            <div v-for="column in layout.columnFive" :key="column.id">
-              <Square
-                :lava="column.lava"
-                :ground="column.ground"
-                :dirt="column.dirt"
-              />
-            </div>
-          </div>
-          <div class="row">
-            <div v-for="column in layout.columnSix" :key="column.id">
-              <Square
-                :lava="column.lava"
-                :ground="column.ground"
-                :dirt="column.dirt"
-              />
-            </div>
-          </div>
-          <div class="row">
-            <div v-for="column in layout.columnSeven" :key="column.id">
-              <Square
-                :lava="column.lava"
-                :ground="column.ground"
-                :dirt="column.dirt"
-              />
-            </div>
-          </div>
-          <div class="row">
-            <div v-for="column in layout.columnEight" :key="column.id">
-              <Square
-                :lava="column.lava"
-                :ground="column.ground"
-                :dirt="column.dirt"
-              />
-            </div>
-          </div>
-          <div class="row">
-            <div v-for="column in layout.columnNine" :key="column.id">
-              <Square
-                :lava="column.lava"
-                :ground="column.ground"
-                :dirt="column.dirt"
-              />
-            </div>
-          </div>
-          <div class="row">
-            <div v-for="column in layout.columnTen" :key="column.id">
-              <Square
-                :lava="column.lava"
-                :ground="column.ground"
-                :dirt="column.dirt"
-              />
-            </div>
-          </div>
-          <div class="row">
-            <div v-for="column in layout.columnEleven" :key="column.id">
-              <Square
-                :lava="column.lava"
-                :ground="column.ground"
-                :dirt="column.dirt"
-              />
-            </div>
-          </div>
-          <div class="row">
-            <div v-for="column in layout.columnTwelve" :key="column.id">
-              <Square
-                :lava="column.lava"
-                :ground="column.ground"
-                :dirt="column.dirt"
-              />
-            </div>
-          </div>
-          <div class="row">
-            <div v-for="column in layout.columnThirteen" :key="column.id">
-              <Square
-                :lava="column.lava"
-                :ground="column.ground"
-                :dirt="column.dirt"
-              />
-            </div>
-          </div>
-          <div class="row">
-            <div v-for="column in layout.columnFourteen" :key="column.id">
-              <Square
-                :lava="column.lava"
-                :ground="column.ground"
-                :dirt="column.dirt"
-              />
-            </div>
-          </div>
-          <div class="row">
-            <div v-for="column in layout.columnFifteen" :key="column.id">
-              <Square
-                :lava="column.lava"
-                :ground="column.ground"
-                :dirt="column.dirt"
+                v-if="layout.id === 2"
+                :bush="cell.bush"
+                :grass="cell.grass"
+                :dirt="cell.dirt"
               />
             </div>
           </div>
@@ -147,22 +28,33 @@
 <script>
 import Square from "./Square.vue";
 import layoutJSON from "../data/games-layout.json";
+import json from "../data/data.json";
 // div displayflex pour etre a la ligne
 export default {
   name: "BoardOne",
+  props: ["boardId"],
   components: { Square },
   data() {
     return {
-      player: { id: 1, color: "orange", name: "Marie", score: 250 },
+      player: json.currentPlayer,
       layoutData: layoutJSON.game
     };
+  },
+  methods: {
+    getCells(column) {
+      let cells = [];
+      for (let i = 0; i < 14; i++) {
+        cells.push(column[i]);
+      }
+      return cells;
+    }
   }
 };
 </script>
 
 <style scoped>
-.columns {
-  display: flex;
-  flex-direction: row;
+#board {
+  overflow: scroll;
+  height: 100vh;
 }
 </style>
