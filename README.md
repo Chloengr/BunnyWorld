@@ -1,5 +1,11 @@
 # thebunny-world
 
+## 1ere mise en ligne avec OVH
+
+https://bunnyworld.arnaudblessing.fr/
+
+Prochain déploiement prévu avec Héroku
+
 ## Project setup
 
 ```
@@ -24,10 +30,14 @@ npm run build
 npm run lint
 ```
 
-### Customize configuration
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
-
-### ??
+### Mystère
 Incompréhension : Les commits de Marie Gautron sont annoncé sur GitHub comme commit de Landris18 (aucune idée de qui ça peut être)
+
+### Prototype 
+
+https://www.figma.com/proto/40Re4G0rzTW18gNQOowLSF/BunnyWorld?node-id=82%3A701&scaling=scale-down
+
+### Trello
+
+https://trello.com/b/rPL98bU1/bunnyworld
