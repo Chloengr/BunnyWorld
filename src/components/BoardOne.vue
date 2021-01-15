@@ -29,10 +29,6 @@
         </div>
       </div>
     </div>
-    <button class="button is-primary is-rounded" @click="isWalkable">
-      <!-- on click TODO -->
-      Se déplacer
-    </button>
   </section>
 </template>
 
@@ -74,7 +70,7 @@ export default {
       directions.forEach((dir) => {
         const target = { x: this.player.x + dir.x, y: this.player.y + dir.y };
         const ref = this.$refs[`x${target.x}y${target.y}`];
-        if (ref && !ref.lava && !ref.bush) {
+        if (ref && !ref[0].lava && !ref[0].bush) {
           walkableSquares.push(ref);
         }
       });
@@ -82,15 +78,17 @@ export default {
         w[0].$el.classList.add("walkable");
       });
 
+      console.log("add", walkableSquares);
+
       return walkableSquares;
     },
     move(x, y) {
-      Object.keys(this.$refs).forEach((el) => {
-        this.$refs[el][0].$el.classList.remove("walkable");
-      });
       const target = this.$refs[`x${x}y${y}`];
       if (this.isWalkable().includes(target)) {
-        //target[0].player = this.player;
+        Object.keys(this.$refs).forEach((el) => {
+          console.log(this.$refs[el][0].$el.classList.contains("walkable"));
+          this.$refs[el][0].$el.classList.remove("walkable");
+        });
         this.$set(this.player, "x", x);
         this.$set(this.player, "y", y);
         this.isWalkable();
