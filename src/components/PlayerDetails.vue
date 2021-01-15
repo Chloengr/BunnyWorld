@@ -30,6 +30,8 @@
               <img :src="`/img/${weapon.sprite}.svg`" />
             </div>
           </div>
+          <p>{{ x }}</p>
+          <p>{{ y }}</p>
         </div>
       </div>
       <div class="is-flex is-justify-content-center mt-3 mb-2">
@@ -42,7 +44,7 @@
 <script>
 export default {
   name: "PlayerDetails",
-  props: ["player", "weapon"],
+  props: ["player", "weapon", "x", "y"],
   data() {
     return {
       msg: "Details du joueur sélectionné pendant une partie",

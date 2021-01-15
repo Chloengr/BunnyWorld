@@ -22,9 +22,9 @@
         <b-navbar-item tag="router-link" :to="{ path: '/game/1' }">
           Game 1
         </b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/game/2' }">
+        <!-- <b-navbar-item tag="router-link" :to="{ path: '/game/2' }">
           Game 2
-        </b-navbar-item>
+        </b-navbar-item> -->
         <b-navbar-item
           tag="router-link"
           :to="{ path: '/profile/1' }"

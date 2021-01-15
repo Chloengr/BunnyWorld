@@ -6,7 +6,7 @@
       'square ground is-flex is-justify-content-center is-align-items-center': ground,
       'square grass is-flex is-justify-content-center is-align-items-center': grass,
       'square bush is-flex is-justify-content-center is-align-items-center': bush,
-      'square lava is-flex is-justify-content-center is-align-items-center': lava
+      'square lava is-flex is-justify-content-center is-align-items-center': lava,
     }"
   >
     <div class="big-icon" v-if="player && !lava && !bush">
@@ -20,17 +20,10 @@ export default {
   name: "Square",
   props: ["player", "dirt", "ground", "grass", "bush", "lava"],
   methods: {
-    onclick(event) {
-      console.log(event);
-      console.log(this.$props.player);
-      this.$props.player = {
-        id: 1,
-        color: "orange",
-        name: "Marie",
-        score: 250
-      };
-    }
-  }
+    onclick() {
+      //console.log(this.x, this.y);
+    },
+  },
 };
 </script>
 
