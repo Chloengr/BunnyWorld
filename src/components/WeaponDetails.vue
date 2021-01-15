@@ -36,15 +36,6 @@
 export default {
   name: "WeaponDetails",
   props: ["weapon"],
-  data() {
-    return {
-      msg: "Details de l'arme sélectionnée pendant une partie"
-      //weaponName : "Epee de la mort qui tue",
-      //damage: "10",
-      //range: "0",
-      //sprite: "sword.svg",
-    };
-  }
 };
 </script>
 

@@ -16,23 +16,13 @@
                   :ref="`x${x}y${y}`"
                   :player="x === player.x && y === player.y ? player : null"
                 />
+                <!-- Pour l'instant une seule grille -->
               </div>
-
-              <!-- <Square
-                v-if="layout.id === 2"
-                :bush="cell.bush"
-                :grass="cell.grass"
-                :dirt="cell.dirt"
-              /> -->
             </div>
           </div>
         </div>
       </div>
     </div>
-    <button class="button is-primary is-rounded" @click="isWalkable">
-      <!-- on click TODO -->
-      Se déplacer
-    </button>
   </section>
 </template>
 
@@ -40,9 +30,8 @@
 import Square from "./Square.vue";
 import layoutJSON from "../data/games-layout.json";
 import json from "../data/data.json";
-// div displayflex pour etre a la ligne
 export default {
-  name: "BoardOne",
+  name: "Board",
   props: ["boardId"],
   components: { Square },
   data() {
@@ -51,7 +40,7 @@ export default {
       layoutData: layoutJSON.game,
       length: 0,
       walkableSquares: this.$nextTick(() => {
-        return this.isWalkable();
+        return this.walkableZone();
       }),
     };
   },
@@ -63,7 +52,7 @@ export default {
       }
       return cells;
     },
-    isWalkable() {
+    walkableZone() {
       const directions = [
         { x: 0, y: 1 },
         { x: 0, y: -1 },
@@ -74,7 +63,7 @@ export default {
       directions.forEach((dir) => {
         const target = { x: this.player.x + dir.x, y: this.player.y + dir.y };
         const ref = this.$refs[`x${target.x}y${target.y}`];
-        if (ref && !ref.lava && !ref.bush) {
+        if (ref && !ref[0].lava && !ref[0].bush) {
           walkableSquares.push(ref);
         }
       });
@@ -85,15 +74,14 @@ export default {
       return walkableSquares;
     },
     move(x, y) {
-      Object.keys(this.$refs).forEach((el) => {
-        this.$refs[el][0].$el.classList.remove("walkable");
-      });
       const target = this.$refs[`x${x}y${y}`];
-      if (this.isWalkable().includes(target)) {
-        //target[0].player = this.player;
+      if (this.walkableZone().includes(target)) {
+        Object.keys(this.$refs).forEach((el) => {
+          this.$refs[el][0].$el.classList.remove("walkable");
+        });
         this.$set(this.player, "x", x);
         this.$set(this.player, "y", y);
-        this.isWalkable();
+        this.walkableZone();
       }
     },
   },
