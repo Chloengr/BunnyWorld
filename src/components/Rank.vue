@@ -61,9 +61,11 @@ export default {
   data() {
     return {
       isCardModalActive: true,
-      players: json.players,
+      players: this.getCurrentGame().players,
       i: 0,
-      isWinner: json.currentPlayer.id === this.rank(json.players)[0].id,
+      isWinner:
+        json.currentPlayer.id ===
+        this.rank(this.getCurrentGame().players)[0].id,
     };
   },
   methods: {
@@ -79,6 +81,10 @@ export default {
     },
     incerement() {
       return (this.i = this.i + 1);
+    },
+    getCurrentGame() {
+      let currentGame = json.games.filter((g) => g.currentGame);
+      return currentGame[0];
     },
   },
 };

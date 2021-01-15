@@ -23,17 +23,14 @@
       class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center"
     >
       <p class="has-text-primary mb-5">Change ton nom ou ton avatar</p>
-      <b-field label="Name">
+      <b-field>
         <b-input
           v-bind:value="this.player.name"
           v-model="name"
           maxlength="30"
+          placeholder="Entrez votre nom"
         ></b-input>
       </b-field>
-      <p class="has-text-primary mb-3" v-if="name">
-        Name : {{ this.name }}
-        <!-- Delete after back -->
-      </p>
 
       <div class="icon mb-4">
         <img
@@ -51,54 +48,16 @@
       <div class="block is-flex is-justify-content-center is-flex-wrap-wrap">
         <b-radio
           v-model="colorAvatar"
-          name="blue"
-          native-value="blue"
-          type="is-avatar-blue"
+          v-for="color in colors"
+          v-bind:key="color"
+          :name="color"
+          :native-value="color"
+          :type="`is-avatar-${color}`"
           class="mb-2"
         >
-          Blue
-        </b-radio>
-        <b-radio
-          v-model="colorAvatar"
-          name="green"
-          native-value="green"
-          type="is-avatar-green"
-          class="mb-2"
-        >
-          Green
-        </b-radio>
-        <b-radio
-          v-model="colorAvatar"
-          name="orange"
-          native-value="orange"
-          type="is-avatar-orange"
-          class="mb-2"
-        >
-          Orange
-        </b-radio>
-        <b-radio
-          v-model="colorAvatar"
-          name="purple"
-          native-value="purple"
-          type="is-avatar-purple"
-          class="mb-2"
-        >
-          Purple
-        </b-radio>
-        <b-radio
-          v-model="colorAvatar"
-          name="yellow"
-          native-value="yellow"
-          type="is-avatar-yellow"
-          class="mb-2"
-        >
-          Yellow
+          {{ color }}
         </b-radio>
       </div>
-      <p class="has-text-primary mb-5" v-if="colorAvatar">
-        Color : {{ this.colorAvatar }}
-        <!-- Delete after back -->
-      </p>
 
       <div v-if="errors.length" class="mb-5">
         <small class="has-text-error">Corrige les erreurs suivantes : </small>
@@ -126,6 +85,7 @@ export default {
   data() {
     return {
       player: json.currentPlayer,
+      colors: json.colors,
       //form
       errors: [],
       name: null,
@@ -137,10 +97,13 @@ export default {
       this.$buefy.snackbar.open({
         message: `POST in back-end`
       });
-      //if (this.name) return (this.player.name = this.name);
       this.errors = [];
-      if (!this.name) this.errors.push("Nom requis.");
-      if (!this.colorAvatar) this.errors.push("Couleur requise.");
+      this.name
+        ? this.$set(this.player, "name", this.name)
+        : this.errors.push("Nom requis.");
+      this.colorAvatar
+        ? this.$set(this.player, "color", this.colorAvatar)
+        : this.errors.push("Couleur requise.");
       e.preventDefault();
     }
   }
