@@ -3,7 +3,7 @@
     class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-background-background mb-4"
   >
     <figure class="big-icon mt-6 mb-2">
-      <img src="/img/Carrot.png" />
+      <img src="/img/carrot.png" />
     </figure>
     <p class="is-family-secondary is-size-1 has-text-black mb-5">
       BUNNY<br />
@@ -26,7 +26,9 @@
         </div>
       </div>
 
-      <p class="mt-5 mb-5">Choisir ton nom et ton avatar</p>
+      <p class="mt-5 mb-5" v-if="!currentPlayer">
+        Choisir ton nom et ton avatar
+      </p>
 
       <form
         id="app"
@@ -107,6 +109,8 @@ export default {
       name: null,
       colorAvatar: null,
       colors: json.colors,
+      currentPlayer: json.currentPlayer,
+      games: json.games,
     };
   },
   methods: {

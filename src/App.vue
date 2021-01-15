@@ -25,13 +25,20 @@
         <b-navbar-item tag="router-link" :to="{ path: '/game/2' }">
           Game 2
         </b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/profile/1' }">
+        <b-navbar-item
+          tag="router-link"
+          :to="{ path: '/profile/1' }"
+          v-if="currentPlayer"
+        >
           <div class="is-flex is-align-items-center">
             <div class="is-flex is-align-items-center">
               <div class="small-icon mr-2">
-                <img :src="`/img/bunny-${player.color}.png`" alt="Image" />
+                <img
+                  :src="`/img/bunny-${currentPlayer.color}.png`"
+                  alt="Image"
+                />
               </div>
-              <p class="has-text-secondary">{{ player.name }}</p>
+              <p class="has-text-secondary">{{ currentPlayer.name }}</p>
             </div>
           </div>
         </b-navbar-item>
@@ -52,7 +59,7 @@ import json from "../src/data/data.json";
 export default {
   data() {
     return {
-      player: json.currentPlayer,
+      currentPlayer: json.currentPlayer,
     };
   },
 };
