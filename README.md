@@ -1,4 +1,4 @@
-# thebunny-world
+# BunnyWorld - Equipe 12
 
 ## 1ere mise en ligne avec OVH
 
