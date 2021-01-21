@@ -1,120 +1,124 @@
 {
-    "currentPlayer": {
-        "id": 1,
-        "color": "orange",
-        "name": "Marie",
-        "score": 250,
-        "life": 5,
-        "weaponId": 1,
-        "x": 4,
-        "y": 5
-    },
-    "nextPlayer": {
-        "id": 1,
-        "color": "orange",
-        "name": "Marie",
-        "score": 250,
-        "life": 5,
-        "weaponId": 1
-    },
-    "weapon": {
-        "id": 1,
-        "sprite": "sword",
-        "damage": 10,
-        "range": 0,
-        "name": "Epee de la mort qui tue"
-    },
-    "finDePartie": false,
-    "colors": ["blue", "green", "orange", "purple", "yellow"],
-    "games": [{
-            "id": 1,
-            "currentGame": true,
-            "name": "Partie de la mort",
-            "players": [{
-                    "id": 1,
-                    "color": "orange",
-                    "name": "Marie",
-                    "score": 230
-                },
-                {
-                    "id": 2,
-                    "color": "blue",
-                    "name": "Chloé",
-                    "score": 200
-                },
-                {
-                    "id": 3,
-                    "color": "green",
-                    "name": "Thomas",
-                    "score": 150
-                },
-                {
-                    "id": 4,
-                    "color": "yellow",
-                    "name": "Maxime",
-                    "score": 100
-                }
-            ]
+  "currentPlayer": {
+    "id": 1,
+    "color": "orange",
+    "name": "Marie",
+    "score": 250,
+    "life": 5,
+    "weaponId": 1,
+    "x": 4,
+    "y": 5
+  },
+  "nextPlayer": {
+    "id": 1,
+    "color": "orange",
+    "name": "Marie",
+    "score": 250,
+    "life": 5,
+    "weaponId": 1
+  },
+  "weapon": {
+    "id": 1,
+    "sprite": "sword",
+    "damage": 10,
+    "range": 0,
+    "name": "Epee de la mort qui tue"
+  },
+  "finDePartie": false,
+  "colors": ["blue", "green", "orange", "purple", "yellow"],
+  "games": [
+    {
+      "id": 1,
+      "currentGame": true,
+      "name": "Partie de la mort",
+      "players": [
+        {
+          "id": 1,
+          "color": "orange",
+          "name": "Marie",
+          "score": 230
         },
         {
-            "id": 2,
-            "currentGame": false,
-            "name": "Partie qui tue",
-            "players": [{
-                    "id": 1,
-                    "color": "orange",
-                    "name": "Marie",
-                    "score": 250
-                },
-                {
-                    "id": 2,
-                    "color": "blue",
-                    "name": "Chloé",
-                    "score": 200
-                },
-                {
-                    "id": 3,
-                    "color": "green",
-                    "name": "Thomas",
-                    "score": 150
-                },
-                {
-                    "id": 4,
-                    "color": "yellow",
-                    "name": "Maxime",
-                    "score": 100
-                }
-            ]
+          "id": 2,
+          "color": "blue",
+          "name": "Chloé",
+          "score": 200
         },
         {
-            "id": 3,
-            "currentGame": false,
-            "name": "Partie Ynov",
-            "players": [{
-                    "id": 1,
-                    "color": "orange",
-                    "name": "Marie",
-                    "score": 280
-                },
-                {
-                    "id": 2,
-                    "color": "blue",
-                    "name": "Chloé",
-                    "score": 200
-                },
-                {
-                    "id": 3,
-                    "color": "green",
-                    "name": "Thomas",
-                    "score": 150
-                },
-                {
-                    "id": 4,
-                    "color": "yellow",
-                    "name": "Maxime",
-                    "score": 100
-                }
-            ]
+          "id": 3,
+          "color": "green",
+          "name": "Thomas",
+          "score": 150
+        },
+        {
+          "id": 4,
+          "color": "yellow",
+          "name": "Maxime",
+          "score": 100
         }
-    ]
+      ]
+    },
+    {
+      "id": 2,
+      "currentGame": false,
+      "name": "Partie qui tue",
+      "players": [
+        {
+          "id": 1,
+          "color": "orange",
+          "name": "Marie",
+          "score": 250
+        },
+        {
+          "id": 2,
+          "color": "blue",
+          "name": "Chloé",
+          "score": 200
+        },
+        {
+          "id": 3,
+          "color": "green",
+          "name": "Thomas",
+          "score": 150
+        },
+        {
+          "id": 4,
+          "color": "yellow",
+          "name": "Maxime",
+          "score": 100
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "currentGame": false,
+      "name": "Partie Ynov",
+      "players": [
+        {
+          "id": 1,
+          "color": "orange",
+          "name": "Marie",
+          "score": 280
+        },
+        {
+          "id": 2,
+          "color": "blue",
+          "name": "Chloé",
+          "score": 200
+        },
+        {
+          "id": 3,
+          "color": "green",
+          "name": "Thomas",
+          "score": 150
+        },
+        {
+          "id": 4,
+          "color": "yellow",
+          "name": "Maxime",
+          "score": 100
+        }
+      ]
+    }
+  ]
 }
