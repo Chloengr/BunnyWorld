@@ -5,6 +5,7 @@ import Score from "@/components/Score";
 import Rank from "@/components/Rank";
 import WeaponDetails from "@/components/WeaponDetails";
 import PlayerDetails from "@/components/PlayerDetails";
+import JoinGame from "@/components/JoinGame";
 
 Vue.use(VueRouter);
 
@@ -25,11 +26,6 @@ const routes = [
     component: () => import("@/views/CreateGame.vue")
   },
   {
-    path: "/join",
-    name: "Rejoindre une partie",
-    component: () => import("@/views/JoinGame.vue")
-  },
-  {
     path: "/game/:id",
     name: "Partie en cours",
     component: () => import("@/views/Game.vue")
@@ -38,6 +34,11 @@ const routes = [
     path: "/profile/:player",
     name: "Profil du joueur",
     component: () => import("@/views/Profile.vue")
+  },
+  {
+    path: "/join",
+    name: "Rejoindre une partie",
+    component: JoinGame
   },
   {
     path: "/game/:id/rank",

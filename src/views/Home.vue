@@ -1,5 +1,5 @@
 <template>
-  <container
+  <div
     class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-background-background mb-4"
   >
     <figure class="big-icon mt-6 mb-2">
@@ -82,24 +82,26 @@
       <div>
         <button
           class="button is-primary is-rounded mb-4 mr-4"
-          @click="checkForm()"
+          @click="$router.push(`/create`)"
         >
           Créer
         </button>
         <button
           class="button is-white is-rounded mb-4 ml-4"
-          @click="checkForm()"
+          @click="displayJoinGame()"
         >
           Rejoindre
         </button>
       </div>
     </div>
-  </container>
+  </div>
 </template>
 
 <script>
 import CardScore from "../components/CardScore";
 import json from "../data/data.json";
+import JoinGameVue from "../components/JoinGame.vue";
+
 export default {
   name: "Profile",
   components: { CardScore },
@@ -110,16 +112,19 @@ export default {
       colorAvatar: null,
       colors: json.colors,
       currentPlayer: json.currentPlayer,
-      games: json.games,
+      games: json.games
     };
   },
   methods: {
-    checkForm: function () {
-      this.$buefy.snackbar.open({
-        message: `TODO`,
+    displayJoinGame() {
+      this.$buefy.modal.open({
+        parent: this,
+        component: JoinGameVue,
+        hasModalCard: true,
+        trapFocus: true
       });
-    },
-  },
+    }
+  }
 };
 </script>
 
