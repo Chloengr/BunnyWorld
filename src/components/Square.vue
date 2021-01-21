@@ -5,10 +5,13 @@
       'square ground is-flex is-justify-content-center is-align-items-center': ground,
       'square grass is-flex is-justify-content-center is-align-items-center': grass,
       'square bush is-flex is-justify-content-center is-align-items-center': bush,
-      'square lava is-flex is-justify-content-center is-align-items-center': lava,
+      'square lava is-flex is-justify-content-center is-align-items-center': lava
     }"
   >
     <div class="big-icon" v-if="player && !lava && !bush">
+      <p class="is-flex is-justify-content-center is-align-items-center">
+        {{ player.name }}
+      </p>
       <img :src="`/img/bunny-${player.color}.png`" alt="Image" />
     </div>
   </div>
@@ -17,7 +20,7 @@
 <script>
 export default {
   name: "Square",
-  props: ["player", "dirt", "ground", "grass", "bush", "lava"],
+  props: ["player", "dirt", "ground", "grass", "bush", "lava"]
 };
 </script>
 
@@ -41,5 +44,8 @@ export default {
 }
 .grass {
   background-image: url("/img/grassTile.svg");
+}
+p {
+  color: white;
 }
 </style>
