@@ -13,12 +13,6 @@
         <b-navbar-item tag="router-link" :to="{ path: '/' }">
           Home
         </b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/create' }">
-          Create
-        </b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/join' }">
-          Join
-        </b-navbar-item>
         <b-navbar-item
           tag="router-link"
           :to="{ path: '/game/1' }"
@@ -63,9 +57,9 @@ import json from "../src/data/data.json";
 export default {
   data() {
     return {
-      currentPlayer: json.currentPlayer,
+      currentPlayer: json.currentPlayer
     };
-  },
+  }
 };
 </script>
 
