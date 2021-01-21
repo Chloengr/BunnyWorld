@@ -30,8 +30,6 @@
               <img :src="`/img/${weapon.sprite}.svg`" />
             </div>
           </div>
-          <p>{{ x }}</p>
-          <p>{{ y }}</p>
         </div>
       </div>
       <div class="is-flex is-justify-content-center mt-3 mb-2">

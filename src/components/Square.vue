@@ -1,6 +1,5 @@
 <template>
   <div
-    v-on:click="onclick($event)"
     v-bind:class="{
       'square dirt is-flex is-justify-content-center is-align-items-center': dirt,
       'square ground is-flex is-justify-content-center is-align-items-center': ground,
@@ -19,11 +18,6 @@
 export default {
   name: "Square",
   props: ["player", "dirt", "ground", "grass", "bush", "lava"],
-  methods: {
-    onclick() {
-      //console.log(this.x, this.y);
-    },
-  },
 };
 </script>
 

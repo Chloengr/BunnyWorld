@@ -19,7 +19,11 @@
         <b-navbar-item tag="router-link" :to="{ path: '/join' }">
           Join
         </b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/game/1' }">
+        <b-navbar-item
+          tag="router-link"
+          :to="{ path: '/game/1' }"
+          v-if="currentPlayer"
+        >
           Game 1
         </b-navbar-item>
         <!-- <b-navbar-item tag="router-link" :to="{ path: '/game/2' }">
