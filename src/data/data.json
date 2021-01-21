@@ -1,14 +1,4 @@
 {
-    "currentPlayer": {
-        "id": 1,
-        "color": "orange",
-        "name": "Marie",
-        "score": 250,
-        "life": 5,
-        "weaponId": 1,
-        "x": 4,
-        "y": 5
-    },
     "nextPlayer": {
         "id": 1,
         "color": "orange",

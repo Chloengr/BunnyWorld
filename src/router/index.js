@@ -10,7 +10,7 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
+    path: "/home",
     name: "Home",
     component: () => import("@/views/Home.vue")
   },
@@ -38,6 +38,11 @@ const routes = [
     path: "/profile/:player",
     name: "Profil du joueur",
     component: () => import("@/views/Profile.vue")
+  },
+  {
+    path: "/",
+    name: "Login",
+    component: () => import("@/views/Login.vue")
   },
   {
     path: "/game/:id/rank",
