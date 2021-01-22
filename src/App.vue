@@ -22,7 +22,7 @@
         <b-navbar-item
           tag="router-link"
           :to="{ path: '/game/1' }"
-          v-if="currentPlayer"
+          v-if="this.user"
         >
           Game 1
         </b-navbar-item>
@@ -32,21 +32,18 @@
         <b-navbar-item
           tag="router-link"
           :to="{ path: '/profile/1' }"
-          v-if="currentPlayer"
+          v-if="this.user"
         >
           <div class="is-flex is-align-items-center">
             <div class="is-flex is-align-items-center">
               <div class="small-icon mr-2">
-                <img
-                  :src="`/img/bunny-${currentPlayer.color}.png`"
-                  alt="Image"
-                />
+                <img :src="`/img/bunny-${user.photoURL}.png`" alt="Image" />
               </div>
-              <p class="has-text-secondary">{{ currentPlayer.name }}</p>
+              <p class="has-text-secondary">{{ user.displayName }}</p>
             </div>
           </div>
         </b-navbar-item>
-        <b-navbar-item @click="logOut()">
+        <b-navbar-item v-if="this.user" @click="logOut()">
           SignOut
         </b-navbar-item>
       </template>
@@ -73,6 +70,7 @@ export default {
   created() {
     auth.onAuthStateChanged((user) => {
       if (user) {
+        console.log(user);
         this.user = user;
       } else {
         this.user = null;
