@@ -6,7 +6,7 @@
       <div
         class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center"
       >
-        <div class="big-icon mb-1 mt-2">
+        <div class="big-icon mb-1 mt-2" v-if="this.user.photoURL">
           <img :src="`/img/bunny-${user.photoURL}.png`" alt="Image" />
         </div>
         <h1>{{ user.displayName }}</h1>
@@ -36,7 +36,7 @@
           alt="Image"
         />
         <img
-          v-if="!colorAvatar"
+          v-if="!colorAvatar && this.user.photoURL"
           :src="`/img/bunny-${user.photoURL}.png`"
           alt="Image"
         />
@@ -101,8 +101,8 @@ export default {
     });
   },
   methods: {
-    checkForm() {
-      auth.currentUser
+    async checkForm() {
+      this.user = await auth.currentUser
         .updateProfile({
           displayName: this.name,
           photoURL: this.colorAvatar,
