@@ -24,7 +24,7 @@
         <b-input v-model="nbPlayer" placeholder="Nombre de joueurs"></b-input>
       </b-field>
       <b-field class="board">
-        <b-select placeholder="Quel plateau ?" v-model="boardChoice">
+        <b-select placeholder="Quel plateau ?" v-model="board_number">
           <option value="1">Plateau 1</option>
           <option value="2">Plateau 2</option>
         </b-select>
@@ -36,37 +36,79 @@
         {{ error }}
       </small>
     </div>
-    <button class="button is-primary is-rounded mb-4 mr-4" @click="initGame()">
+    <button
+      class="button is-primary is-rounded mb-4 mr-4"
+      @click="initGame(name, board_number, nbPlayer)"
+    >
       C'est parti !
     </button>
   </div>
 </template>
 
 <script>
+import { db, auth } from "../config/firebaseConfig";
+
 export default {
   name: "CreateGame",
   data() {
     return {
       msg: "Créer une partie",
+      labelPosition: "on-border",
+      errors: [],
       name: null,
       nbPlayer: null,
-      boardChoice: null,
-      labelPosition: "on-border",
-      errors: []
+      board_number: 1,
+      players: [],
+      user: auth.currentUser
     };
   },
+  created() {
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        this.user = user;
+        console.log(this.user);
+      } else {
+        this.user = null;
+      }
+    });
+  },
   methods: {
-    initGame: function(e) {
-      console.log(e);
-      this.errors = [];
-      this.name ? console.log(this.name) : this.errors.push("Nom requis.");
-      this.nbPlayer
-        ? console.log(this.nbPlayer)
-        : this.errors.push("Nombre de joueurs requis.");
-      this.boardChoice
-        ? console.log(this.boardChoice)
-        : this.errors.push("Plateau requis.");
-      e.preventDefault();
+    initGame(name, board_number, nbPlayer) {
+      db.collection("player")
+        .add({
+          life: 0,
+          score: 0,
+          weapon_id: null,
+          x: 4,
+          y: 5,
+          your_turn: true,
+          user: this.user.uid
+        })
+        .then(player => {
+          db.collection("player")
+            .doc(player.id)
+            .get()
+            .then(data => {
+              this.players.push(data.data());
+              db.collection("game")
+                .add({
+                  board_number: parseInt(board_number),
+                  name: name,
+                  nbPlayer: parseInt(nbPlayer),
+                  players: this.players
+                })
+                .then(() => {
+                  console.log("Game successfully written!");
+                })
+                .catch(error => {
+                  console.error("Error writing game document: ", error);
+                });
+              console.log("Player successfully written!");
+            });
+        })
+        .catch(error => {
+          console.error("Error writing player document: ", error);
+        });
     }
   }
 };
