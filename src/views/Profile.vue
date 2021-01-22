@@ -7,9 +7,9 @@
         class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center"
       >
         <div class="big-icon mb-1 mt-2">
-          <img :src="`/img/bunny-${player.color}.png`" alt="Image" />
+          <img :src="`/img/bunny-${user.photoURL}.png`" alt="Image" />
         </div>
-        <h1>{{ player.name }}</h1>
+        <h1>{{ user.displayName }}</h1>
         <small class="mb-5 has-text-centered">
           Si on est chaud : nombre de parties, nb de victoires ...
         </small>
@@ -25,7 +25,7 @@
       <p class="has-text-primary mb-5">Change ton nom ou ton avatar</p>
       <b-field>
         <b-input
-          v-bind:value="this.player.name"
+          v-bind:value="this.user.displayName"
           v-model="name"
           maxlength="30"
           placeholder="Entrez votre nom"
@@ -40,7 +40,7 @@
         />
         <img
           v-if="!colorAvatar"
-          :src="`/img/bunny-${player.color}.png`"
+          :src="`/img/bunny-${user.photoURL}.png`"
           alt="Image"
         />
       </div>
@@ -79,34 +79,46 @@
 
 <script>
 import json from "../data/data.json";
+import { auth } from "../config/firebaseConfig";
 export default {
   name: "Profile",
 
   data() {
     return {
-      player: json.currentPlayer,
+      user: null,
       colors: json.colors,
       //form
       errors: [],
       name: null,
-      colorAvatar: null
+      colorAvatar: null,
     };
   },
+  created() {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.user = user;
+        console.log(user);
+      } else {
+        this.user = null;
+      }
+    });
+  },
   methods: {
-    checkForm: function(e) {
+    checkForm: function () {
       this.$buefy.snackbar.open({
-        message: `POST in back-end`
+        message: `POST in back-end`,
       });
-      this.errors = [];
-      this.name
-        ? this.$set(this.player, "name", this.name)
-        : this.errors.push("Nom requis.");
-      this.colorAvatar
-        ? this.$set(this.player, "color", this.colorAvatar)
-        : this.errors.push("Couleur requise.");
-      e.preventDefault();
-    }
-  }
+      console.log(this.user);
+      //   this.errors = [];
+      //   this.name
+      //     ? this.$set(this.user, "name", this.name)
+      //     : this.errors.push("Nom requis.");
+      //   this.colorAvatar
+      //     ? this.$set(this.user, "color", this.colorAvatar)
+      //     : this.errors.push("Couleur requise.");
+      //   e.preventDefault();
+    },
+  },
 };
 </script>
 

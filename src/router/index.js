@@ -35,7 +35,7 @@ const routes = [
     component: () => import("@/views/Game.vue")
   },
   {
-    path: "/profile/:player",
+    path: "/profile",
     name: "Profil du joueur",
     component: () => import("@/views/Profile.vue")
   },

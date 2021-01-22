@@ -91,7 +91,7 @@
       <div v-if="currentPlayer">
         <button
           class="button has-text-secondary is-outlined is-rounded mb-5"
-          @click="$router.push(`/profile/${currentPlayer.uid}`)"
+          @click="$router.push(`/profile`)"
         >
           Modifier mon profil
         </button>
