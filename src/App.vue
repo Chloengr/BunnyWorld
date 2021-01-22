@@ -31,7 +31,7 @@
         </b-navbar-item> -->
         <b-navbar-item
           tag="router-link"
-          :to="{ path: '/profile/1' }"
+          :to="{ path: '/profile' }"
           v-if="this.user"
         >
           <div class="is-flex is-align-items-center">
