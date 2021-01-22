@@ -14,7 +14,8 @@
       class="form is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-background-white p-5"
     >
       <div v-if="currentPlayer" class="mb-5 cards">
-        <div v-if="games.lenght === 0">Pas de parties en cours.</div>
+        <!-- <div v-if="games.lenght === 0">Pas de parties en cours.</div> -->
+        <div v-if="!games">Pas de parties en cours.</div>
         <div v-for="game in games" v-bind:key="game.id">
           <div v-for="player in game.players" v-bind:key="player.id">
             <card-score
@@ -114,13 +115,13 @@
       <div v-if="currentPlayer">
         <button
           class="button is-primary is-rounded mb-4 mr-4"
-          @click="console.log('todo')"
+          @click="$router.push('/create')"
         >
           Créer une partie
         </button>
         <button
           class="button is-white is-rounded mb-4 ml-4"
-          @click="console.log('todo')"
+          @click="displayJoinGame()"
         >
           Rejoindre une partie
         </button>
@@ -133,6 +134,7 @@
 import CardScore from "../components/CardScore";
 import json from "../data/data.json";
 import { auth } from "../config/firebaseConfig";
+import JoinGameVue from "../components/JoinGame.vue";
 
 export default {
   name: "Profile",
@@ -146,7 +148,7 @@ export default {
       colorAvatar: null,
       colors: json.colors,
       currentPlayer: auth.currentUser,
-      games: json.games
+      games: auth.games
     };
   },
   methods: {
@@ -166,6 +168,14 @@ export default {
         .catch(error => {
           alert(error.message);
         });
+    },
+    displayJoinGame() {
+      this.$buefy.modal.open({
+        parent: this,
+        component: JoinGameVue,
+        hasModalCard: true,
+        trapFocus: true
+      });
     }
   }
 };

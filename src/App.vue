@@ -13,12 +13,6 @@
         <b-navbar-item tag="router-link" :to="{ path: '/home' }">
           Home
         </b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/create' }">
-          Create
-        </b-navbar-item>
-        <b-navbar-item tag="router-link" :to="{ path: '/join' }">
-          Join
-        </b-navbar-item>
         <b-navbar-item
           tag="router-link"
           :to="{ path: '/game/1' }"
@@ -64,11 +58,11 @@ import { auth } from "../src/config/firebaseConfig";
 export default {
   data() {
     return {
-      user: null,
+      user: null
     };
   },
   created() {
-    auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged(user => {
       if (user) {
         console.log(user);
         this.user = user;
@@ -84,8 +78,8 @@ export default {
           this.$router.push("/home");
         });
       });
-    },
-  },
+    }
+  }
 };
 </script>
 
