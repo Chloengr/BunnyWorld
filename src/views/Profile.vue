@@ -6,7 +6,7 @@
       <div
         class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center"
       >
-        <div class="big-icon mb-1 mt-2">
+        <div class="big-icon mb-1 mt-2" v-if="this.user.photoURL">
           <img :src="`/img/bunny-${user.photoURL}.png`" alt="Image" />
         </div>
         <h1>{{ user.displayName }}</h1>
@@ -17,9 +17,6 @@
     </div>
     <form
       id="app"
-      @submit="checkForm"
-      action="/"
-      method="post"
       class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center"
     >
       <p class="has-text-primary mb-5">Change ton nom ou ton avatar</p>
@@ -39,7 +36,7 @@
           alt="Image"
         />
         <img
-          v-if="!colorAvatar"
+          v-if="!colorAvatar && this.user.photoURL"
           :src="`/img/bunny-${user.photoURL}.png`"
           alt="Image"
         />
@@ -70,7 +67,7 @@
         </small>
       </div>
 
-      <button class="button is-primary is-rounded mb-4" type="submit">
+      <button class="button is-primary is-rounded mb-4" @click="checkForm()">
         Modifier
       </button>
     </form>
@@ -104,23 +101,18 @@ export default {
     });
   },
   methods: {
-    checkForm: function () {
-      this.$buefy.snackbar.open({
-        message: `POST in back-end`,
-      });
-      console.log(this.user);
-      //   this.errors = [];
-      //   this.name
-      //     ? this.$set(this.user, "name", this.name)
-      //     : this.errors.push("Nom requis.");
-      //   this.colorAvatar
-      //     ? this.$set(this.user, "color", this.colorAvatar)
-      //     : this.errors.push("Couleur requise.");
-      //   e.preventDefault();
+    async checkForm() {
+      this.user = await auth.currentUser
+        .updateProfile({
+          displayName: this.name,
+          photoURL: this.colorAvatar,
+        })
+        .catch((error) => {
+          alert(error.message);
+        });
     },
   },
 };
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style></style>
