@@ -37,17 +37,81 @@
 </template>
 
 <script>
+import { db, auth } from "../config/firebaseConfig";
+import * as firebase from "firebase/app";
+
 export default {
   name: "JoinGame",
   data() {
     return {
       msg: "Rejoindre une partie",
-      link: null
+      link: null,
+      players: [],
+      currentUser: auth.currentUser
     };
+  },
+  created() {
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        this.user = user;
+        console.log(this.user);
+      } else {
+        this.user = null;
+      }
+    });
   },
   methods: {
     joinGame() {
-      console.log(this.link);
+      db.collection("game")
+        .doc(this.link)
+        .get()
+        .then(game => {
+          const res = game.data();
+          res.players.map(id => {
+            if (this.currentUser.uid == id.user) {
+              alert("Vous êtes déjà dans cette partie");
+            } else if (Object.keys(res.players).length >= res.nbPlayer) {
+              alert("La partie est FULL");
+            } else {
+              db.collection("player")
+                .add({
+                  life: 0,
+                  score: 0,
+                  weapon_id: null,
+                  x: 6,
+                  y: 3,
+                  your_turn: false,
+                  user: this.user.uid
+                })
+                .then(player => {
+                  db.collection("player")
+                    .doc(player.id)
+                    .get()
+                    .then(data => {
+                      this.players.push(data.data());
+
+                      db.collection("game")
+                        .doc(this.link)
+                        .update({
+                          players: firebase.firestore.FieldValue.arrayUnion(
+                            ...this.players
+                          )
+                        })
+                        .then(() => {
+                          console.log("game updated!", game.data());
+                          console.log("player ajouté", this.players);
+                        })
+                        .catch(error => {
+                          console.error("Error writing game document: ", error);
+                        });
+                    })
+                    .catch(error => {
+                      console.error("Error writing player document: ", error);
+                    });
+                });
+            }
+          });
+        });
     }
   }
 };
