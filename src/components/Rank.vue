@@ -64,18 +64,17 @@ export default {
       players: this.getCurrentGame().players,
       i: 0,
       isWinner:
-        json.currentPlayer.id ===
-        this.rank(this.getCurrentGame().players)[0].id,
+        json.currentPlayer.id === this.rank(this.getCurrentGame().players)[0].id
     };
   },
   methods: {
     snackbar() {
       this.$buefy.snackbar.open({
-        message: `TODO`,
+        message: `TODO`
       });
     },
     rank(players) {
-      return players.sort(function (a, b) {
+      return players.sort(function(a, b) {
         return b.score - a.score;
       });
     },
@@ -83,10 +82,10 @@ export default {
       return (this.i = this.i + 1);
     },
     getCurrentGame() {
-      let currentGame = json.games.filter((g) => g.currentGame);
+      let currentGame = json.games.filter(g => g.currentGame);
       return currentGame[0];
-    },
-  },
+    }
+  }
 };
 </script>
 

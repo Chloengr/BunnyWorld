@@ -35,7 +35,7 @@
 <script>
 export default {
   name: "WeaponDetails",
-  props: ["weapon"],
+  props: ["weapon"]
 };
 </script>
 

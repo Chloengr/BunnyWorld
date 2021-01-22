@@ -146,28 +146,28 @@ export default {
       colorAvatar: null,
       colors: json.colors,
       currentPlayer: auth.currentUser,
-      games: json.games,
+      games: json.games
     };
   },
   methods: {
     checkForm() {
       auth
         .createUserWithEmailAndPassword(this.email, this.password)
-        .then((res) => {
+        .then(res => {
           res.user
             .updateProfile({
               displayName: this.name,
-              photoURL: this.colorAvatar,
+              photoURL: this.colorAvatar
             })
             .then(() => {
               console.log(auth.currentUser);
             });
         })
-        .catch((error) => {
+        .catch(error => {
           alert(error.message);
         });
-    },
-  },
+    }
+  }
 };
 </script>
 

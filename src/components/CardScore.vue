@@ -21,7 +21,7 @@
 <script>
 export default {
   name: "card-score",
-  props: ["player", "gameName"],
+  props: ["player", "gameName"]
 };
 </script>
 

@@ -71,22 +71,22 @@ export default {
       colorAvatar: null,
       colors: json.colors,
       currentPlayer: json.currentPlayer,
-      games: json.games,
+      games: json.games
     };
   },
   methods: {
     checkForm() {
       auth
         .signInWithEmailAndPassword(this.email, this.password)
-        .then((res) => {
+        .then(res => {
           console.log(res.user);
           this.$router.push("/home");
         })
-        .catch((error) => {
+        .catch(error => {
           alert(error.message);
         });
-    },
-  },
+    }
+  }
 };
 </script>
 
