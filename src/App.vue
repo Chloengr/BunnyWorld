@@ -46,6 +46,9 @@
             </div>
           </div>
         </b-navbar-item>
+        <b-navbar-item @click="logOut()">
+          SignOut
+        </b-navbar-item>
       </template>
     </b-navbar>
     <router-view></router-view>
@@ -59,12 +62,31 @@
 </template>
 
 <script>
-import json from "../src/data/data.json";
+import { auth } from "../src/config/firebaseConfig";
+
 export default {
   data() {
     return {
-      currentPlayer: json.currentPlayer,
+      user: null,
     };
+  },
+  created() {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.user = user;
+      } else {
+        this.user = null;
+      }
+    });
+  },
+  methods: {
+    logOut() {
+      auth.signOut().then(() => {
+        auth.onAuthStateChanged(() => {
+          this.$router.push("/home");
+        });
+      });
+    },
   },
 };
 </script>

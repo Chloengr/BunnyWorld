@@ -44,15 +44,15 @@ export default {
     return {
       isCardModalActive: true,
       players: this.getCurrentGame().players,
-      timeToPlay: json.currentPlayer.id === json.nextPlayer.id,
+      timeToPlay: json.currentPlayer.id === json.nextPlayer.id
     };
   },
   methods: {
     getCurrentGame() {
-      let currentGame = json.games.filter((g) => g.currentGame);
+      let currentGame = json.games.filter(g => g.currentGame);
       return currentGame[0];
-    },
-  },
+    }
+  }
 };
 </script>
 
