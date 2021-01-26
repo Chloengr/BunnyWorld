@@ -11,9 +11,10 @@ Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/home",
+    path: "/",
     name: "Home",
-    component: () => import("@/views/Home.vue")
+    component: () => import("@/views/Home.vue"),
+    meta: { requiresAuth: true }
   },
   {
     path: "/components",
@@ -23,22 +24,30 @@ const routes = [
   {
     path: "/create",
     name: "Créer une partie",
-    component: () => import("@/views/CreateGame.vue")
+    component: () => import("@/views/CreateGame.vue"),
+    meta: { requiresAuth: true }
   },
   {
     path: "/game/:id",
     name: "Partie en cours",
-    component: () => import("@/views/Game.vue")
+    component: () => import("@/views/Game.vue"),
+    meta: { requiresAuth: true }
   },
   {
     path: "/profile",
     name: "Profil du joueur",
-    component: () => import("@/views/Profile.vue")
+    component: () => import("@/views/Profile.vue"),
+    meta: { requiresAuth: true }
   },
   {
-    path: "/",
+    path: "/login",
     name: "Login",
     component: () => import("@/views/Login.vue")
+  },
+  {
+    path: "/signin",
+    name: "Signin",
+    component: () => import("@/views/Signin.vue")
   },
   {
     path: "/join",

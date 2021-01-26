@@ -29,19 +29,20 @@
 <script>
 import Square from "./Square.vue";
 import layoutJSON from "../data/games-layout.json";
-import json from "../data/data.json";
+
+import { auth } from "../config/firebaseConfig";
 export default {
   name: "Board",
   props: ["boardId"],
   components: { Square },
   data() {
     return {
-      player: json.currentPlayer,
+      player: auth.currentUser,
       layoutData: layoutJSON.game,
       length: 0,
       walkableSquares: this.$nextTick(() => {
         return this.walkableZone();
-      })
+      }),
     };
   },
   methods: {
@@ -57,17 +58,17 @@ export default {
         { x: 0, y: 1 },
         { x: 0, y: -1 },
         { x: 1, y: 0 },
-        { x: -1, y: 0 }
+        { x: -1, y: 0 },
       ];
       const walkableSquares = [];
-      directions.forEach(dir => {
+      directions.forEach((dir) => {
         const target = { x: this.player.x + dir.x, y: this.player.y + dir.y };
         const ref = this.$refs[`x${target.x}y${target.y}`];
         if (ref && !ref[0].lava && !ref[0].bush) {
           walkableSquares.push(ref);
         }
       });
-      walkableSquares.forEach(w => {
+      walkableSquares.forEach((w) => {
         w[0].$el.classList.add("walkable");
       });
 
@@ -78,15 +79,15 @@ export default {
     move(x, y) {
       const target = this.$refs[`x${x}y${y}`];
       if (this.walkableZone().includes(target)) {
-        Object.keys(this.$refs).forEach(el => {
+        Object.keys(this.$refs).forEach((el) => {
           this.$refs[el][0].$el.classList.remove("walkable");
         });
         this.$set(this.player, "x", x);
         this.$set(this.player, "y", y);
         this.walkableZone();
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

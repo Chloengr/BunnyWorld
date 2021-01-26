@@ -13,13 +13,13 @@
     <div
       class="form is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-background-white p-5"
     >
-      <div v-if="currentPlayer" class="mb-5 cards">
-        <!-- <div v-if="games.lenght === 0">Pas de parties en cours.</div> -->
-        <div v-if="!games">Pas de parties en cours.</div>
-        <div v-for="game in games" v-bind:key="game.id">
-          <div v-for="player in game.players" v-bind:key="player.id">
+      <div class="mb-5 cards">
+        <div v-if="!this.games" class="has-text-centered">
+          Pas de parties en cours.
+        </div>
+        <div v-for="game in this.games" v-bind:key="game.id">
+          <div v-for="player in game.players" v-bind:key="player.user">
             <card-score
-              v-if="player.id === currentPlayer.id"
               :player="player"
               :gameName="game.name"
               class="mt-2"
@@ -28,68 +28,7 @@
         </div>
       </div>
 
-      <p class="mt-5 mb-5" v-if="!currentPlayer">
-        Choisir ton nom et ton avatar
-      </p>
-
-      <form
-        id="app"
-        @submit="checkForm"
-        action="/"
-        method="post"
-        v-if="!currentPlayer"
-        class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center mb-5"
-      >
-        <div class="icon mb-4">
-          <img
-            v-if="colorAvatar"
-            :src="`/img/bunny-${colorAvatar}.png`"
-            alt="Image"
-          />
-          <img v-if="!colorAvatar" :src="`/img/bunny-orange.png`" alt="Image" />
-        </div>
-
-        <div class="block is-flex is-justify-content-center is-flex-wrap-wrap">
-          <b-radio
-            v-model="colorAvatar"
-            v-for="color in colors"
-            v-bind:key="color"
-            :name="color"
-            :native-value="color"
-            :type="`is-avatar-${color}`"
-            class="mb-2"
-          >
-            {{ color }}
-          </b-radio>
-        </div>
-
-        <b-field>
-          <b-input
-            v-model="name"
-            maxlength="30"
-            placeholder="Entrez votre nom"
-          ></b-input>
-        </b-field>
-
-        <b-field>
-          <b-input
-            v-model="email"
-            maxlength="100"
-            placeholder="Email"
-          ></b-input>
-        </b-field>
-
-        <b-field>
-          <b-input
-            v-model="password"
-            maxlength="30"
-            type="password"
-            placeholder="Password"
-          ></b-input>
-        </b-field>
-      </form>
-
-      <div v-if="currentPlayer">
+      <div v-if="currentUser">
         <button
           class="button has-text-secondary is-outlined is-rounded mb-5"
           @click="$router.push(`/profile`)"
@@ -98,21 +37,7 @@
         </button>
       </div>
 
-      <div v-if="!currentPlayer">
-        <button
-          class="button is-primary is-rounded mb-4 mr-4"
-          @click="checkForm()"
-        >
-          Créer mon profil
-        </button>
-        <button
-          class="button is-white is-rounded mb-4 ml-4"
-          @click="$router.push('/')"
-        >
-          Se connecter
-        </button>
-      </div>
-      <div v-if="currentPlayer">
+      <div>
         <button
           class="button is-primary is-rounded mb-4 mr-4"
           @click="$router.push('/create')"
@@ -133,51 +58,71 @@
 <script>
 import CardScore from "../components/CardScore";
 import json from "../data/data.json";
-import { auth } from "../config/firebaseConfig";
+import { auth, db } from "../config/firebaseConfig";
 import JoinGameVue from "../components/JoinGame.vue";
 
 export default {
-  name: "Profile",
+  name: "Home",
   components: { CardScore },
   data() {
     return {
-      errors: [],
-      name: null,
-      email: null,
-      password: null,
-      colorAvatar: null,
       colors: json.colors,
-      currentPlayer: auth.currentUser,
-      games: auth.games
+      user: null,
+      currentUser: auth.currentUser,
+      games: [],
     };
   },
+  created() {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        console.log("user connected", user);
+        this.user = user;
+      } else {
+        this.user = null;
+      }
+    });
+    this.getGamesForAPlayer();
+  },
+
   methods: {
     checkForm() {
       auth
         .createUserWithEmailAndPassword(this.email, this.password)
-        .then(res => {
+        .then((res) => {
           res.user
             .updateProfile({
               displayName: this.name,
-              photoURL: this.colorAvatar
+              photoURL: this.colorAvatar,
             })
             .then(() => {
               console.log(auth.currentUser);
             });
         })
-        .catch(error => {
+        .catch((error) => {
           alert(error.message);
         });
+    },
+    async getGamesForAPlayer() {
+      const playerToFind = await db
+        .collection("player")
+        .where("user", "==", this.currentUser.uid)
+        .get()
+        .then((res) => res.docs.map((doc) => doc.data()));
+
+      db.collection("game")
+        .where("players", "array-contains", playerToFind[0])
+        .get()
+        .then((res) => res.docs.forEach((doc) => this.games.push(doc.data())));
     },
     displayJoinGame() {
       this.$buefy.modal.open({
         parent: this,
         component: JoinGameVue,
         hasModalCard: true,
-        trapFocus: true
+        trapFocus: true,
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

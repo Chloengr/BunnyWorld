@@ -47,11 +47,11 @@ export default {
       msg: "Rejoindre une partie",
       link: null,
       players: [],
-      currentUser: auth.currentUser
+      currentUser: auth.currentUser,
     };
   },
   created() {
-    auth.onAuthStateChanged(user => {
+    auth.onAuthStateChanged((user) => {
       if (user) {
         this.user = user;
         console.log(this.user);
@@ -65,9 +65,9 @@ export default {
       db.collection("game")
         .doc(this.link)
         .get()
-        .then(game => {
+        .then((game) => {
           const res = game.data();
-          res.players.map(id => {
+          res.players.map((id) => {
             if (this.currentUser.uid == id.user) {
               alert("Vous êtes déjà dans cette partie");
             } else if (Object.keys(res.players).length >= res.nbPlayer) {
@@ -81,13 +81,15 @@ export default {
                   x: 6,
                   y: 3,
                   your_turn: false,
-                  user: this.user.uid
+                  user: this.user.uid,
+                  color: this.user.photoURL,
+                  name: this.user.displayName,
                 })
-                .then(player => {
+                .then((player) => {
                   db.collection("player")
                     .doc(player.id)
                     .get()
-                    .then(data => {
+                    .then((data) => {
                       this.players.push(data.data());
 
                       db.collection("game")
@@ -95,25 +97,25 @@ export default {
                         .update({
                           players: firebase.firestore.FieldValue.arrayUnion(
                             ...this.players
-                          )
+                          ),
                         })
                         .then(() => {
                           console.log("game updated!", game.data());
                           console.log("player ajouté", this.players);
                         })
-                        .catch(error => {
+                        .catch((error) => {
                           console.error("Error writing game document: ", error);
                         });
                     })
-                    .catch(error => {
+                    .catch((error) => {
                       console.error("Error writing player document: ", error);
                     });
                 });
             }
           });
         });
-    }
-  }
+    },
+  },
 };
 </script>
 

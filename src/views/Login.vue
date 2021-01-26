@@ -1,5 +1,5 @@
 <template>
-  <container
+  <div
     class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-background-background mb-4"
   >
     <figure class="big-icon mt-6 mb-2">
@@ -14,11 +14,7 @@
       class="form is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-background-white p-5"
     >
       <p class="mt-5 mb-5">Connecte toi pour jouer !</p>
-      <form
-        id="app"
-        @submit="checkForm"
-        action="/"
-        method="post"
+      <div
         class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center mb-5"
       >
         <b-field>
@@ -37,56 +33,46 @@
             placeholder="Password"
           ></b-input>
         </b-field>
-      </form>
-      <div>
-        <button
-          class="button is-primary is-rounded mb-4 mr-4"
-          @click="checkForm()"
-        >
+      </div>
+      <div class="is-flex is-flex-direction-column is">
+        <button class="button is-primary is-rounded mb-5" @click="checkForm()">
           Se connecter
         </button>
         <button
-          class="button is-white is-rounded mb-4 ml-4"
-          @click="$router.push('/home')"
+          class="button has-text-primary is-outlined is-rounded mb-5"
+          @click="$router.push('/signin')"
         >
           Créer mon lapinou
         </button>
       </div>
     </div>
-  </container>
+  </div>
 </template>
 
 <script>
-import json from "../data/data.json";
 import { auth } from "../config/firebaseConfig";
 
 export default {
-  name: "Profile",
+  name: "Login",
   data() {
     return {
-      errors: [],
-      name: null,
       email: null,
       password: null,
-      colorAvatar: null,
-      colors: json.colors,
-      currentPlayer: json.currentPlayer,
-      games: json.games
     };
   },
   methods: {
     checkForm() {
       auth
         .signInWithEmailAndPassword(this.email, this.password)
-        .then(res => {
-          console.log(res.user);
-          this.$router.push("/home");
+        .then((res) => {
+          console.log(res.user.displayName, "is connected");
+          this.$router.push("/");
         })
-        .catch(error => {
+        .catch((error) => {
           alert(error.message);
         });
-    }
-  }
+    },
+  },
 };
 </script>
 

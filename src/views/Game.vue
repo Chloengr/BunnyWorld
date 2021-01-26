@@ -20,6 +20,7 @@ import json from "../data/data.json";
 import Board from "../components/Board.vue";
 import WeaponDetailsVue from "../components/WeaponDetails.vue";
 import PlayerDetailsVue from "../components/PlayerDetails.vue";
+import { auth } from "../config/firebaseConfig";
 
 export default {
   components: { Score, Rank, Board },
@@ -29,12 +30,12 @@ export default {
       nextPlayer: json.nextPlayer,
       partieName: this.getCurrentGame().partieName,
       finDePartie: json.finDePartie, // false to see ranking - true to see score
-      msg: "Partie en cours avec le plateau/parcours choisi"
+      msg: "Partie en cours avec le plateau/parcours choisi",
     };
   },
   methods: {
     getCurrentGame() {
-      let currentGame = json.games.filter(g => g.currentGame);
+      let currentGame = json.games.filter((g) => g.currentGame);
       return currentGame[0];
     },
     alert() {
@@ -43,19 +44,19 @@ export default {
         props: { weapon: json.weapon },
         component: WeaponDetailsVue,
         hasModalCard: true,
-        trapFocus: true
+        trapFocus: true,
       });
     },
     displayPlayer() {
       this.$buefy.modal.open({
         parent: this,
-        props: { player: json.currentPlayer, weapon: json.weapon },
+        props: { player: auth.currentUser, weapon: json.weapon },
         component: PlayerDetailsVue,
         hasModalCard: true,
-        trapFocus: true
+        trapFocus: true,
       });
-    }
-  }
+    },
+  },
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
