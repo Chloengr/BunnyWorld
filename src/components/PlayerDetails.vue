@@ -56,9 +56,9 @@ export default {
       isRtl: false,
       isSpaced: true,
       isDisabled: true,
-      locale: undefined
+      locale: undefined,
     };
-  }
+  },
 };
 </script>
 

@@ -10,7 +10,7 @@
         </b-navbar-item>
       </template>
       <template slot="end">
-        <b-navbar-item tag="router-link" :to="{ path: '/home' }">
+        <b-navbar-item tag="router-link" :to="{ path: '/' }">
           Home
         </b-navbar-item>
         <b-navbar-item
@@ -37,8 +37,10 @@
             </div>
           </div>
         </b-navbar-item>
-        <b-navbar-item v-if="this.user" @click="logOut()">
-          SignOut
+        <b-navbar-item v-if="this.user">
+          <button class="button is-primary is-rounded" @click="logOut()">
+            Se déconnecter
+          </button>
         </b-navbar-item>
       </template>
     </b-navbar>
@@ -58,13 +60,13 @@ import { auth } from "../src/config/firebaseConfig";
 export default {
   data() {
     return {
-      user: null
+      user: null,
     };
   },
   created() {
-    auth.onAuthStateChanged(user => {
+    auth.onAuthStateChanged((user) => {
       if (user) {
-        console.log(user);
+        console.log("user connected", user);
         this.user = user;
       } else {
         this.user = null;
@@ -75,11 +77,11 @@ export default {
     logOut() {
       auth.signOut().then(() => {
         auth.onAuthStateChanged(() => {
-          this.$router.push("/home");
+          this.$router.push("/login");
         });
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

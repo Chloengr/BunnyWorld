@@ -21,7 +21,13 @@
 <script>
 export default {
   name: "card-score",
-  props: ["player", "gameName"]
+  props: ["player", "gameName"],
+  data() {
+    return {
+      playerName: null,
+      playerColor: null,
+    };
+  },
 };
 </script>
 

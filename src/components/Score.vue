@@ -36,6 +36,7 @@
 <script>
 import CardScore from "./CardScore.vue";
 import json from "../data/data.json";
+import { auth } from "../config/firebaseConfig";
 export default {
   components: { CardScore },
   name: "Score",
@@ -44,15 +45,15 @@ export default {
     return {
       isCardModalActive: true,
       players: this.getCurrentGame().players,
-      timeToPlay: json.currentPlayer.id === json.nextPlayer.id
+      timeToPlay: auth.currentUser.uid === json.nextPlayer.id,
     };
   },
   methods: {
     getCurrentGame() {
-      let currentGame = json.games.filter(g => g.currentGame);
+      let currentGame = json.games.filter((g) => g.currentGame);
       return currentGame[0];
-    }
-  }
+    },
+  },
 };
 </script>
 
