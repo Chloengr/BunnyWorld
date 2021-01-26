@@ -44,6 +44,12 @@
         >
           Créer mon lapinou
         </button>
+        <button
+          class="button is-white is-rounded mb-4 ml-4"
+          
+        >
+          click notif
+        </button>
       </div>
     </div>
   </div>
