@@ -46,11 +46,7 @@
         </button>
         <button
           class="button is-white is-rounded mb-4 ml-4"
-<<<<<<< HEAD
           @click="popNotif()"
-=======
-          
->>>>>>> push notif
         >
           click notif
         </button>
@@ -84,7 +80,7 @@ export default {
     },
     async popNotif() {
       if ("Notification" in window) {
-        Notification.requestPermission(function(permission) {
+        Notification.requestPermission(function (permission) {
           console.log(permission);
           /*var options = {
             body: "Ceci est un test",
