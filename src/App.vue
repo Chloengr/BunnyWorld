@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    {{ notificationsPermisionRequest() }}
     <b-navbar>
       <template slot="brand">
         <b-navbar-item tag="router-link" :to="{ path: '/' }">
