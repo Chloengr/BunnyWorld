@@ -73,11 +73,11 @@ export default {
       colors: json.colors,
       user: null,
       currentUser: auth.currentUser,
-      games: [],
+      games: []
     };
   },
   created() {
-    auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged(user => {
       if (user) {
         console.log("user connected", user);
         this.user = user;
@@ -93,17 +93,17 @@ export default {
     checkForm() {
       auth
         .createUserWithEmailAndPassword(this.email, this.password)
-        .then((res) => {
+        .then(res => {
           res.user
             .updateProfile({
               displayName: this.name,
-              photoURL: this.colorAvatar,
+              photoURL: this.colorAvatar
             })
             .then(() => {
               console.log(auth.currentUser);
             });
         })
-        .catch((error) => {
+        .catch(error => {
           alert(error.message);
         });
     },
@@ -112,13 +112,13 @@ export default {
         .collection("player")
         .where("user", "==", this.currentUser.uid)
         .get()
-        .then((res) => res.docs.map((doc) => doc.data()));
+        .then(res => res.docs.map(doc => doc.data()));
 
       db.collection("game")
         .where("players", "array-contains", playerToFind[0])
         .get()
-        .then((res) =>
-          res.docs.forEach((doc) => {
+        .then(res =>
+          res.docs.forEach(doc => {
             this.games.push({ game: doc.data(), id: doc.id });
           })
         );
@@ -128,10 +128,10 @@ export default {
         parent: this,
         component: JoinGameVue,
         hasModalCard: true,
-        trapFocus: true,
+        trapFocus: true
       });
-    },
-  },
+    }
+  }
 };
 </script>
 

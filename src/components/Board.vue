@@ -10,6 +10,8 @@
                   :lava="cell ? cell.lava : null"
                   :ground="cell ? cell.ground : null"
                   :dirt="cell ? cell.dirt : null"
+                  :grass="cell ? cell.grass : null"
+                  :bush="cell ? cell.bush : null"
                   :x="x"
                   :y="y"
                   :ref="`x${x}y${y}`"
@@ -27,6 +29,8 @@
 <script>
 import Square from "./Square.vue";
 import layoutJSON from "../data/games-layout.json";
+import { db, auth } from "../config/firebaseConfig";
+import { firebase } from "@firebase/app";
 
 export default {
   name: "Board",
@@ -39,8 +43,15 @@ export default {
       walkableSquares: this.$nextTick(() => {
         return this.walkableZone();
       }),
-      displayBoard: false,
+      user: null
     };
+  },
+  created() {
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        this.user = user;
+      }
+    });
   },
   methods: {
     getCells(column) {
@@ -52,7 +63,7 @@ export default {
     },
     playerInMap(x, y) {
       const tab = [];
-      this.players.forEach((player) => {
+      this.players.forEach(player => {
         if (x === player.x && y === player.y) {
           tab.push(player);
         }
@@ -64,20 +75,24 @@ export default {
         { x: 0, y: 1 },
         { x: 0, y: -1 },
         { x: 1, y: 0 },
-        { x: -1, y: 0 },
+        { x: -1, y: 0 }
       ];
       const walkableSquares = [];
-      directions.forEach((dir) => {
-        const target = {
-          x: this.players[0].x + dir.x,
-          y: this.players[0].y + dir.y,
-        };
-        const ref = this.$refs[`x${target.x}y${target.y}`];
-        if (ref && !ref[0].lava && !ref[0].bush) {
-          walkableSquares.push(ref);
-        }
+      directions.forEach(dir => {
+        this.players.map(p => {
+          if (this.user.uid === p.user) {
+            const target = {
+              x: p.x + dir.x,
+              y: p.y + dir.y
+            };
+            const ref = this.$refs[`x${target.x}y${target.y}`];
+            if (ref && !ref[0].lava && !ref[0].bush) {
+              walkableSquares.push(ref);
+            }
+          }
+        });
       });
-      walkableSquares.forEach((w) => {
+      walkableSquares.forEach(w => {
         w[0].$el.classList.add("walkable");
       });
 
@@ -86,15 +101,42 @@ export default {
     move(x, y) {
       const target = this.$refs[`x${x}y${y}`];
       if (this.walkableZone().includes(target)) {
-        Object.keys(this.$refs).forEach((el) => {
+        Object.keys(this.$refs).forEach(el => {
           this.$refs[el][0].$el.classList.remove("walkable");
         });
-        this.$set(this.players[0], "x", x);
-        this.$set(this.players[0], "y", y);
-        this.walkableZone();
+
+        const gameRef = db.collection("game").doc(this.$route.params.id);
+
+        this.players.map((p, i) => {
+          if (this.user.uid === p.user && p.your_turn) {
+            this.$set(p, "x", x);
+            this.$set(p, "y", y);
+            this.walkableZone();
+            this.$set(p, "your_turn", false);
+
+            if (i + 1 < this.players.length) {
+              this.$set(this.players[i + 1], "your_turn", true);
+            } else if (i + 1 >= this.players.length) {
+              this.$set(this.players[0], "your_turn", true);
+            }
+          }
+          gameRef
+            .set({
+              board_number: this.currentGame.board_number,
+              name: this.currentGame.name,
+              nbPlayer: this.currentGame.nbPlayer,
+              players: firebase.firestore.FieldValue.arrayUnion(...this.players)
+            })
+            .then(() => {
+              console.log("Modified x, y, your_turn: ", this.players);
+            })
+            .catch(error => {
+              console.error("Error : ", error);
+            });
+        });
       }
-    },
-  },
+    }
+  }
 };
 </script>
 

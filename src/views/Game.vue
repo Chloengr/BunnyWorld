@@ -1,12 +1,9 @@
 <template>
   <div>
     <score v-if="!finDePartie" :nextPlayer="nextPlayer"></score>
-    <rank v-if="finDePartie" :partieName="currentGame[0].name"></rank>
-    <board
-      :currentGame="currentGame[0]"
-      :players="currentGame[0].players"
-    ></board>
-    <button class="button is-rounded is-primary" @click="alert">
+    <rank v-if="finDePartie" :partieName="currentGame.name"></rank>
+    <board :currentGame="currentGame" :players="players"></board>
+    <button class="button is-rounded is-primary" @click="displayWeapon">
       Regardez, une arme !
     </button>
     <button class="button is-rounded is-primary" @click="displayPlayer">
@@ -33,22 +30,26 @@ export default {
       finDePartie: json.finDePartie, // false to see ranking - true to see score
       msg: "Partie en cours avec le plateau/parcours choisi",
       currentGame: [],
+      players: []
     };
   },
   created() {
     db.collection("game")
       .doc(this.$route.params.id)
       .get()
-      .then((res) => this.currentGame.push(res.data()));
+      .then(res => {
+        this.currentGame = res.data();
+        this.players = res.data().players;
+      });
   },
   methods: {
-    alert() {
+    displayWeapon() {
       this.$buefy.modal.open({
         parent: this,
         props: { weapon: json.weapon },
         component: WeaponDetailsVue,
         hasModalCard: true,
-        trapFocus: true,
+        trapFocus: true
       });
     },
     displayPlayer() {
@@ -57,10 +58,10 @@ export default {
         props: { player: auth.currentUser, weapon: json.weapon },
         component: PlayerDetailsVue,
         hasModalCard: true,
-        trapFocus: true,
+        trapFocus: true
       });
-    },
-  },
+    }
+  }
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -59,11 +59,11 @@ export default {
       nbPlayer: null,
       board_number: 1,
       players: [],
-      user: auth.currentUser,
+      user: auth.currentUser
     };
   },
   created() {
-    auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged(user => {
       if (user) {
         this.user = user;
         console.log(this.user);
@@ -76,7 +76,7 @@ export default {
     initGame(name, board_number, nbPlayer) {
       db.collection("player")
         .add({
-          life: 0,
+          life: 5,
           score: 0,
           weapon_id: null,
           x: 4,
@@ -84,36 +84,36 @@ export default {
           your_turn: true,
           user: this.user.uid,
           color: this.user.photoURL,
-          name: this.user.displayName,
+          name: this.user.displayName
         })
-        .then((player) => {
+        .then(player => {
           db.collection("player")
             .doc(player.id)
             .get()
-            .then((data) => {
+            .then(data => {
               this.players.push(data.data());
               db.collection("game")
                 .add({
                   board_number: parseInt(board_number),
                   name: name,
                   nbPlayer: parseInt(nbPlayer),
-                  players: this.players,
+                  players: this.players
                 })
                 .then(() => {
                   console.log("Game successfully written!");
                   this.$router.push("/");
                 })
-                .catch((error) => {
+                .catch(error => {
                   console.error("Error writing game document: ", error);
                 });
               console.log("Player successfully written!");
             });
         })
-        .catch((error) => {
+        .catch(error => {
           console.error("Error writing player document: ", error);
         });
-    },
-  },
+    }
+  }
 };
 </script>
 

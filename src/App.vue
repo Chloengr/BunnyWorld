@@ -66,7 +66,6 @@ export default {
   created() {
     auth.onAuthStateChanged((user) => {
       if (user) {
-        console.log("user connected", user);
         this.user = user;
       } else {
         this.user = null;

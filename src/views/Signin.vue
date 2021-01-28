@@ -103,13 +103,12 @@ export default {
       colors: json.colors,
       user: null,
       games: auth.games,
-      currentUser: auth.currentUser,
+      currentUser: auth.currentUser
     };
   },
   created() {
-    auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged(user => {
       if (user) {
-        console.log("user connected", user);
         this.user = user;
       } else {
         this.user = null;
@@ -120,17 +119,17 @@ export default {
     checkForm() {
       auth
         .createUserWithEmailAndPassword(this.email, this.password)
-        .then((res) => {
+        .then(res => {
           res.user
             .updateProfile({
               displayName: this.name,
-              photoURL: this.colorAvatar,
+              photoURL: this.colorAvatar
             })
             .then(() => {
               console.log(auth.currentUser);
             });
         })
-        .catch((error) => {
+        .catch(error => {
           alert(error.message);
         });
     },
@@ -139,10 +138,10 @@ export default {
         parent: this,
         component: JoinGameVue,
         hasModalCard: true,
-        trapFocus: true,
+        trapFocus: true
       });
-    },
-  },
+    }
+  }
 };
 </script>
 
