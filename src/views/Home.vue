@@ -14,9 +14,6 @@
       class="form is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-background-white p-5"
     >
       <div class="mb-5 cards">
-        <div v-if="this.onLine === false" class="has-text-centered">
-          Vous êtes hors ligne.
-        </div>
         <div v-if="!this.games" class="has-text-centered">
           Pas de parties en cours.
         </div>
