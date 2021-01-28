@@ -77,7 +77,7 @@ export default {
     console.log(this.onLine);
     console.log(navigator.onLine ? 'online' : 'offline')
     if (this.onLine === false) {
-      this.$router.push("/home");
+      this.$router.push("/offline");
     }
   },
   methods: {
