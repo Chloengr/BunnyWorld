@@ -85,20 +85,9 @@ export default {
         });
     },
     async popNotif() {
-      /* if ("Notification" in window) {
-        Notification.requestPermission(function(permission) {
-          console.log(permission);
-
-          /*var options = {
-            body: "Ceci est un test",
-          };*/
-
       const publicVKey =
         "BFvj5SDZN52AHRmvW1qIYCUcVeuTfSHdR6j0TzgUk0zcW5X04CR5QvRQYcprgWudZ1N9pm2zmlFLluuNYtpPV5Q";
-
-      //const message = { title: "Titre", body: "Corps !" };
       const registration = await navigator.serviceWorker.ready;
-      console.log(registration);
       try {
         const urlBase64ToUint8Array = (base64String) => {
           const padding = "=".repeat((4 - (base64String.lenght % 4)) % 4);
@@ -106,7 +95,6 @@ export default {
             //eslint-disable-next-line
             .replace(/\-/g, "+")
             .replace(/_/g, "/");
-
           const rawData = window.atob(base64);
           const outputArray = new Uint8Array(rawData.length);
           for (let i = 0; i < rawData.length; ++i) {
@@ -130,16 +118,8 @@ export default {
       } catch (e) {
         console.log("la souscription a été refusée");
       }
-      /*var notif = new Notification("Test notification");
-          notif.addEventListener("click", (e) => {
-            console.log(e, "click on notif");
-            notif.close();
-          });
-        });
-      } else {
-        console.log("pas notification");
-      }*/
     },
+
     async sendNotif() {
       await fetch(
         `http://localhost:8000/send-notification/${auth.currentUser.uid}`,
@@ -149,6 +129,7 @@ export default {
         }
       ).then((res) => console.log(res));
     },
+
   },
 };
 </script>

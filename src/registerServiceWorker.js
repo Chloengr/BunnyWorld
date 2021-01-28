@@ -30,29 +30,5 @@ if (process.env.NODE_ENV === "production") {
       console.error("Error during service worker registration:", error);
     }
     
-    /*messaging.useServiceWorker(self);
-messaging.getToken(self, "BG8ptillr_PxWR8FT_KG8tgTbH7HS8Otc2Ilxov5uyNQB7PzGc0883kGV8HuD0PR4QylKQmuCzoR5UN2fg12l0A").then((currentToken) => {
-  if (currentToken) {
-    console.log("token : ", currentToken);
-  } else {
-    // Show permission request UI
-    console.log('No registration token available. Request permission to generate one.');
-    // ...
-  }
-}).catch((err) => {
-  console.log('An error occurred while retrieving token. ', err);
-  // ...
-});  */
-
   })
-
-  /*messaging.usePublicVapidKey("BG8ptillr_PxWR8FT_KG8tgTbH7HS8Otc2Ilxov5uyNQB7PzGc0883kGV8HuD0PR4QylKQmuCzoR5UN2fg12l0A");
-  messaging.onBackgroundMessage(function(payload) {
-    const notificationTitle = payload.data.title;
-    const notificationOptions = {
-    body: payload.data.message,
-    data: { url:payload.data.onClick }, //the url which we gonna use later
-    };
-    return self.registration.showNotification(notificationTitle,notificationOptions);
-  });*/
 }
