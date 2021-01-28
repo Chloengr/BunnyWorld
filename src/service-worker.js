@@ -15,7 +15,11 @@ var firebaseConfig = {
     measurementId: "G-PYP8MNSL0P",
   };
   
+<<<<<<< HEAD
   /*self.addEventListener('push', (event) => {
+=======
+  self.addEventListener('push', (event) => {
+>>>>>>> push notif
     const message = event.data.json();
     self.registration.showNotification(message.woof, { body : "The app has barked at you!", icon : "/assets/icon_maskable.png", badge : "/assets/logo.svg", actions : [ {"action" : "action1", "title" : "Action 1"},  {"action" : "action2", "title" : "Action 2"}]});
 });
@@ -30,9 +34,16 @@ self.addEventListener("notificationclick", (event) => {
         event.waitUntil(self.clients.openWindow("/?origin=noaction"));
     }
     
+<<<<<<< HEAD
 });*/
   
 /*  firebase.initializeApp(firebaseConfig);
+=======
+});
+  
+  firebase.initializeApp(firebaseConfig);
+
+>>>>>>> push notif
   messaging.onBackgroundMessage((payload) => {
     console.log('[firebase-messaging-sw.js] Received background message ', payload);
     // Customize notification here
@@ -44,8 +55,11 @@ self.addEventListener("notificationclick", (event) => {
     self.registration.showNotification(notificationTitle,
       notificationOptions);
   });
+<<<<<<< HEAD
 
   messaging.onMessage((payload) => {
     console.log('Message received. ', payload);
     // ...
   });*/
+=======
+>>>>>>> push notif

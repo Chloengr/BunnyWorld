@@ -46,7 +46,11 @@
         </button>
         <button
           class="button is-white is-rounded mb-4 ml-4"
+<<<<<<< HEAD
           @click="popNotif()"
+=======
+          
+>>>>>>> push notif
         >
           click notif
         </button>
@@ -85,9 +89,10 @@ export default {
           /*var options = {
             body: "Ceci est un test",
           };*/
-          const notif = new Notification("Test notification");
+          var notif = new Notification("Test notification");
           notif.addEventListener("click", (e) => {
             console.log(e, "click on notif");
+            notif.close();
           });
         });
       } else {
