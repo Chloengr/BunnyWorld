@@ -19,12 +19,14 @@
         </div>
         <div v-for="game in this.games" v-bind:key="game.id">
           <div v-for="player in game.game.players" v-bind:key="player.user">
-            <div class="buttonGame" @click="$router.push(`/game/${game.id}`)">
-              <card-score
-                :player="player"
-                :gameName="game.game.name"
-                class="mt-2"
-              ></card-score>
+            <div v-if="player.user === currentUser.uid">
+              <div class="buttonGame" @click="$router.push(`/game/${game.id}`)">
+                <card-score
+                  :player="player"
+                  :gameName="game.game.name"
+                  class="mt-2"
+                ></card-score>
+              </div>
             </div>
           </div>
         </div>
@@ -84,6 +86,7 @@ export default {
       }
     });
     this.getGamesForAPlayer();
+    console.log(this.games);
   },
 
   methods: {
