@@ -107,6 +107,7 @@ export default {
           userVisibleOnly: true,
           applicationServerKey: urlBase64ToUint8Array(publicVKey),
         });
+        console.log("subscription", subscription);
         await fetch("http://localhost:8000/subscription", {
           method: "POST",
           body: JSON.stringify({
@@ -129,7 +130,6 @@ export default {
         }
       ).then((res) => console.log(res));
     },
-
   },
 };
 </script>
