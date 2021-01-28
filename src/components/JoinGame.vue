@@ -38,7 +38,7 @@
 
 <script>
 import { db, auth } from "../config/firebaseConfig";
-import * as firebase from "firebase/app";
+import { firebase } from "@firebase/app";
 
 export default {
   name: "JoinGame",
@@ -89,7 +89,6 @@ export default {
                     .get()
                     .then(data => {
                       this.players.push(data.data());
-
                       db.collection("game")
                         .doc(this.link)
                         .update({
