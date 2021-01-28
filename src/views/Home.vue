@@ -74,12 +74,9 @@ export default {
       user: null,
       currentUser: auth.currentUser,
       games: [],
-      onLine: null,
     };
   },
   created() {
-    this.onLine = navigator.onLine;
-    console.log(this.onLine);
     auth.onAuthStateChanged((user) => {
       if (user) {
         console.log("user connected", user);
