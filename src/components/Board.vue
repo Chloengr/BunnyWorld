@@ -1,8 +1,7 @@
 <template>
   <section id="board">
     <div v-for="layout in layoutData" :key="layout.id">
-      {{ log(layout.id) }}
-      <div v-if="displayBoard">
+      <div v-if="layout.id === currentGame.board_number">
         <div class="is-flex">
           <div v-for="(column, x) in layout.columns" :key="x">
             <div v-for="(cell, y) in getCells(column)" :key="y">
@@ -14,9 +13,7 @@
                   :x="x"
                   :y="y"
                   :ref="`x${x}y${y}`"
-                  :player="
-                    x === players[0].x && y === players[0].y ? players[0] : null
-                  "
+                  :player="playerInMap(x, y)"
                 />
               </div>
             </div>
@@ -45,21 +42,22 @@ export default {
       displayBoard: false,
     };
   },
-  created() {
-    console.log("currentGame", this.currentGame);
-    console.log("players", this.players[0]);
-  },
   methods: {
-    log(b) {
-      console.log(b === this.currentGame.board_number);
-      this.displayBoard = b === this.currentGame.board_number;
-    },
     getCells(column) {
       let cells = [];
       for (let i = 0; i < 14; i++) {
         cells.push(column[i]);
       }
       return cells;
+    },
+    playerInMap(x, y) {
+      const tab = [];
+      this.players.forEach((player) => {
+        if (x === player.x && y === player.y) {
+          tab.push(player);
+        }
+      });
+      return tab[0];
     },
     walkableZone() {
       const directions = [
