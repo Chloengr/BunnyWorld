@@ -27,12 +27,4 @@ export default {
 </script>
 
 <style>
-.form {
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
-  width: 100%;
-}
-.cards {
-  width: 90%;
-}
 </style>
