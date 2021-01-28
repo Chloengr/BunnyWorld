@@ -48,7 +48,13 @@
           class="button is-white is-rounded mb-4 ml-4"
           @click="popNotif()"
         >
-          click notif
+          subscribe
+        </button>
+        <button
+          class="button is-white is-rounded mb-4 ml-4"
+          @click="sendNotif()"
+        >
+          notif
         </button>
       </div>
     </div>
@@ -86,11 +92,13 @@ export default {
           /*var options = {
             body: "Ceci est un test",
           };*/
+
       const publicVKey =
-        "BL5sIPcMeTRkAiZX-DK4_sX0mzeOxHpBvDmmcAETp6LxMiQyAa1JrPiNfIsd4MoSCAcchuDbfmaFwhJfJ3coLew";
+        "BFvj5SDZN52AHRmvW1qIYCUcVeuTfSHdR6j0TzgUk0zcW5X04CR5QvRQYcprgWudZ1N9pm2zmlFLluuNYtpPV5Q";
 
       //const message = { title: "Titre", body: "Corps !" };
       const registration = await navigator.serviceWorker.ready;
+      console.log(registration);
       try {
         const urlBase64ToUint8Array = (base64String) => {
           const padding = "=".repeat((4 - (base64String.lenght % 4)) % 4);
@@ -111,9 +119,12 @@ export default {
           userVisibleOnly: true,
           applicationServerKey: urlBase64ToUint8Array(publicVKey),
         });
-        await fetch("/subscription", {
+        await fetch("http://localhost:8000/subscription", {
           method: "POST",
-          body: JSON.stringify(subscription),
+          body: JSON.stringify({
+            subscription: subscription,
+            user: auth.currentUser.uid,
+          }),
           headers: { "content-type": "application/json" },
         });
       } catch (e) {
@@ -128,6 +139,15 @@ export default {
       } else {
         console.log("pas notification");
       }*/
+    },
+    async sendNotif() {
+      await fetch(
+        `http://localhost:8000/send-notification/${auth.currentUser.uid}`,
+        {
+          method: "GET",
+          headers: { "content-type": "application/json" },
+        }
+      ).then((res) => console.log(res));
     },
   },
 };
