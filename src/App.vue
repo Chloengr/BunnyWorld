@@ -61,7 +61,6 @@ export default {
   data() {
     return {
       user: null,
-      onLine: null,
     };
   },
   created() {
@@ -73,12 +72,14 @@ export default {
         this.user = null;
       }
     });
-    this.onLine = navigator.onLine;
-    console.log(this.onLine);
-    console.log(navigator.onLine ? 'online' : 'offline')
-    if (this.onLine === false) {
+  },
+  mounted() {
+    this.$on("offline", () => {
       this.$router.push("/offline");
-    }
+    });
+    this.$on("online", () => {
+      this.$router.replace("/");
+    });
   },
   methods: {
     logOut() {
