@@ -50,6 +50,11 @@ const routes = [
     component: () => import("@/views/Signin.vue")
   },
   {
+    path: "/offline",
+    name: "HomeOff",
+    component: () => import("@/views/HomeOff.vue")
+  },
+  {
     path: "/join",
     name: "Rejoindre une partie",
     component: JoinGame
