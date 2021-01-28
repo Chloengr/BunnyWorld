@@ -79,13 +79,47 @@ export default {
         });
     },
     async popNotif() {
-      if ("Notification" in window) {
-        Notification.requestPermission(function (permission) {
+      /* if ("Notification" in window) {
+        Notification.requestPermission(function(permission) {
           console.log(permission);
+
           /*var options = {
             body: "Ceci est un test",
           };*/
-          var notif = new Notification("Test notification");
+      const publicVKey =
+        "BL5sIPcMeTRkAiZX-DK4_sX0mzeOxHpBvDmmcAETp6LxMiQyAa1JrPiNfIsd4MoSCAcchuDbfmaFwhJfJ3coLew";
+
+      //const message = { title: "Titre", body: "Corps !" };
+      const registration = await navigator.serviceWorker.ready;
+      try {
+        const urlBase64ToUint8Array = (base64String) => {
+          const padding = "=".repeat((4 - (base64String.lenght % 4)) % 4);
+          const base64 = (base64String + padding)
+            //eslint-disable-next-line
+            .replace(/\-/g, "+")
+            .replace(/_/g, "/");
+
+          const rawData = window.atob(base64);
+          const outputArray = new Uint8Array(rawData.length);
+          for (let i = 0; i < rawData.length; ++i) {
+            outputArray[i] = rawData.charCodeAt(i);
+          }
+          return outputArray;
+        };
+
+        const subscription = await registration.pushManager.subscribe({
+          userVisibleOnly: true,
+          applicationServerKey: urlBase64ToUint8Array(publicVKey),
+        });
+        await fetch("/subscription", {
+          method: "POST",
+          body: JSON.stringify(subscription),
+          headers: { "content-type": "application/json" },
+        });
+      } catch (e) {
+        console.log("la souscription a été refusée");
+      }
+      /*var notif = new Notification("Test notification");
           notif.addEventListener("click", (e) => {
             console.log(e, "click on notif");
             notif.close();
@@ -93,7 +127,7 @@ export default {
         });
       } else {
         console.log("pas notification");
-      }
+      }*/
     },
   },
 };
