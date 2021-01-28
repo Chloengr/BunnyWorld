@@ -1,22 +1,23 @@
 <template>
   <section id="board">
     <div v-for="layout in layoutData" :key="layout.id">
-      <div v-if="layout.id === boardId">
+      {{ log(layout.id) }}
+      <div v-if="displayBoard">
         <div class="is-flex">
           <div v-for="(column, x) in layout.columns" :key="x">
             <div v-for="(cell, y) in getCells(column)" :key="y">
               <div v-on:click="move(x, y)">
                 <Square
-                  v-if="layout.id === 1"
                   :lava="cell ? cell.lava : null"
                   :ground="cell ? cell.ground : null"
                   :dirt="cell ? cell.dirt : null"
                   :x="x"
                   :y="y"
                   :ref="`x${x}y${y}`"
-                  :player="x === player.x && y === player.y ? player : null"
+                  :player="
+                    x === players[0].x && y === players[0].y ? players[0] : null
+                  "
                 />
-                <!-- Pour l'instant une seule grille -->
               </div>
             </div>
           </div>
@@ -30,22 +31,29 @@
 import Square from "./Square.vue";
 import layoutJSON from "../data/games-layout.json";
 
-import { auth } from "../config/firebaseConfig";
 export default {
   name: "Board",
-  props: ["boardId"],
+  props: ["currentGame", "players"],
   components: { Square },
   data() {
     return {
-      player: auth.currentUser,
       layoutData: layoutJSON.game,
       length: 0,
       walkableSquares: this.$nextTick(() => {
         return this.walkableZone();
       }),
+      displayBoard: false,
     };
   },
+  created() {
+    console.log("currentGame", this.currentGame);
+    console.log("players", this.players[0]);
+  },
   methods: {
+    log(b) {
+      console.log(b === this.currentGame.board_number);
+      this.displayBoard = b === this.currentGame.board_number;
+    },
     getCells(column) {
       let cells = [];
       for (let i = 0; i < 14; i++) {
@@ -62,7 +70,10 @@ export default {
       ];
       const walkableSquares = [];
       directions.forEach((dir) => {
-        const target = { x: this.player.x + dir.x, y: this.player.y + dir.y };
+        const target = {
+          x: this.players[0].x + dir.x,
+          y: this.players[0].y + dir.y,
+        };
         const ref = this.$refs[`x${target.x}y${target.y}`];
         if (ref && !ref[0].lava && !ref[0].bush) {
           walkableSquares.push(ref);
@@ -72,8 +83,6 @@ export default {
         w[0].$el.classList.add("walkable");
       });
 
-      console.log("add", walkableSquares);
-
       return walkableSquares;
     },
     move(x, y) {
@@ -82,8 +91,8 @@ export default {
         Object.keys(this.$refs).forEach((el) => {
           this.$refs[el][0].$el.classList.remove("walkable");
         });
-        this.$set(this.player, "x", x);
-        this.$set(this.player, "y", y);
+        this.$set(this.players[0], "x", x);
+        this.$set(this.players[0], "y", y);
         this.walkableZone();
       }
     },

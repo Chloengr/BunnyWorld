@@ -14,16 +14,18 @@
       class="form is-flex is-flex-direction-column is-justify-content-center is-align-items-center has-background-white p-5"
     >
       <div class="mb-5 cards">
-        <div v-if="!this.games" class="has-text-centered">
+        <div v-if="this.games.length === 0" class="has-text-centered">
           Pas de parties en cours.
         </div>
         <div v-for="game in this.games" v-bind:key="game.id">
-          <div v-for="player in game.players" v-bind:key="player.user">
-            <card-score
-              :player="player"
-              :gameName="game.name"
-              class="mt-2"
-            ></card-score>
+          <div v-for="player in game.game.players" v-bind:key="player.user">
+            <div class="buttonGame" @click="$router.push(`/game/${game.id}`)">
+              <card-score
+                :player="player"
+                :gameName="game.game.name"
+                class="mt-2"
+              ></card-score>
+            </div>
           </div>
         </div>
       </div>
@@ -112,7 +114,11 @@ export default {
       db.collection("game")
         .where("players", "array-contains", playerToFind[0])
         .get()
-        .then((res) => res.docs.forEach((doc) => this.games.push(doc.data())));
+        .then((res) =>
+          res.docs.forEach((doc) => {
+            this.games.push({ game: doc.data(), id: doc.id });
+          })
+        );
     },
     displayJoinGame() {
       this.$buefy.modal.open({
@@ -134,5 +140,8 @@ export default {
 }
 .cards {
   width: 90%;
+}
+.buttonGame {
+  cursor: pointer;
 }
 </style>

@@ -1,9 +1,11 @@
 <template>
   <div>
     <score v-if="!finDePartie" :nextPlayer="nextPlayer"></score>
-    <rank v-if="finDePartie" :partieName="partieName"></rank>
-    <board v-if="$route.params.id == 1" :boardId="1"></board>
-    <board v-if="$route.params.id == 2" :boardId="2"></board>
+    <rank v-if="finDePartie" :partieName="currentGame[0].name"></rank>
+    <board
+      :currentGame="currentGame[0]"
+      :players="currentGame[0].players"
+    ></board>
     <button class="button is-rounded is-primary" @click="alert">
       Regardez, une arme !
     </button>
@@ -20,7 +22,7 @@ import json from "../data/data.json";
 import Board from "../components/Board.vue";
 import WeaponDetailsVue from "../components/WeaponDetails.vue";
 import PlayerDetailsVue from "../components/PlayerDetails.vue";
-import { auth } from "../config/firebaseConfig";
+import { auth, db } from "../config/firebaseConfig";
 
 export default {
   components: { Score, Rank, Board },
@@ -28,16 +30,18 @@ export default {
   data() {
     return {
       nextPlayer: json.nextPlayer,
-      partieName: this.getCurrentGame().partieName,
       finDePartie: json.finDePartie, // false to see ranking - true to see score
       msg: "Partie en cours avec le plateau/parcours choisi",
+      currentGame: [],
     };
   },
+  created() {
+    db.collection("game")
+      .doc(this.$route.params.id)
+      .get()
+      .then((res) => this.currentGame.push(res.data()));
+  },
   methods: {
-    getCurrentGame() {
-      let currentGame = json.games.filter((g) => g.currentGame);
-      return currentGame[0];
-    },
     alert() {
       this.$buefy.modal.open({
         parent: this,
