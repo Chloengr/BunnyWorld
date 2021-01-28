@@ -61,17 +61,24 @@ export default {
   data() {
     return {
       user: null,
-      installDisable: false
+      installDisable: false,
+      onLine: null,
     };
   },
   created() {
-    auth.onAuthStateChanged(user => {
+    auth.onAuthStateChanged((user) => {
       if (user) {
         this.user = user;
       } else {
         this.user = null;
       }
     });
+    this.onLine = navigator.onLine;
+    console.log(this.onLine);
+    console.log(navigator.onLine ? "online" : "offline");
+    if (this.onLine === false) {
+      this.$router.push("/home");
+    }
   },
   methods: {
     logOut() {
@@ -85,20 +92,20 @@ export default {
       if (promptEvent) {
         promptEvent.prompt();
       }
-    }
+    },
   },
-  mounted: function() {
-    window.addEventListener("beforeinstallprompt", e => {
+  mounted: function () {
+    window.addEventListener("beforeinstallprompt", (e) => {
       e.preventDefault();
       promptEvent = e;
       this.installDisable = false;
-      promptEvent.userChoice.then(choiceObject => {
+      promptEvent.userChoice.then((choiceObject) => {
         if (choiceObject.outcome === "accepted") {
           this.installDisable = true;
         }
       });
     });
-  }
+  },
 };
 </script>
 
