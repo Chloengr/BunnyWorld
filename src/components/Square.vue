@@ -18,25 +18,25 @@
 </template>
 
 <script>
-import { db } from "../config/firebaseConfig";
+//import { db } from "../config/firebaseConfig";
 
 export default {
   name: "Square",
   props: ["player", "dirt", "ground", "grass", "bush", "lava"],
-  created() {
-    console.log("coucou");
-    console.log("avant", this.player);
-    if (this.player && (this.lava || this.bush)) {
-      console.log("cest un obstacle tu peux pas tmettre la");
-      this.$set(this.player, "x", Math.floor(Math.random() * 13));
-      this.$set(this.player, "y", Math.floor(Math.random() * 13));
-      console.log("apres", this.player);
-      const playerRef = db.collection("player").where("id", "==", this.player);
-      playerRef
-        .set({ x: this.player.x, y: this.player.y })
-        .then((res) => console.log("res", res));
-    }
-  },
+  // created() {
+  //   console.log("coucou");
+  //   console.log("avant", this.player);
+  //   if (this.player && (this.lava || this.bush)) {
+  //     console.log("cest un obstacle tu peux pas tmettre la");
+  //     this.$set(this.player, "x", Math.floor(Math.random() * 13));
+  //     this.$set(this.player, "y", Math.floor(Math.random() * 13));
+  //     console.log("apres", this.player);
+  //     const playerRef = db.collection("player").where("id", "==", this.player);
+  //     playerRef
+  //       .set({ x: this.player.x, y: this.player.y })
+  //       .then((res) => console.log("res", res));
+  //   }
+  // },
 };
 </script>
 
