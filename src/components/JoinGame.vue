@@ -48,8 +48,18 @@ export default {
     return {
       link: null,
       players: [],
-      currentUser: auth.currentUser
+      currentUser: auth.currentUser,
+      user: null,
     };
+  },
+  created() {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.user = user;
+      } else {
+        this.user = null;
+      }
+    });
   },
   methods: {
     // avoid same x and y for new player
@@ -64,22 +74,18 @@ export default {
       db.collection("game")
         .doc(this.link)
         .get()
-        .then(res => {
-          res.data().players.map(p => {
+        .then((res) => {
+          res.data().players.map((p) => {
             if (this.currentUser.uid === p.user) {
               alert("Vous êtes déjà dans cette partie");
             } else if (res.data().players.length >= res.data().nbPlayer) {
               alert("La partie est full");
             } else {
-              alert("La partie est accessible");
+              //alert("La partie est accessible");
               console.log("true");
               db.collection("player")
                 .add({
-                  id:
-                    "_" +
-                    Math.random()
-                      .toString(36)
-                      .substr(2, 9),
+                  id: "_" + Math.random().toString(36).substr(2, 9),
                   life: 5,
                   score: 0,
                   weapon_id: null,
@@ -88,12 +94,12 @@ export default {
                   your_turn: false,
                   user: this.user.uid,
                   color: this.user.photoURL,
-                  name: this.user.displayName
+                  name: this.user.displayName,
                 })
-                .then(player => {
+                .then((player) => {
                   this.getPlayer(player);
                 })
-                .catch(error => {
+                .catch((error) => {
                   console.error("Error getPlayers : ", error);
                 });
             }
@@ -101,24 +107,21 @@ export default {
         });
     },
     async getPlayer(player) {
-      const snapshot = await db
-        .collection("player")
-        .doc(player.id)
-        .get();
+      const snapshot = await db.collection("player").doc(player.id).get();
       this.players.push(snapshot.data());
       console.log("AFTER", this.players);
 
       const gameRef = await db.collection("game").doc(this.link);
       gameRef
         .update({
-          players: firebase.firestore.FieldValue.arrayUnion(...this.players)
+          players: firebase.firestore.FieldValue.arrayUnion(...this.players),
         })
         .then(() => {
           console.log("SUCCESS");
           router.push({ path: `/game/${this.link}` });
         })
-        .catch(err => console.log("ERROR => ", err));
-    }
-  }
+        .catch((err) => console.log("ERROR => ", err));
+    },
+  },
 };
 </script>
