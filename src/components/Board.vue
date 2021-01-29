@@ -99,7 +99,7 @@ export default {
       return walkableSquares;
     },
     // When move set x, y , your turn to new values and set it to players, managing turns
-    move(x, y) {
+    async move(x, y) {
       const target = this.$refs[`x${x}y${y}`];
       if (this.walkableZone().includes(target)) {
         Object.keys(this.$refs).forEach((el) => {
@@ -115,10 +115,29 @@ export default {
             this.walkableZone();
             this.$set(p, "your_turn", false);
 
+            //TODO : changer le localhost par le nom de domaine heroku
             if (i + 1 < this.players.length) {
               this.$set(this.players[i + 1], "your_turn", true);
+              //on notifie le joueur suivant
+              fetch(
+                `http://localhost:8000/send-notification/${
+                  this.players[i + 1].uid
+                }`,
+                {
+                  method: "GET",
+                  headers: { "content-type": "application/json" },
+                }
+              ).then((res) => console.log(res));
             } else if (i + 1 >= this.players.length) {
               this.$set(this.players[0], "your_turn", true);
+              //on notifie le joueur suivant
+              fetch(
+                `http://localhost:8000/send-notification/${this.players[0].uid}`,
+                {
+                  method: "GET",
+                  headers: { "content-type": "application/json" },
+                }
+              ).then((res) => console.log(res));
             }
           }
           gameRef
