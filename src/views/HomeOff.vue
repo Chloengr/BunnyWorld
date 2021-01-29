@@ -7,7 +7,7 @@
     </figure>
     <p class="is-family-secondary is-size-1 has-text-black mb-5">
       BUNNY<br />
-      WOLRD
+      WORLD
     </p>
 
     <div
@@ -22,9 +22,8 @@
 
 <script>
 export default {
-  name: "HomeOff",
+  name: "HomeOff"
 };
 </script>
 
-<style>
-</style>
+<style></style>

@@ -36,6 +36,8 @@
 </template>
 
 <script>
+/* eslint-disable no-unused-vars */
+
 import { db, auth } from "../config/firebaseConfig";
 import { firebase } from "@firebase/app";
 import router from "../router";
@@ -46,14 +48,14 @@ export default {
     return {
       link: null,
       players: [],
-      currentUser: auth.currentUser,
+      currentUser: auth.currentUser
     };
   },
   methods: {
     // avoid same x and y for new player
     randNum(limit, absc) {
       let rand = Math.floor(Math.random() * limit) + 1;
-      if (rand == absc) rand(limit);
+      if (rand == absc) this.randNum(limit);
       else return rand;
     },
     // join existing game, checking if already in it, if game not full
@@ -62,17 +64,22 @@ export default {
       db.collection("game")
         .doc(this.link)
         .get()
-        .then((game) => {
-          const res = game.data();
-          res.players.map((p) => {
-            if (this.currentUser.uid == p.user) {
+        .then(res => {
+          res.data().players.map(p => {
+            if (this.currentUser.uid === p.user) {
               alert("Vous êtes déjà dans cette partie");
-            } else if (Object.keys(res.players).length >= res.nbPlayer) {
-              alert("La partie est FULL");
+            } else if (res.data().players.length >= res.data().nbPlayer) {
+              alert("La partie est full");
             } else {
+              alert("La partie est accessible");
+              console.log("true");
               db.collection("player")
                 .add({
-                  id: "_" + Math.random().toString(36).substr(2, 9),
+                  id:
+                    "_" +
+                    Math.random()
+                      .toString(36)
+                      .substr(2, 9),
                   life: 5,
                   score: 0,
                   weapon_id: null,
@@ -81,39 +88,37 @@ export default {
                   your_turn: false,
                   user: this.user.uid,
                   color: this.user.photoURL,
-                  name: this.user.displayName,
+                  name: this.user.displayName
                 })
-                .then((player) => {
-                  db.collection("player")
-                    .doc(player.id)
-                    .get()
-                    .then((data) => {
-                      this.players.push(data.data());
-                      db.collection("game")
-                        .doc(this.link)
-                        .update({
-                          players: firebase.firestore.FieldValue.arrayUnion(
-                            ...this.players
-                          ),
-                        })
-                        .then(() => {
-                          router.push({ path: `/game/${game.id}` });
-                        })
-                        .catch((error) => {
-                          console.error("Error writing game document: ", error);
-                        });
-                    })
-                    .catch((error) => {
-                      console.error("Error writing player document: ", error);
-                    });
+                .then(player => {
+                  this.getPlayer(player);
+                })
+                .catch(error => {
+                  console.error("Error getPlayers : ", error);
                 });
             }
           });
         });
     },
-  },
+    async getPlayer(player) {
+      const snapshot = await db
+        .collection("player")
+        .doc(player.id)
+        .get();
+      this.players.push(snapshot.data());
+      console.log("AFTER", this.players);
+
+      const gameRef = await db.collection("game").doc(this.link);
+      gameRef
+        .update({
+          players: firebase.firestore.FieldValue.arrayUnion(...this.players)
+        })
+        .then(() => {
+          console.log("SUCCESS");
+          router.push({ path: `/game/${this.link}` });
+        })
+        .catch(err => console.log("ERROR => ", err));
+    }
+  }
 };
 </script>
-
-<style scoped>
-</style>
