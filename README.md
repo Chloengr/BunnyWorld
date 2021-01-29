@@ -1,9 +1,5 @@
 # BunnyWorld - Equipe 12
 
-## UPDATE 00:09
-
-Nous venons de nous rendre compte que le bouton "installer" ne fonctionne plus, il n'y a pas non plus le bouton dans le navigateur. Chose qui fonctionnait très bien lors de la démo et depuis longtemps ... 
-
 ## 1ere mise en ligne avec OVH
 
 https://bunnyworld.arnaudblessing.fr/
