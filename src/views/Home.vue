@@ -86,7 +86,6 @@ export default {
       }
     });
     this.getGamesForAPlayer();
-    console.log(this.games);
   },
 
   methods: {
@@ -114,21 +113,16 @@ export default {
         .get()
         .then((res) => res.docs.map((doc) => doc.data()));
 
-      console.log("playerToFind", playerToFind);
-
       db.collection("game")
         .get()
         .then((res) => {
           res.docs.forEach((doc) => {
             const document = doc.data();
-            console.log("document", document);
 
             document.players.forEach((player) => {
               playerToFind.forEach((pToFind) => {
                 if (player.id === pToFind.id) {
-                  console.log("player.id", player.id);
-                  console.log("pToFind.id", pToFind.id);
-                  this.games.push({ game: doc.data(), id: doc.id });
+                  +this.games.push({ game: doc.data(), id: doc.id });
                 }
               });
             });

@@ -48,7 +48,6 @@ export default {
   },
   created() {
     this.timeToPlay = auth.currentUser.uid === this.nextPlayer.user;
-    console.log(this.nextPlayer);
   },
 };
 </script>

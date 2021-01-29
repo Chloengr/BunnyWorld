@@ -6,7 +6,6 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
 self.addEventListener("push", event => {
-  console.log(event);
   const message = event.data.json();
   self.registration
     .showNotification(message.title, {
