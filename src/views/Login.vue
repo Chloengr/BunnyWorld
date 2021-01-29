@@ -45,13 +45,13 @@
           Créer mon lapinou
         </button>
         <button
-          class="button is-white is-rounded mb-4 ml-4"
+          class="button is-white is-rounded mb-4"
           @click="popNotif()"
         >
           subscribe
         </button>
         <button
-          class="button is-white is-rounded mb-4 ml-4"
+          class="button is-white is-rounded mb-4"
           @click="sendNotif()"
         >
           notif

@@ -23,22 +23,22 @@
               <div class="small-icon mr-2">
                 <img :src="`/img/bunny-${user.photoURL}.png`" alt="Image" />
               </div>
-              <p class="has-text-secondary">{{ user.displayName }}</p>
+              <p>{{ user.displayName }}</p>
             </div>
           </div>
         </b-navbar-item>
-        <b-navbar-item v-if="this.user">
-          <button class="button is-primary is-rounded" @click="logOut()">
-            Se déconnecter
-          </button>
-        </b-navbar-item>
         <b-navbar-item>
           <button
-            class="button has-text-primary is-outlined is-rounded mb-5 hidden"
+            class="button has-text-primary is-outlined is-rounded"
             @click="install()"
             :disabled="installDisable"
           >
             Installer l'application
+          </button>
+        </b-navbar-item>
+        <b-navbar-item v-if="this.user">
+          <button class="button is-primary is-rounded" @click="logOut()">
+            Se déconnecter
           </button>
         </b-navbar-item>
       </template>
@@ -87,7 +87,7 @@ export default {
       }
     },
   },
-  mounted: function() {
+  mounted: function () {
     window.addEventListener("beforeinstallprompt", (e) => {
       e.preventDefault();
       promptEvent = e;
