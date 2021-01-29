@@ -63,7 +63,6 @@
 
 <script>
 import { auth } from "../config/firebaseConfig";
-
 export default {
   name: "Login",
   data() {
