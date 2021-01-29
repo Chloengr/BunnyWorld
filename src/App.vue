@@ -67,7 +67,6 @@ export default {
   created() {
     auth.onAuthStateChanged((user) => {
       if (user) {
-        console.log(user.photoURL);
         this.user = user;
       } else {
         this.user = null;

@@ -1,6 +1,7 @@
 import { firebase } from "@firebase/app";
 import "@firebase/auth";
 import "@firebase/firestore";
+
 var firebaseConfig = {
   apiKey: "AIzaSyB8AS5DygKVAgOoD2bfsKBg3YxeAJFBOl8",
   authDomain: "bunnyworld-b439a.firebaseapp.com",
