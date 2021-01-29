@@ -1,6 +1,10 @@
 <template>
   <div>
-    <score v-if="!finDePartie" :nextPlayer="nextPlayer"></score>
+    <score
+      v-if="!finDePartie"
+      :nextPlayer="nextPlayer"
+      :players="this.players"
+    ></score>
     <rank v-if="finDePartie" :partieName="currentGame.name"></rank>
     <board :currentGame="currentGame" :players="players"></board>
     <button class="button is-rounded is-primary" @click="displayWeapon">
@@ -26,20 +30,26 @@ export default {
   name: "Game",
   data() {
     return {
-      nextPlayer: json.nextPlayer,
+      nextPlayer: null,
       finDePartie: json.finDePartie, // false to see ranking - true to see score
-      msg: "Partie en cours avec le plateau/parcours choisi",
       currentGame: [],
-      players: []
+      players: [],
     };
   },
   created() {
     db.collection("game")
       .doc(this.$route.params.id)
       .get()
-      .then(res => {
+      .then((res) => {
         this.currentGame = res.data();
         this.players = res.data().players;
+        let player = [];
+        res.data().players.forEach((p) => {
+          if (p.your_turn) {
+            player.push(p);
+          }
+        });
+        this.nextPlayer = player[0];
       });
   },
   methods: {
@@ -49,7 +59,7 @@ export default {
         props: { weapon: json.weapon },
         component: WeaponDetailsVue,
         hasModalCard: true,
-        trapFocus: true
+        trapFocus: true,
       });
     },
     displayPlayer() {
@@ -58,10 +68,10 @@ export default {
         props: { player: auth.currentUser, weapon: json.weapon },
         component: PlayerDetailsVue,
         hasModalCard: true,
-        trapFocus: true
+        trapFocus: true,
       });
-    }
-  }
+    },
+  },
 };
 </script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -45,14 +45,13 @@ export default {
   name: "JoinGame",
   data() {
     return {
-      msg: "Rejoindre une partie",
       link: null,
       players: [],
-      currentUser: auth.currentUser
+      currentUser: auth.currentUser,
     };
   },
   created() {
-    auth.onAuthStateChanged(user => {
+    auth.onAuthStateChanged((user) => {
       if (user) {
         this.user = user;
         console.log(this.user);
@@ -66,9 +65,9 @@ export default {
       db.collection("game")
         .doc(this.link)
         .get()
-        .then(game => {
+        .then((game) => {
           const res = game.data();
-          res.players.map(id => {
+          res.players.map((id) => {
             if (this.currentUser.uid == id.user) {
               alert("Vous êtes déjà dans cette partie");
             } else if (Object.keys(res.players).length >= res.nbPlayer) {
@@ -76,47 +75,48 @@ export default {
             } else {
               db.collection("player")
                 .add({
+                  id: "_" + Math.random().toString(36).substr(2, 9),
                   life: 5,
                   score: 0,
                   weapon_id: null,
-                  x: 6,
-                  y: 3,
+                  x: Math.floor(Math.random() * 13),
+                  y: Math.floor(Math.random() * 13),
                   your_turn: false,
                   user: this.user.uid,
                   color: this.user.photoURL,
-                  name: this.user.displayName
+                  name: this.user.displayName,
                 })
-                .then(player => {
+                .then((player) => {
                   db.collection("player")
                     .doc(player.id)
                     .get()
-                    .then(data => {
+                    .then((data) => {
                       this.players.push(data.data());
                       db.collection("game")
                         .doc(this.link)
                         .update({
                           players: firebase.firestore.FieldValue.arrayUnion(
                             ...this.players
-                          )
+                          ),
                         })
                         .then(() => {
                           console.log("player ajouté", this.players);
                           console.log("game updated!", game.id);
                           router.push({ path: `/game/${game.id}` });
                         })
-                        .catch(error => {
+                        .catch((error) => {
                           console.error("Error writing game document: ", error);
                         });
                     })
-                    .catch(error => {
+                    .catch((error) => {
                       console.error("Error writing player document: ", error);
                     });
                 });
             }
           });
         });
-    }
-  }
+    },
+  },
 };
 </script>
 

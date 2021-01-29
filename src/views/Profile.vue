@@ -107,6 +107,7 @@ export default {
           displayName: this.name,
           photoURL: this.colorAvatar,
         })
+        .then(() => this.$router.push("/profile"))
         .catch((error) => {
           alert(error.message);
         });

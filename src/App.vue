@@ -15,16 +15,6 @@
         </b-navbar-item>
         <b-navbar-item
           tag="router-link"
-          :to="{ path: '/game/1' }"
-          v-if="this.user"
-        >
-          Game 1
-        </b-navbar-item>
-        <!-- <b-navbar-item tag="router-link" :to="{ path: '/game/2' }">
-          Game 2
-        </b-navbar-item> -->
-        <b-navbar-item
-          tag="router-link"
           :to="{ path: '/profile' }"
           v-if="this.user"
         >
@@ -66,6 +56,7 @@ export default {
   created() {
     auth.onAuthStateChanged((user) => {
       if (user) {
+        console.log(user.photoURL);
         this.user = user;
       } else {
         this.user = null;
