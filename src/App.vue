@@ -81,6 +81,16 @@ export default {
     this.$on("online", () => {
       this.$router.replace("/");
     });
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      promptEvent = e;
+      this.installDisable = false;
+      promptEvent.userChoice.then((choiceObject) => {
+        if (choiceObject.outcome === "accepted") {
+          this.installDisable = true;
+        }
+      });
+    });
   },
   methods: {
     logOut() {
@@ -95,18 +105,6 @@ export default {
         promptEvent.prompt();
       }
     },
-  },
-  mounted: function () {
-    window.addEventListener("beforeinstallprompt", (e) => {
-      e.preventDefault();
-      promptEvent = e;
-      this.installDisable = false;
-      promptEvent.userChoice.then((choiceObject) => {
-        if (choiceObject.outcome === "accepted") {
-          this.installDisable = true;
-        }
-      });
-    });
   },
 };
 </script>

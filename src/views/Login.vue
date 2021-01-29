@@ -24,7 +24,6 @@
             placeholder="Email"
           ></b-input>
         </b-field>
-
         <b-field>
           <b-input
             v-model="password"
@@ -84,12 +83,15 @@ export default {
         });
     },
     async popNotif() {
-      const publicVKey =
-        "BFvj5SDZN52AHRmvW1qIYCUcVeuTfSHdR6j0TzgUk0zcW5X04CR5QvRQYcprgWudZ1N9pm2zmlFLluuNYtpPV5Q";
-      const registration = await navigator.serviceWorker.ready;
-      try {
-        const urlBase64ToUint8Array = (base64String) => {
-          const padding = "=".repeat((4 - (base64String.lenght % 4)) % 4);
+            //gestion notification
+            if ('Notification' in window) { //si l'api est supportée par le navigateur
+            Notification.requestPermission().then(function() {
+                //on lance la subscription pour le joueur actuel
+                const publicVKey = "BFvj5SDZN52AHRmvW1qIYCUcVeuTfSHdR6j0TzgUk0zcW5X04CR5QvRQYcprgWudZ1N9pm2zmlFLluuNYtpPV5Q";
+                const registration = navigator.serviceWorker.ready;
+              try {
+                const urlBase64ToUint8Array = (base64String) => {
+                const padding = "=".repeat((4 - (base64String.lenght % 4)) % 4);
           const base64 = (base64String + padding)
             //eslint-disable-next-line
             .replace(/\-/g, "+")
@@ -102,12 +104,12 @@ export default {
           return outputArray;
         };
 
-        const subscription = await registration.pushManager.subscribe({
+        const subscription = registration.pushManager.subscribe({
           userVisibleOnly: true,
           applicationServerKey: urlBase64ToUint8Array(publicVKey),
         });
         console.log("subscription", subscription);
-        await fetch("http://localhost:8000/subscription", {
+        fetch("http://localhost:8000/subscription", {
           method: "POST",
           body: JSON.stringify({
             subscription: subscription,
@@ -118,6 +120,8 @@ export default {
       } catch (e) {
         console.log("la souscription a été refusée");
       }
+  })
+}
     },
 
     async sendNotif() {
