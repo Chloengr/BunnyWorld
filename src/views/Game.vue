@@ -3,7 +3,7 @@
     <score
       v-if="!finDePartie"
       :nextPlayer="nextPlayer"
-      :players="this.players"
+      :players="players"
     ></score>
     <rank v-if="finDePartie" :partieName="currentGame.name"></rank>
     <board :currentGame="currentGame" :players="players"></board>
@@ -33,18 +33,18 @@ export default {
       nextPlayer: null,
       finDePartie: json.finDePartie, // false to see ranking - true to see score
       currentGame: [],
-      players: [],
+      players: []
     };
   },
   created() {
     db.collection("game")
       .doc(this.$route.params.id)
       .get()
-      .then((res) => {
+      .then(res => {
         this.currentGame = res.data();
         this.players = res.data().players;
         let player = [];
-        res.data().players.forEach((p) => {
+        res.data().players.forEach(p => {
           if (p.your_turn) {
             player.push(p);
           }
@@ -59,7 +59,7 @@ export default {
         props: { weapon: json.weapon },
         component: WeaponDetailsVue,
         hasModalCard: true,
-        trapFocus: true,
+        trapFocus: true
       });
     },
     displayPlayer() {
@@ -68,11 +68,9 @@ export default {
         props: { player: auth.currentUser, weapon: json.weapon },
         component: PlayerDetailsVue,
         hasModalCard: true,
-        trapFocus: true,
+        trapFocus: true
       });
-    },
-  },
+    }
+  }
 };
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style></style>

@@ -98,6 +98,7 @@ export default {
 
       return walkableSquares;
     },
+    // When move set x, y , your turn to new values and set it to players, managing turns
     move(x, y) {
       const target = this.$refs[`x${x}y${y}`];
       if (this.walkableZone().includes(target)) {
@@ -130,7 +131,7 @@ export default {
               ),
             })
             .then(() => {
-              console.log("Modified x, y, your_turn: ", this.players);
+              console.log("Set changes : ", this.players);
             })
             .catch((error) => {
               console.error("Error : ", error);

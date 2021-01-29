@@ -50,13 +50,12 @@ import { auth } from "../src/config/firebaseConfig";
 export default {
   data() {
     return {
-      user: null,
+      user: null
     };
   },
   created() {
-    auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged(user => {
       if (user) {
-        console.log(user.photoURL);
         this.user = user;
       } else {
         this.user = null;
@@ -70,8 +69,8 @@ export default {
           this.$router.push("/login");
         });
       });
-    },
-  },
+    }
+  }
 };
 </script>
 

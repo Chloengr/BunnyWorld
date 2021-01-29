@@ -43,14 +43,12 @@ export default {
   data() {
     return {
       isCardModalActive: true,
-      timeToPlay: null,
+      timeToPlay: null
     };
   },
   created() {
     this.timeToPlay = auth.currentUser.uid === this.nextPlayer.user;
     console.log(this.nextPlayer);
-  },
+  }
 };
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style></style>
