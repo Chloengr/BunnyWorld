@@ -6,9 +6,12 @@ import Buefy from "buefy";
 import "@fortawesome/fontawesome-free/css/all.css";
 import "@fortawesome/fontawesome-free/js/all.js";
 import { auth } from "./config/firebaseConfig";
+import VueOffline from "vue-offline";
 
 Vue.use(Buefy);
 Vue.config.productionTip = false;
+
+Vue.use(VueOffline);
 
 router.beforeEach((to, from, next) => {
   const currentUser = auth.currentUser;
