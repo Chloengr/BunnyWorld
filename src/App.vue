@@ -32,6 +32,15 @@
             Se déconnecter
           </button>
         </b-navbar-item>
+        <b-navbar-item>
+          <button
+            class="button has-text-primary is-outlined is-rounded mb-5 hidden"
+            @click="install()"
+            :disabled="installDisable"
+          >
+            Installer l'application
+          </button>
+        </b-navbar-item>
       </template>
     </b-navbar>
     <router-view></router-view>
@@ -46,11 +55,13 @@
 
 <script>
 import { auth } from "../src/config/firebaseConfig";
+let promptEvent = null;
 
 export default {
   data() {
     return {
       user: null,
+      installDisable: false,
     };
   },
   created() {
@@ -71,6 +82,23 @@ export default {
         });
       });
     },
+    install() {
+      if (promptEvent) {
+        promptEvent.prompt();
+      }
+    },
+  },
+  mounted: function() {
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      promptEvent = e;
+      this.installDisable = false;
+      promptEvent.userChoice.then((choiceObject) => {
+        if (choiceObject.outcome === "accepted") {
+          this.installDisable = true;
+        }
+      });
+    });
   },
 };
 </script>

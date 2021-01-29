@@ -44,14 +44,6 @@
         >
           Créer mon lapinou
         </button>
-        <button
-        :ref="installButton"
-        id="installButton"
-          class="button has-text-primary is-outlined is-rounded mb-5 hidden"
-          @click="install()"
-        >
-          Installer
-        </button>
       </div>
     </div>
   </div>
@@ -59,7 +51,6 @@
 
 <script>
 import { auth } from "../config/firebaseConfig";
-let promptEvent = null;
 export default {
   name: "Login",
   data() {
@@ -80,23 +71,7 @@ export default {
           alert(error.message);
         });
     },
-    install(){
-      if(promptEvent){
-        promptEvent.prompt();
-    }
-    }
   },
-  created: function() {
-  window.addEventListener("beforeinstallprompt", (e) => {
-    e.preventDefault();
-    promptEvent = e;
-    promptEvent.userChoice.then((choiceObject) => {
-        if(choiceObject.outcome === "accepted"){
-            installButton.hide();
-        }
-    });
-});
-},
 };
 </script>
 
