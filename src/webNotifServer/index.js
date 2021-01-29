@@ -35,8 +35,6 @@ app.use(cors(corsOptions));
 app.use(express.static("../front"));
 app.use(bodyParser.json());
 app.post("/subscription", async (req, res) => {
-  console.log("back");
-  console.log("req.body", req.body);
   res.header("Access-Control-Allow-Origin", "*");
   db.collection("notification").add({
     subscription: req.body.subscription,
@@ -53,14 +51,14 @@ app.get("/send-notification/:id", async (req, res) => {
     .get()
     .then(res => res.docs.map(doc => doc.data()));
 
-    subscriptionsForUser.forEach((sub) =>{
-      webpush
+  subscriptionsForUser.forEach(sub => {
+    webpush
       .sendNotification(
         sub.subscription,
         JSON.stringify({ title: "C'est à vous de jouer !" })
       )
-      .catch(res => console.log(res));
-    })
+      .catch(e => console.log(e));
+  });
 
   res.status(200).json({ status: "OK" });
 });

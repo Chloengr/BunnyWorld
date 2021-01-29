@@ -50,6 +50,8 @@ export default {
     auth.onAuthStateChanged((user) => {
       if (user) {
         this.user = user;
+      } else {
+        this.user = null;
       }
     });
   },
@@ -119,25 +121,11 @@ export default {
             if (i + 1 < this.players.length) {
               this.$set(this.players[i + 1], "your_turn", true);
               //on notifie le joueur suivant
-              fetch(
-                `http://localhost:8000/send-notification/${
-                  this.players[i + 1].user
-                }`,
-                {
-                  method: "GET",
-                  headers: { "content-type": "application/json" },
-                }
-              ).then((res) => console.log(res));
+              this.sendNotif(i + 1);
             } else if (i + 1 >= this.players.length) {
               this.$set(this.players[0], "your_turn", true);
               //on notifie le joueur suivant
-              fetch(
-                `http://localhost:8000/send-notification/${this.players[0].user}`,
-                {
-                  method: "GET",
-                  headers: { "content-type": "application/json" },
-                }
-              ).then((res) => console.log(res));
+              this.sendNotif(0);
             }
           }
           gameRef
@@ -157,6 +145,15 @@ export default {
             });
         });
       }
+    },
+    sendNotif(index) {
+      fetch(
+        `http://localhost:8000/send-notification/${this.players[index].user}`,
+        {
+          method: "GET",
+          headers: { "content-type": "application/json" },
+        }
+      );
     },
   },
 };

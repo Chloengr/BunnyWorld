@@ -61,7 +61,7 @@
 
 <script>
 import CardScore from "../components/CardScore";
-import json from "../data/data.json";
+import { colors } from "../service/service";
 import { auth, db } from "../config/firebaseConfig";
 import JoinGameVue from "../components/JoinGame.vue";
 
@@ -70,7 +70,7 @@ export default {
   components: { CardScore },
   data() {
     return {
-      colors: json.colors,
+      colors: colors(),
       user: null,
       currentUser: auth.currentUser,
       games: [],
@@ -79,7 +79,6 @@ export default {
   created() {
     auth.onAuthStateChanged((user) => {
       if (user) {
-        console.log("user connected", user);
         this.user = user;
       } else {
         this.user = null;
@@ -93,14 +92,10 @@ export default {
       auth
         .createUserWithEmailAndPassword(this.email, this.password)
         .then((res) => {
-          res.user
-            .updateProfile({
-              displayName: this.name,
-              photoURL: this.colorAvatar,
-            })
-            .then(() => {
-              console.log(auth.currentUser);
-            });
+          res.user.updateProfile({
+            displayName: this.name,
+            photoURL: this.colorAvatar,
+          });
         })
         .catch((error) => {
           alert(error.message);
@@ -172,8 +167,7 @@ export default {
               headers: { "content-type": "application/json" },
             });
           } catch (e) {
-            console.log(e);
-            console.log("la souscription a été refusée");
+            console.log("la souscription a été refusée", e);
           }
         });
       }

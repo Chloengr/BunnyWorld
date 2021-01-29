@@ -43,18 +43,6 @@
         >
           Créer mon lapinou
         </button>
-        <button
-          class="button is-white is-rounded mb-4"
-          @click="popNotif()"
-        >
-          subscribe
-        </button>
-        <button
-          class="button is-white is-rounded mb-4"
-          @click="sendNotif()"
-        >
-          notif
-        </button>
       </div>
     </div>
   </div>
@@ -81,57 +69,6 @@ export default {
         .catch((error) => {
           alert(error.message);
         });
-    },
-    async popNotif() {
-            //gestion notification
-            if ('Notification' in window) { //si l'api est supportée par le navigateur
-            Notification.requestPermission().then(function() {
-                //on lance la subscription pour le joueur actuel
-                const publicVKey = "BFvj5SDZN52AHRmvW1qIYCUcVeuTfSHdR6j0TzgUk0zcW5X04CR5QvRQYcprgWudZ1N9pm2zmlFLluuNYtpPV5Q";
-                const registration = navigator.serviceWorker.ready;
-              try {
-                const urlBase64ToUint8Array = (base64String) => {
-                const padding = "=".repeat((4 - (base64String.lenght % 4)) % 4);
-          const base64 = (base64String + padding)
-            //eslint-disable-next-line
-            .replace(/\-/g, "+")
-            .replace(/_/g, "/");
-          const rawData = window.atob(base64);
-          const outputArray = new Uint8Array(rawData.length);
-          for (let i = 0; i < rawData.length; ++i) {
-            outputArray[i] = rawData.charCodeAt(i);
-          }
-          return outputArray;
-        };
-
-        const subscription = registration.pushManager.subscribe({
-          userVisibleOnly: true,
-          applicationServerKey: urlBase64ToUint8Array(publicVKey),
-        });
-        console.log("subscription", subscription);
-        fetch("http://localhost:8000/subscription", {
-          method: "POST",
-          body: JSON.stringify({
-            subscription: subscription,
-            user: auth.currentUser.uid,
-          }),
-          headers: { "content-type": "application/json" },
-        });
-      } catch (e) {
-        console.log("la souscription a été refusée");
-      }
-  })
-}
-    },
-
-    async sendNotif() {
-      await fetch(
-        `http://localhost:8000/send-notification/${auth.currentUser.uid}`,
-        {
-          method: "GET",
-          headers: { "content-type": "application/json" },
-        }
-      ).then((res) => console.log(res));
     },
   },
 };

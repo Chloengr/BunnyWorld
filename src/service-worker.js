@@ -7,12 +7,10 @@ workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
 self.addEventListener("push", event => {
   const message = event.data.json();
-  self.registration
-    .showNotification(message.title, {
-      body: "Le joueur précédent a terminé, c'est à vous",
-      icon: "../public/img/logo.png"
-    })
-    .then(res => console.log(res));
+  self.registration.showNotification(message.title, {
+    body: "Le joueur précédent a terminé, c'est à vous",
+    icon: "../public/img/logo.png"
+  });
 });
 
 self.addEventListener("notificationclick", event => {

@@ -56,17 +56,6 @@
         </b-radio>
       </div>
 
-      <div v-if="errors.length" class="mb-5">
-        <small class="has-text-error">Corrige les erreurs suivantes : </small>
-        <small
-          class="has-text-error"
-          v-for="error in errors"
-          v-bind:key="error"
-        >
-          {{ error }}
-        </small>
-      </div>
-
       <button class="button is-primary is-rounded mb-4" @click="checkForm()">
         Modifier
       </button>
@@ -75,17 +64,17 @@
 </template>
 
 <script>
-import json from "../data/data.json";
 import { auth } from "../config/firebaseConfig";
+import { colors } from "../service/service.js";
+
 export default {
   name: "Profile",
 
   data() {
     return {
       user: null,
-      colors: json.colors,
+      colors: colors(),
       //form
-      errors: [],
       name: null,
       colorAvatar: null,
     };
@@ -94,7 +83,6 @@ export default {
     auth.onAuthStateChanged((user) => {
       if (user) {
         this.user = user;
-        console.log(user);
       } else {
         this.user = null;
       }
@@ -107,7 +95,7 @@ export default {
           displayName: this.name,
           photoURL: this.colorAvatar,
         })
-        .then(() => this.$router.push("/profile"))
+        .then(() => this.$router.push("/"))
         .catch((error) => {
           alert(error.message);
         });

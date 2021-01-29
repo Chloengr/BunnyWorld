@@ -4,8 +4,7 @@
       <div
         class="is-flex is-flex-direction-column is-justify-content-center is-align-items-center mb-4"
       >
-        <div class="text-block">
-          <h1>{{ msg }}</h1>
+        <div class="p-3">
           <p class="has-text-primary mb-5">
             Entrez le lien de la partie pour y accéder
           </p>
@@ -47,24 +46,13 @@ export default {
     return {
       link: null,
       players: [],
-      currentUser: auth.currentUser
+      currentUser: auth.currentUser,
     };
-  },
-  created() {
-    auth.onAuthStateChanged(user => {
-      if (user) {
-        this.user = user;
-        console.log(this.user);
-      } else {
-        this.user = null;
-      }
-    });
   },
   methods: {
     // avoid same x and y for new player
     randNum(limit, absc) {
       let rand = Math.floor(Math.random() * limit) + 1;
-      console.log(absc, rand);
       if (rand == absc) rand(limit);
       else return rand;
     },
@@ -74,9 +62,9 @@ export default {
       db.collection("game")
         .doc(this.link)
         .get()
-        .then(game => {
+        .then((game) => {
           const res = game.data();
-          res.players.map(p => {
+          res.players.map((p) => {
             if (this.currentUser.uid == p.user) {
               alert("Vous êtes déjà dans cette partie");
             } else if (Object.keys(res.players).length >= res.nbPlayer) {
@@ -84,11 +72,7 @@ export default {
             } else {
               db.collection("player")
                 .add({
-                  id:
-                    "_" +
-                    Math.random()
-                      .toString(36)
-                      .substr(2, 9),
+                  id: "_" + Math.random().toString(36).substr(2, 9),
                   life: 5,
                   score: 0,
                   weapon_id: null,
@@ -97,53 +81,39 @@ export default {
                   your_turn: false,
                   user: this.user.uid,
                   color: this.user.photoURL,
-                  name: this.user.displayName
+                  name: this.user.displayName,
                 })
-                .then(player => {
+                .then((player) => {
                   db.collection("player")
                     .doc(player.id)
                     .get()
-                    .then(data => {
+                    .then((data) => {
                       this.players.push(data.data());
                       db.collection("game")
                         .doc(this.link)
                         .update({
                           players: firebase.firestore.FieldValue.arrayUnion(
                             ...this.players
-                          )
+                          ),
                         })
                         .then(() => {
-                          console.log(
-                            "player added and game updated",
-                            this.players,
-                            game.id
-                          );
                           router.push({ path: `/game/${game.id}` });
                         })
-                        .catch(error => {
+                        .catch((error) => {
                           console.error("Error writing game document: ", error);
                         });
                     })
-                    .catch(error => {
+                    .catch((error) => {
                       console.error("Error writing player document: ", error);
                     });
                 });
             }
           });
         });
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style scoped>
-h1 {
-  font-weight: bold;
-  font-size: 40px;
-  margin-bottom: 20px;
-}
-.text-block {
-  width: 300px;
-  padding: 20px;
-}
 </style>

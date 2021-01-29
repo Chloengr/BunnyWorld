@@ -5,7 +5,6 @@
     <figure class="image big-icon">
       <img src="/img/play.png" alt="Image" />
     </figure>
-    <h1>{{ msg }}</h1>
     <form
       id="app"
       @submit="initGame"
@@ -23,7 +22,7 @@
       <b-field>
         <b-input v-model="nbPlayer" placeholder="Nombre de joueurs"></b-input>
       </b-field>
-      <b-field class="board">
+      <b-field class="mt-2">
         <b-select placeholder="Quel plateau ?" v-model="board_number">
           <option value="1">Plateau 1</option>
           <option value="2">Plateau 2</option>
@@ -72,11 +71,11 @@ export default {
       players: [],
       user: auth.currentUser,
       isActive: false,
-      gameCreatedId: null
+      gameCreatedId: null,
     };
   },
   created() {
-    auth.onAuthStateChanged(user => {
+    auth.onAuthStateChanged((user) => {
       if (user) {
         this.user = user;
         console.log(this.user);
@@ -89,11 +88,7 @@ export default {
     initGame(name, board_number, nbPlayer) {
       db.collection("player")
         .add({
-          id:
-            "_" +
-            Math.random()
-              .toString(36)
-              .substr(2, 9),
+          id: "_" + Math.random().toString(36).substr(2, 9),
           life: 5,
           score: 0,
           weapon_id: null,
@@ -102,48 +97,41 @@ export default {
           your_turn: true,
           user: this.user.uid,
           color: this.user.photoURL,
-          name: this.user.displayName
+          name: this.user.displayName,
         })
-        .then(player => {
+        .then((player) => {
           db.collection("player")
             .doc(player.id)
             .get()
-            .then(data => {
+            .then((data) => {
               this.players.push(data.data());
               db.collection("game")
                 .add({
                   board_number: parseInt(board_number),
                   name: name,
                   nbPlayer: parseInt(nbPlayer),
-                  players: this.players
+                  players: this.players,
                 })
-                .then(res => {
+                .then((res) => {
                   this.gameCreatedId = res.id;
 
                   console.log("Game successfully written!");
                   this.isActive = true;
                 })
-                .catch(error => {
+                .catch((error) => {
                   console.error("Error writing game document: ", error);
                 });
               console.log("Player successfully written!");
             });
         })
-        .catch(error => {
+        .catch((error) => {
           console.error("Error writing player document: ", error);
         });
-    }
-  }
+    },
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1 {
-  font-weight: normal;
-  margin: 50px;
-}
-.board {
-  margin-top: 20px;
-}
 </style>

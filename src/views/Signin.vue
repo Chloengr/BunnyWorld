@@ -87,9 +87,9 @@
 </template>
 
 <script>
-import json from "../data/data.json";
 import { auth } from "../config/firebaseConfig";
 import JoinGameVue from "../components/JoinGame.vue";
+import { colors } from "../service/service.js";
 
 export default {
   name: "Signin",
@@ -100,7 +100,7 @@ export default {
       email: null,
       password: null,
       colorAvatar: null,
-      colors: json.colors,
+      colors: colors(),
       user: null,
       games: auth.games,
       currentUser: auth.currentUser,
@@ -117,7 +117,6 @@ export default {
   },
   methods: {
     checkForm() {
-      console.log(this.colorAvatar);
       auth
         .createUserWithEmailAndPassword(this.email, this.password)
         .then((res) => {
