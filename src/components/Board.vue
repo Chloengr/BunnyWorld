@@ -121,7 +121,7 @@ export default {
               //on notifie le joueur suivant
               fetch(
                 `http://localhost:8000/send-notification/${
-                  this.players[i + 1].uid
+                  this.players[i + 1].user
                 }`,
                 {
                   method: "GET",
@@ -132,7 +132,7 @@ export default {
               this.$set(this.players[0], "your_turn", true);
               //on notifie le joueur suivant
               fetch(
-                `http://localhost:8000/send-notification/${this.players[0].uid}`,
+                `http://localhost:8000/send-notification/${this.players[0].user}`,
                 {
                   method: "GET",
                   headers: { "content-type": "application/json" },
